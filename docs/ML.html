@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 简单的机器学习 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="7 简单的机器学习 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 简单的机器学习 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 简单的机器学习 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="two-logit.html"/>
+<link rel="next" href="ET.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dta.html"><a href="dta.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dta.html"><a href="dta.html#dta-read"><i class="fa fa-check"></i><b>1.1</b> 数据读入：以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dta.html"><a href="dta.html#dta-wrap1"><i class="fa fa-check"></i><b>1.2</b> 数据处理1</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="dta.html"><a href="dta.html#dta-cc"><i class="fa fa-check"></i><b>1.2.1</b> R中的变量类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="dta.html"><a href="dta.html#dta-wrap2"><i class="fa fa-check"></i><b>1.3</b> 数据处理2</a></li>
+<li class="chapter" data-level="1.4" data-path="dta.html"><a href="dta.html#dta-wrap3"><i class="fa fa-check"></i><b>1.4</b> 数据处理3</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="dta.html"><a href="dta.html#dta-dia"><i class="fa fa-check"></i><b>1.4.1</b> 诊断数据集</a></li>
+<li class="chapter" data-level="1.4.2" data-path="dta.html"><a href="dta.html#dta-values"><i class="fa fa-check"></i><b>1.4.2</b> 处理异常值和缺失值</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-Variable-labels"><i class="fa fa-check"></i><b>2.1</b> 变量标签</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-summary"><i class="fa fa-check"></i><b>2.2</b> gtsummary包</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="TB.html"><a href="TB.html#TB-summary1"><i class="fa fa-check"></i><b>2.2.1</b> 函数<code>tbl_summary()</code>的默认输出</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TB.html"><a href="TB.html#TB-summary2"><i class="fa fa-check"></i><b>2.2.2</b> 函数<code>tbl_summary()</code>的分组比较</a></li>
+<li class="chapter" data-level="2.2.3" data-path="TB.html"><a href="TB.html#TB-summary3"><i class="fa fa-check"></i><b>2.2.3</b> 函数<code>tbl_gtsummary()</code>的自定义输出</a></li>
+<li class="chapter" data-level="2.2.4" data-path="TB.html"><a href="TB.html#TB-cross"><i class="fa fa-check"></i><b>2.2.4</b> 函数<code>tbl_cross</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TB.html"><a href="TB.html#TB-table1"><i class="fa fa-check"></i><b>2.3</b> table1包</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TB.html"><a href="TB.html#TB-table1.1"><i class="fa fa-check"></i><b>2.3.1</b> 无分层</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TB.html"><a href="TB.html#TB-table1.2"><i class="fa fa-check"></i><b>2.3.2</b> 有分层</a></li>
+<li class="chapter" data-level="2.3.3" data-path="TB.html"><a href="TB.html#TB-table1.2.1"><i class="fa fa-check"></i><b>2.3.3</b> 一个分层</a></li>
+<li class="chapter" data-level="2.3.4" data-path="TB.html"><a href="TB.html#TB-table1.2.2"><i class="fa fa-check"></i><b>2.3.4</b> 两个分层</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="TB.html"><a href="TB.html#TB-kable"><i class="fa fa-check"></i><b>2.4</b> <code>KableExtra</code>包</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="TB.html"><a href="TB.html#TB-kable1"><i class="fa fa-check"></i><b>2.4.1</b> 小试牛刀</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 图形</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.1.1</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.1.2</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.1.3" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.1.3</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.1.4" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.1.4</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-plotly"><i class="fa fa-check"></i><b>3.2</b> plotly</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="PI.html"><a href="PI.html#PI-baisc"><i class="fa fa-check"></i><b>3.2.1</b> 基本图形</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="OLS.html"><a href="OLS.html"><i class="fa fa-check"></i><b>5</b> 线性回归</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="OLS.html"><a href="OLS.html#OLS-inro"><i class="fa fa-check"></i><b>5.1</b> 简单线性回归介绍</a></li>
+<li class="chapter" data-level="5.2" data-path="OLS.html"><a href="OLS.html#OLS-simple"><i class="fa fa-check"></i><b>5.2</b> 一元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="OLS.html"><a href="OLS.html#OLS-build"><i class="fa fa-check"></i><b>5.2.1</b> 模型建立</a></li>
+<li class="chapter" data-level="5.2.2" data-path="OLS.html"><a href="OLS.html#OLS-explain"><i class="fa fa-check"></i><b>5.2.2</b> 模型结果解读</a></li>
+<li class="chapter" data-level="5.2.3" data-path="OLS.html"><a href="OLS.html#OLS-residual"><i class="fa fa-check"></i><b>5.2.3</b> 残差分析</a></li>
+<li class="chapter" data-level="5.2.4" data-path="OLS.html"><a href="OLS.html#OLS-others"><i class="fa fa-check"></i><b>5.2.4</b> 其他线性模型</a></li>
+<li class="chapter" data-level="5.2.5" data-path="OLS.html"><a href="OLS.html#OLS-high"><i class="fa fa-check"></i><b>5.2.5</b> 高阶拟合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="OLS.html"><a href="OLS.html#OLS-multiple"><i class="fa fa-check"></i><b>5.3</b> 多元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="OLS.html"><a href="OLS.html#OLS-multisummary"><i class="fa fa-check"></i><b>5.3.1</b> 模型汇总</a></li>
+<li class="chapter" data-level="5.3.2" data-path="OLS.html"><a href="OLS.html#OLS-each"><i class="fa fa-check"></i><b>5.3.2</b> 交互模型效应</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="two-logit.html"><a href="two-logit.html"><i class="fa fa-check"></i><b>6</b> 二分变量回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-i"><i class="fa fa-check"></i><b>6.1</b> 二值型回归模型</a></li>
+<li class="chapter" data-level="6.2" data-path="two-logit.html"><a href="two-logit.html#更多的包-two-logit-o"><i class="fa fa-check"></i><b>6.2</b> 更多的包 {two-logit-o}</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="two-logit.html"><a href="two-logit.html#zelig-two-logit-o1"><i class="fa fa-check"></i><b>6.2.1</b> Zelig {two-logit-o1}</a></li>
+<li class="chapter" data-level="6.2.2" data-path="two-logit.html"><a href="two-logit.html#rms包-two-logit-o2"><i class="fa fa-check"></i><b>6.2.2</b> rms包 {two-logit-o2}</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="two-logit.html"><a href="two-logit.html#two-logit-e"><i class="fa fa-check"></i><b>6.3</b> 交互效应与可视化</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-e1"><i class="fa fa-check"></i><b>6.3.1</b> 对方程进行方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>7</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>7.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="7.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>7.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="7.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>7.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>8</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>8.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="8.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>8.2</b> 词频count</a></li>
+<li class="chapter" data-level="8.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>8.3</b> 词云</a></li>
+<li class="chapter" data-level="8.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>8.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>8.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>8.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>8.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>8.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>9</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>9.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>9.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="9.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>9.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>9.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>9.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>9.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>9.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="9.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>9.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="9.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>9.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>9.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="9.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>9.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>9.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="9.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>9.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ML" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> 简单的机器学习<a href="ML.html#ML" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供：</p>
+<p>PartI 徐乐瑶 黄舜尧 黄恺潼</p>
+<p>PartII 曾子尧</p>
+<p>主要内容：</p>
+<p>PartI
+-1.决策树模型
+-2.随机森林模型</p>
+<p>PartII
+应用：根据FIFA数据预测足球运动员身价</p>
+<div id="ML-a" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 决策树模型<a href="ML.html#ML-a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>预测鸢尾花品种对其植株特征影响的决策树模型分析</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="ML.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co">#读取环境</span></span>
+<span id="cb341-2"><a href="ML.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb341-3"><a href="ML.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb341-4"><a href="ML.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb341-5"><a href="ML.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb341-6"><a href="ML.html#cb341-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-7"><a href="ML.html#cb341-7" aria-hidden="true" tabindex="-1"></a><span class="co">#iris</span></span>
+<span id="cb341-8"><a href="ML.html#cb341-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb341-9"><a href="ML.html#cb341-9" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(iris)</span>
+<span id="cb341-10"><a href="ML.html#cb341-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-11"><a href="ML.html#cb341-11" aria-hidden="true" tabindex="-1"></a><span class="co">#data split 数据划分</span></span>
+<span id="cb341-12"><a href="ML.html#cb341-12" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>),<span class="dv">120</span>,<span class="at">replace =</span> F)</span>
+<span id="cb341-13"><a href="ML.html#cb341-13" aria-hidden="true" tabindex="-1"></a>trainset <span class="ot">=</span> iris[s,]</span>
+<span id="cb341-14"><a href="ML.html#cb341-14" aria-hidden="true" tabindex="-1"></a>testset <span class="ot">=</span> iris[<span class="sc">-</span>s,]</span>
+<span id="cb341-15"><a href="ML.html#cb341-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-16"><a href="ML.html#cb341-16" aria-hidden="true" tabindex="-1"></a><span class="co">#train 模型构建</span></span>
+<span id="cb341-17"><a href="ML.html#cb341-17" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">=</span> <span class="fu">rpart</span>(Species <span class="sc">~</span> .,<span class="at">data =</span> trainset)</span>
+<span id="cb341-18"><a href="ML.html#cb341-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1)</span></code></pre></div>
+<pre><code>## Call:
+## rpart(formula = Species ~ ., data = trainset)
+##   n= 120 
+## 
+##          CP nsplit  rel error     xerror       xstd
+## 1 0.5063291      0 1.00000000 1.13924051 0.06004325
+## 2 0.4683544      1 0.49367089 0.68354430 0.06898444
+## 3 0.0100000      2 0.02531646 0.02531646 0.01775163
+## 
+## Variable importance
+##  Petal.Width Petal.Length Sepal.Length  Sepal.Width 
+##           34           31           21           14 
+## 
+## Node number 1: 120 observations,    complexity param=0.5063291
+##   predicted class=setosa      expected loss=0.6583333  P(node) =1
+##     class counts:    41    40    39
+##    probabilities: 0.342 0.333 0.325 
+##   left son=2 (41 obs) right son=3 (79 obs)
+##   Primary splits:
+##       Petal.Length &lt; 2.45 to the left,  improve=40.48966, (0 missing)
+##       Petal.Width  &lt; 0.8  to the left,  improve=40.48966, (0 missing)
+##       Sepal.Length &lt; 5.45 to the left,  improve=26.33864, (0 missing)
+##       Sepal.Width  &lt; 3.15 to the right, improve=17.85513, (0 missing)
+##   Surrogate splits:
+##       Petal.Width  &lt; 0.8  to the left,  agree=1.000, adj=1.000, (0 split)
+##       Sepal.Length &lt; 5.45 to the left,  agree=0.908, adj=0.732, (0 split)
+##       Sepal.Width  &lt; 3.25 to the right, agree=0.850, adj=0.561, (0 split)
+## 
+## Node number 2: 41 observations
+##   predicted class=setosa      expected loss=0  P(node) =0.3416667
+##     class counts:    41     0     0
+##    probabilities: 1.000 0.000 0.000 
+## 
+## Node number 3: 79 observations,    complexity param=0.4683544
+##   predicted class=versicolor  expected loss=0.4936709  P(node) =0.6583333
+##     class counts:     0    40    39
+##    probabilities: 0.000 0.506 0.494 
+##   left son=6 (42 obs) right son=7 (37 obs)
+##   Primary splits:
+##       Petal.Width  &lt; 1.75 to the left,  improve=35.684150, (0 missing)
+##       Petal.Length &lt; 4.75 to the left,  improve=30.630030, (0 missing)
+##       Sepal.Length &lt; 6.15 to the left,  improve=10.839130, (0 missing)
+##       Sepal.Width  &lt; 2.45 to the left,  improve= 2.973036, (0 missing)
+##   Surrogate splits:
+##       Petal.Length &lt; 4.75 to the left,  agree=0.911, adj=0.811, (0 split)
+##       Sepal.Length &lt; 6.15 to the left,  agree=0.759, adj=0.486, (0 split)
+##       Sepal.Width  &lt; 2.95 to the left,  agree=0.633, adj=0.216, (0 split)
+## 
+## Node number 6: 42 observations
+##   predicted class=versicolor  expected loss=0.04761905  P(node) =0.35
+##     class counts:     0    40     2
+##    probabilities: 0.000 0.952 0.048 
+## 
+## Node number 7: 37 observations
+##   predicted class=virginica   expected loss=0  P(node) =0.3083333
+##     class counts:     0     0    37
+##    probabilities: 0.000 0.000 1.000</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="ML.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(fit1,<span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="ML.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict</span></span>
+<span id="cb344-2"><a href="ML.html#cb344-2" aria-hidden="true" tabindex="-1"></a>pre <span class="ot">=</span> <span class="fu">predict</span>(fit1,testset)</span>
+<span id="cb344-3"><a href="ML.html#cb344-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-4"><a href="ML.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb344-5"><a href="ML.html#cb344-5" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="fu">rpart</span>(Species<span class="sc">~</span>.,<span class="at">data =</span> iris)</span>
+<span id="cb344-6"><a href="ML.html#cb344-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-7"><a href="ML.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m,<span class="at">compress =</span> T,<span class="at">margin =</span> <span class="fl">0.2</span>)</span>
+<span id="cb344-8"><a href="ML.html#cb344-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(m,<span class="at">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="ML.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb345-2"><a href="ML.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prp</span>(m,<span class="at">type=</span><span class="dv">4</span>,<span class="at">extra=</span><span class="dv">2</span>,<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="ML.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(party)</span></code></pre></div>
+<pre><code>## Loading required package: grid</code></pre>
+<pre><code>## Loading required package: mvtnorm</code></pre>
+<pre><code>## Loading required package: modeltools</code></pre>
+<pre><code>## Loading required package: stats4</code></pre>
+<pre><code>## Loading required package: strucchange</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## Loading required package: sandwich</code></pre>
+<pre><code>## 
+## Attaching package: &#39;strucchange&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stringr&#39;:
+## 
+##     boundary</code></pre>
+<pre><code>## 
+## Attaching package: &#39;party&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     where</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="ML.html#cb360-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span><span class="fu">ctree</span>(Species<span class="sc">~</span>.,<span class="at">data=</span>iris)</span>
+<span id="cb360-2"><a href="ML.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="ML.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="ML.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(iris<span class="sc">$</span>Species)</span></code></pre></div>
+<pre><code>## [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
+</div>
+<div id="ML-b" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 随机森林模型<a href="ML.html#ML-b" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>预测华沙的公寓价格的随机森林模型分析</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="ML.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="do">##读取环境</span></span>
+<span id="cb363-2"><a href="ML.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;DALEX&quot;</span>)</span></code></pre></div>
+<pre><code>## Welcome to DALEX (version: 2.4.3).
+## Find examples and detailed introduction at: http://ema.drwhy.ai/</code></pre>
+<pre><code>## 
+## Attaching package: &#39;DALEX&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     explain</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="ML.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;randomForest&quot;</span>)</span></code></pre></div>
+<pre><code>## randomForest 4.7-1.1</code></pre>
+<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;randomForest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     margin</code></pre>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="ML.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb373-2"><a href="ML.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;rms&quot;</span>)</span></code></pre></div>
+<pre><code>## Loading required package: Hmisc</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Hmisc&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     src, summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     format.pval, units</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rms&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:modeltools&#39;:
+## 
+##     Predict</code></pre>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="ML.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="do">##读取数据</span></span>
+<span id="cb380-2"><a href="ML.html#cb380-2" aria-hidden="true" tabindex="-1"></a>apartments  <span class="ot">&lt;-</span> apartments</span>
+<span id="cb380-3"><a href="ML.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(apartments)</span></code></pre></div>
+<pre><code>##   m2.price construction.year surface floor no.rooms    district
+## 1     5897              1953      25     3        1 Srodmiescie
+## 2     1818              1992     143     9        5     Bielany
+## 3     3643              1937      56     1        2       Praga
+## 4     3517              1995      93     7        3      Ochota
+## 5     3013              1992     144     6        5     Mokotow
+## 6     5795              1926      61     6        2 Srodmiescie</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="ML.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="do">##使用并解释随机森林模型</span></span>
+<span id="cb382-2"><a href="ML.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">72</span>)</span>
+<span id="cb382-3"><a href="ML.html#cb382-3" aria-hidden="true" tabindex="-1"></a>apartments_rf <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(m2.price <span class="sc">~</span> ., <span class="at">data =</span> apartments)</span>
+<span id="cb382-4"><a href="ML.html#cb382-4" aria-hidden="true" tabindex="-1"></a>explainer_apartments_rf <span class="ot">&lt;-</span> DALEX<span class="sc">::</span><span class="fu">explain</span>(<span class="at">model =</span> apartments_rf, </span>
+<span id="cb382-5"><a href="ML.html#cb382-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">data =</span> apartments_test[,<span class="sc">-</span><span class="dv">1</span>], </span>
+<span id="cb382-6"><a href="ML.html#cb382-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> apartments_test<span class="sc">$</span>m2.price, </span>
+<span id="cb382-7"><a href="ML.html#cb382-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">label =</span> <span class="st">&quot;Random Forest&quot;</span>)</span></code></pre></div>
+<pre><code>## Preparation of a new explainer is initiated
+##   -&gt; model label       :  Random Forest 
+##   -&gt; data              :  9000  rows  5  cols 
+##   -&gt; target variable   :  9000  values 
+##   -&gt; predict function  :  yhat.randomForest  will be used (  default  )
+##   -&gt; predicted values  :  No value for predict function target column. (  default  )
+##   -&gt; model_info        :  package randomForest , ver. 4.7.1.1 , task regression (  default  ) 
+##   -&gt; predicted values  :  numerical, min =  1985.837 , mean =  3506.107 , max =  5788.052  
+##   -&gt; residual function :  difference between y and yhat (  default  )
+##   -&gt; residuals         :  numerical, min =  -762.3422 , mean =  5.416971 , max =  1318.093  
+##   A new explainer has been created!</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="ML.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 模型可视化</span></span>
+<span id="cb384-2"><a href="ML.html#cb384-2" aria-hidden="true" tabindex="-1"></a>model_performance_ranger_apartments <span class="ot">&lt;-</span> <span class="fu">model_performance</span>(explainer_apartments_rf )</span>
+<span id="cb384-3"><a href="ML.html#cb384-3" aria-hidden="true" tabindex="-1"></a>model_performance_ranger_apartments</span></code></pre></div>
+<pre><code>## Measures for:  regression
+## mse        : 80061.77 
+## rmse       : 282.9519 
+## r2         : 0.9012564 
+## mad        : 169.0738
+## 
+## Residuals:
+##          0%         10%         20%         30%         40%         50% 
+## -762.342192 -289.095065 -215.594108 -156.778789 -109.479193  -57.127519 
+##         60%         70%         80%         90%        100% 
+##    5.668714   87.171569  200.940812  402.184651 1318.092741</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="ML.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_performance_ranger_apartments)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/apartment-1.png" width="672" /></p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="ML.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 变量重要性度量</span></span>
+<span id="cb387-2"><a href="ML.html#cb387-2" aria-hidden="true" tabindex="-1"></a>vi_rf <span class="ot">&lt;-</span> <span class="fu">model_parts</span>(explainer_apartments_rf)</span>
+<span id="cb387-3"><a href="ML.html#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(vi_rf) </span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/apartment-2.png" width="672" /></p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="ML.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="do">##使用表面和施工年份两个重要变量和 PD 配置文件来评估模型性能</span></span>
+<span id="cb388-2"><a href="ML.html#cb388-2" aria-hidden="true" tabindex="-1"></a>pdp_surface_rf <span class="ot">&lt;-</span> <span class="fu">model_profile</span>(<span class="at">explainer =</span> explainer_apartments_rf, <span class="at">variables =</span> <span class="st">&quot;surface&quot;</span>)</span>
+<span id="cb388-3"><a href="ML.html#cb388-3" aria-hidden="true" tabindex="-1"></a>pdp_constrction.year_rf <span class="ot">&lt;-</span> <span class="fu">model_profile</span>(<span class="at">explainer =</span> explainer_apartments_rf, <span class="at">variables =</span> <span class="st">&quot;construction.year&quot;</span>)</span>
+<span id="cb388-4"><a href="ML.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pdp_surface_rf) </span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/apartment-3.png" width="672" /></p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="ML.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pdp_constrction.year_rf) </span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/apartment-4.png" width="672" /></p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="ML.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="do">##预测房价</span></span>
+<span id="cb390-2"><a href="ML.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(apartments_rf, apartments_test[<span class="dv">1</span><span class="sc">:</span><span class="dv">72</span>,])</span></code></pre></div>
+<pre><code>##     1001     1002     1003     1004     1005     1006     1007     1008 
+## 4214.084 3178.061 2695.787 2744.775 2951.069 2999.450 3325.692 2662.586 
+##     1009     1010     1011     1012     1013     1014     1015     1016 
+## 2827.747 4231.489 3198.826 2737.938 4375.699 3109.098 3938.727 3184.121 
+##     1017     1018     1019     1020     1021     1022     1023     1024 
+## 4307.783 4069.748 4452.784 2286.641 3297.630 3672.018 4332.968 2830.935 
+##     1025     1026     1027     1028     1029     1030     1031     1032 
+## 3382.471 4059.084 2736.103 2986.361 3762.799 4135.743 2533.184 3706.525 
+##     1033     1034     1035     1036     1037     1038     1039     1040 
+## 5117.775 3719.939 3945.399 4439.944 3564.239 2337.870 3035.085 3705.500 
+##     1041     1042     1043     1044     1045     1046     1047     1048 
+## 4470.851 3219.128 2809.955 2688.750 4847.457 3657.901 4405.674 4157.527 
+##     1049     1050     1051     1052     1053     1054     1055     1056 
+## 3650.222 3188.809 2780.834 2519.497 3230.555 2637.206 3169.776 3448.061 
+##     1057     1058     1059     1060     1061     1062     1063     1064 
+## 3076.687 3642.569 3544.335 2402.510 3278.932 4280.645 3941.493 3231.770 
+##     1065     1066     1067     1068     1069     1070     1071     1072 
+## 3430.896 3548.905 3888.528 4020.859 3991.719 2182.934 2213.622 3075.885</code></pre>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="ML.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="do">##模型的预测值与观察值间的关系</span></span>
+<span id="cb392-2"><a href="ML.html#cb392-2" aria-hidden="true" tabindex="-1"></a>md_rf <span class="ot">&lt;-</span> <span class="fu">model_diagnostics</span>(explainer_apartments_rf)</span>
+<span id="cb392-3"><a href="ML.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(md_rf, <span class="at">variable =</span> <span class="st">&quot;y&quot;</span>, <span class="at">yvariable =</span> <span class="st">&quot;y_hat&quot;</span>) <span class="sc">+</span></span>
+<span id="cb392-4"><a href="ML.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;Ture value of m2.price&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb392-5"><a href="ML.html#cb392-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Predicted m2.price&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb392-6"><a href="ML.html#cb392-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb392-7"><a href="ML.html#cb392-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Predicted and observed house prices&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<p><img src="7001-chapter07_files/figure-html/apartment-5.png" width="672" /></p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="ML.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="do">##总结预测性能</span></span>
+<span id="cb394-2"><a href="ML.html#cb394-2" aria-hidden="true" tabindex="-1"></a>predicted_apartments_rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(apartments_rf, apartments_test)</span>
+<span id="cb394-3"><a href="ML.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>((predicted_apartments_rf <span class="sc">-</span> apartments_test<span class="sc">$</span>m2.price)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 282.9519</code></pre>
+</div>
+<div id="ML-c" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 预测身价<a href="ML.html#ML-c" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本页面为Rmarkdown用法和DALEX包用法的一个示例。本页面使用DALEX包，基于FIFA20数据，依据GBM deep算法，预测球员身价。</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="ML.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 读取环境</span></span>
+<span id="cb396-2"><a href="ML.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;DALEX&quot;</span>)</span>
+<span id="cb396-3"><a href="ML.html#cb396-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gbm)</span></code></pre></div>
+<pre><code>## Loaded gbm 2.1.8.1</code></pre>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="ML.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb398-2"><a href="ML.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="ML.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co">#读取、处理数据</span></span>
+<span id="cb402-2"><a href="ML.html#cb402-2" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa</span>
+<span id="cb402-3"><a href="ML.html#cb402-3" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>LogValue <span class="ot">&lt;-</span> <span class="fu">log10</span>(fifa<span class="sc">$</span>value_eur)</span>
+<span id="cb402-4"><a href="ML.html#cb402-4" aria-hidden="true" tabindex="-1"></a>fifa_small <span class="ot">&lt;-</span> fifa[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)]</span>
+<span id="cb402-5"><a href="ML.html#cb402-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-6"><a href="ML.html#cb402-6" aria-hidden="true" tabindex="-1"></a><span class="do">##建立预测模型</span></span>
+<span id="cb402-7"><a href="ML.html#cb402-7" aria-hidden="true" tabindex="-1"></a>fifa_gbm_deep <span class="ot">&lt;-</span> <span class="fu">gbm</span>(LogValue<span class="sc">~</span>., <span class="at">data =</span> fifa_small, <span class="at">n.trees =</span> <span class="dv">250</span>,</span>
+<span id="cb402-8"><a href="ML.html#cb402-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">interaction.depth =</span> <span class="dv">4</span>, <span class="at">distribution =</span> <span class="st">&quot;gaussian&quot;</span>)</span>
+<span id="cb402-9"><a href="ML.html#cb402-9" aria-hidden="true" tabindex="-1"></a>fifa_gbm_exp_deep <span class="ot">&lt;-</span> DALEX<span class="sc">::</span><span class="fu">explain</span>(fifa_gbm_deep, </span>
+<span id="cb402-10"><a href="ML.html#cb402-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">data =</span> fifa_small, <span class="at">y =</span> <span class="dv">10</span><span class="sc">^</span>fifa_small<span class="sc">$</span>LogValue, </span>
+<span id="cb402-11"><a href="ML.html#cb402-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">predict_function =</span> <span class="cf">function</span>(m,x) <span class="dv">10</span><span class="sc">^</span><span class="fu">predict</span>(m, x, <span class="at">n.trees =</span> <span class="dv">250</span>),</span>
+<span id="cb402-12"><a href="ML.html#cb402-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">label =</span> <span class="st">&quot;GBM deep&quot;</span>)</span></code></pre></div>
+<pre><code>## Preparation of a new explainer is initiated
+##   -&gt; model label       :  GBM deep 
+##   -&gt; data              :  5000  rows  38  cols 
+##   -&gt; target variable   :  5000  values 
+##   -&gt; predict function  :  function(m, x) 10^predict(m, x, n.trees = 250) 
+##   -&gt; predicted values  :  No value for predict function target column. (  default  )
+##   -&gt; model_info        :  package gbm , ver. 2.1.8.1 , task regression (  default  ) 
+##   -&gt; predicted values  :  numerical, min =  244198.5 , mean =  7329481 , max =  104789967  
+##   -&gt; residual function :  difference between y and yhat (  default  )
+##   -&gt; residuals         :  numerical, min =  -22474906 , mean =  143805.9 , max =  22083559  
+##   A new explainer has been created!</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="ML.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="do">##查看模型</span></span>
+<span id="cb404-2"><a href="ML.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_performance</span>(fifa_gbm_exp_deep)</span></code></pre></div>
+<pre><code>## Measures for:  regression
+## mse        : 4.116765e+12 
+## rmse       : 2028981 
+## r2         : 0.9476419 
+## mad        : 588852.9
+## 
+## Residuals:
+##          0%         10%         20%         30%         40%         50% 
+## -22474906.5  -1279068.3   -661008.8   -364965.6   -157909.1     24781.0 
+##         60%         70%         80%         90%        100% 
+##    233663.9    505202.7    913586.5   1652537.1  22083559.0</code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="ML.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="do">##模型可视化</span></span>
+<span id="cb406-2"><a href="ML.html#cb406-2" aria-hidden="true" tabindex="-1"></a>fifa_md_gbm_deep <span class="ot">&lt;-</span> <span class="fu">model_diagnostics</span>(fifa_gbm_exp_deep)</span>
+<span id="cb406-3"><a href="ML.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_md_gbm_deep, </span>
+<span id="cb406-4"><a href="ML.html#cb406-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">variable =</span> <span class="st">&quot;y&quot;</span>, <span class="at">yvariable =</span> <span class="st">&quot;y_hat&quot;</span>) <span class="sc">+</span></span>
+<span id="cb406-5"><a href="ML.html#cb406-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;Value in Euro&quot;</span>, <span class="at">trans =</span> <span class="st">&quot;log10&quot;</span>, </span>
+<span id="cb406-6"><a href="ML.html#cb406-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb406-7"><a href="ML.html#cb406-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Predicted value in Euro&quot;</span>, <span class="at">trans =</span> <span class="st">&quot;log10&quot;</span>, </span>
+<span id="cb406-8"><a href="ML.html#cb406-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb406-9"><a href="ML.html#cb406-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb406-10"><a href="ML.html#cb406-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Predicted and observed players&#39; values&quot;</span>, <span class="st">&quot;&quot;</span>) </span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<p><img src="7001-chapter07_files/figure-html/fifa-1.png" width="672" /></p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="ML.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 球员各数据重要度展示</span></span>
+<span id="cb408-2"><a href="ML.html#cb408-2" aria-hidden="true" tabindex="-1"></a>fifa_mp_gbm_deep <span class="ot">&lt;-</span> <span class="fu">model_parts</span>(fifa_gbm_exp_deep)</span>
+<span id="cb408-3"><a href="ML.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_mp_gbm_deep, <span class="at">max_vars =</span> <span class="dv">20</span>, </span>
+<span id="cb408-4"><a href="ML.html#cb408-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">bar_width =</span> <span class="dv">4</span>, <span class="at">show_boxplots =</span> <span class="cn">FALSE</span>) </span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/fifa-2.png" width="672" /></p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="ML.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="do">##球员 反应、控球、终结能力、年龄对身价影响</span></span>
+<span id="cb409-2"><a href="ML.html#cb409-2" aria-hidden="true" tabindex="-1"></a>selected_variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;movement_reactions&quot;</span>, <span class="st">&quot;skill_ball_control&quot;</span>, <span class="st">&quot;attacking_finishing&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb409-3"><a href="ML.html#cb409-3" aria-hidden="true" tabindex="-1"></a>fifa19_pd_deep <span class="ot">&lt;-</span> <span class="fu">model_profile</span>(fifa_gbm_exp_deep, </span>
+<span id="cb409-4"><a href="ML.html#cb409-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">variables =</span> selected_variables)</span>
+<span id="cb409-5"><a href="ML.html#cb409-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa19_pd_deep)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/fifa-3.png" width="672" /></p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="ML.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co">#预测梅西身价</span></span>
+<span id="cb410-2"><a href="ML.html#cb410-2" aria-hidden="true" tabindex="-1"></a>fifa_bd_gbm_M <span class="ot">&lt;-</span> <span class="fu">predict_parts</span>(fifa_gbm_exp_deep, </span>
+<span id="cb410-3"><a href="ML.html#cb410-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">new_observation =</span> fifa[<span class="st">&quot;L. Messi&quot;</span>,],</span>
+<span id="cb410-4"><a href="ML.html#cb410-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">&quot;break_down&quot;</span>)</span>
+<span id="cb410-5"><a href="ML.html#cb410-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_bd_gbm_M) <span class="sc">+</span></span>
+<span id="cb410-6"><a href="ML.html#cb410-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Predicted value in Euro&quot;</span>, </span>
+<span id="cb410-7"><a href="ML.html#cb410-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb410-8"><a href="ML.html#cb410-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Break-down plot for L.Messi&quot;</span>,<span class="st">&quot;&quot;</span>) </span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.</code></pre>
+<p><img src="7001-chapter07_files/figure-html/fifa-4.png" width="672" /></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="ML.html#cb412-1" aria-hidden="true" tabindex="-1"></a>fifa_shap_gbm_M <span class="ot">&lt;-</span> <span class="fu">predict_parts</span>(fifa_gbm_exp_deep, </span>
+<span id="cb412-2"><a href="ML.html#cb412-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">new_observation =</span> fifa[<span class="st">&quot;L. Messi&quot;</span>,], </span>
+<span id="cb412-3"><a href="ML.html#cb412-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">type =</span> <span class="st">&quot;shap&quot;</span>)</span>
+<span id="cb412-4"><a href="ML.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_shap_gbm_M, <span class="at">show_boxplots =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb412-5"><a href="ML.html#cb412-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Estimated value in Euro&quot;</span>, </span>
+<span id="cb412-6"><a href="ML.html#cb412-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb412-7"><a href="ML.html#cb412-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Shapley values for L.Messi&quot;</span>,<span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/fifa-5.png" width="672" /></p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="ML.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co">#预测姆巴佩身价</span></span>
+<span id="cb413-2"><a href="ML.html#cb413-2" aria-hidden="true" tabindex="-1"></a>fifa_bd_gbm_MBP <span class="ot">&lt;-</span> <span class="fu">predict_parts</span>(fifa_gbm_exp_deep, </span>
+<span id="cb413-3"><a href="ML.html#cb413-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">new_observation =</span> fifa[<span class="st">&quot;K. Mbappe&quot;</span>,],</span>
+<span id="cb413-4"><a href="ML.html#cb413-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">&quot;break_down&quot;</span>)</span>
+<span id="cb413-5"><a href="ML.html#cb413-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_bd_gbm_MBP) <span class="sc">+</span></span>
+<span id="cb413-6"><a href="ML.html#cb413-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Predicted value in Euro&quot;</span>, </span>
+<span id="cb413-7"><a href="ML.html#cb413-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb413-8"><a href="ML.html#cb413-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Break-down plot for MBP&quot;</span>,<span class="st">&quot;&quot;</span>) </span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.</code></pre>
+<p><img src="7001-chapter07_files/figure-html/fifa-6.png" width="672" /></p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="ML.html#cb415-1" aria-hidden="true" tabindex="-1"></a>fifa_shap_gbm_MBP <span class="ot">&lt;-</span> <span class="fu">predict_parts</span>(fifa_gbm_exp_deep, </span>
+<span id="cb415-2"><a href="ML.html#cb415-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">new_observation =</span> fifa[<span class="st">&quot;K. Mbappe&quot;</span>,], </span>
+<span id="cb415-3"><a href="ML.html#cb415-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">type =</span> <span class="st">&quot;shap&quot;</span>)</span>
+<span id="cb415-4"><a href="ML.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_shap_gbm_MBP, <span class="at">show_boxplots =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb415-5"><a href="ML.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Estimated value in Euro&quot;</span>, </span>
+<span id="cb415-6"><a href="ML.html#cb415-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb415-7"><a href="ML.html#cb415-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Shapley values for MBP&quot;</span>,<span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="7001-chapter07_files/figure-html/fifa-7.png" width="672" /></p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="ML.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co">#预测内马尔</span></span>
+<span id="cb416-2"><a href="ML.html#cb416-2" aria-hidden="true" tabindex="-1"></a>fifa_bd_gbm_NM <span class="ot">&lt;-</span> <span class="fu">predict_parts</span>(fifa_gbm_exp_deep, </span>
+<span id="cb416-3"><a href="ML.html#cb416-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">new_observation =</span> fifa[<span class="st">&quot;Neymar Jr&quot;</span>,],</span>
+<span id="cb416-4"><a href="ML.html#cb416-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">&quot;break_down&quot;</span>)</span>
+<span id="cb416-5"><a href="ML.html#cb416-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fifa_bd_gbm_NM) <span class="sc">+</span></span>
+<span id="cb416-6"><a href="ML.html#cb416-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">&quot;Predicted value in Euro&quot;</span>, </span>
+<span id="cb416-7"><a href="ML.html#cb416-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">dollar_format</span>(<span class="at">suffix =</span> <span class="st">&quot;€&quot;</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb416-8"><a href="ML.html#cb416-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Break-down plot for neymar&quot;</span>,<span class="st">&quot;&quot;</span>) </span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.</code></pre>
+<p><img src="7001-chapter07_files/figure-html/fifa-8.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="two-logit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ET.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

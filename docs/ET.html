@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 英文文本分析 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="8 英文文本分析 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 英文文本分析 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 英文文本分析 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ML.html"/>
+<link rel="next" href="CT.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dta.html"><a href="dta.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dta.html"><a href="dta.html#dta-read"><i class="fa fa-check"></i><b>1.1</b> 数据读入：以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dta.html"><a href="dta.html#dta-wrap1"><i class="fa fa-check"></i><b>1.2</b> 数据处理1</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="dta.html"><a href="dta.html#dta-cc"><i class="fa fa-check"></i><b>1.2.1</b> R中的变量类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="dta.html"><a href="dta.html#dta-wrap2"><i class="fa fa-check"></i><b>1.3</b> 数据处理2</a></li>
+<li class="chapter" data-level="1.4" data-path="dta.html"><a href="dta.html#dta-wrap3"><i class="fa fa-check"></i><b>1.4</b> 数据处理3</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="dta.html"><a href="dta.html#dta-dia"><i class="fa fa-check"></i><b>1.4.1</b> 诊断数据集</a></li>
+<li class="chapter" data-level="1.4.2" data-path="dta.html"><a href="dta.html#dta-values"><i class="fa fa-check"></i><b>1.4.2</b> 处理异常值和缺失值</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-Variable-labels"><i class="fa fa-check"></i><b>2.1</b> 变量标签</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-summary"><i class="fa fa-check"></i><b>2.2</b> gtsummary包</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="TB.html"><a href="TB.html#TB-summary1"><i class="fa fa-check"></i><b>2.2.1</b> 函数<code>tbl_summary()</code>的默认输出</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TB.html"><a href="TB.html#TB-summary2"><i class="fa fa-check"></i><b>2.2.2</b> 函数<code>tbl_summary()</code>的分组比较</a></li>
+<li class="chapter" data-level="2.2.3" data-path="TB.html"><a href="TB.html#TB-summary3"><i class="fa fa-check"></i><b>2.2.3</b> 函数<code>tbl_gtsummary()</code>的自定义输出</a></li>
+<li class="chapter" data-level="2.2.4" data-path="TB.html"><a href="TB.html#TB-cross"><i class="fa fa-check"></i><b>2.2.4</b> 函数<code>tbl_cross</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TB.html"><a href="TB.html#TB-table1"><i class="fa fa-check"></i><b>2.3</b> table1包</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TB.html"><a href="TB.html#TB-table1.1"><i class="fa fa-check"></i><b>2.3.1</b> 无分层</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TB.html"><a href="TB.html#TB-table1.2"><i class="fa fa-check"></i><b>2.3.2</b> 有分层</a></li>
+<li class="chapter" data-level="2.3.3" data-path="TB.html"><a href="TB.html#TB-table1.2.1"><i class="fa fa-check"></i><b>2.3.3</b> 一个分层</a></li>
+<li class="chapter" data-level="2.3.4" data-path="TB.html"><a href="TB.html#TB-table1.2.2"><i class="fa fa-check"></i><b>2.3.4</b> 两个分层</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="TB.html"><a href="TB.html#TB-kable"><i class="fa fa-check"></i><b>2.4</b> <code>KableExtra</code>包</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="TB.html"><a href="TB.html#TB-kable1"><i class="fa fa-check"></i><b>2.4.1</b> 小试牛刀</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 图形</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.1.1</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.1.2</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.1.3" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.1.3</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.1.4" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.1.4</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-plotly"><i class="fa fa-check"></i><b>3.2</b> plotly</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="PI.html"><a href="PI.html#PI-baisc"><i class="fa fa-check"></i><b>3.2.1</b> 基本图形</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="OLS.html"><a href="OLS.html"><i class="fa fa-check"></i><b>5</b> 线性回归</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="OLS.html"><a href="OLS.html#OLS-inro"><i class="fa fa-check"></i><b>5.1</b> 简单线性回归介绍</a></li>
+<li class="chapter" data-level="5.2" data-path="OLS.html"><a href="OLS.html#OLS-simple"><i class="fa fa-check"></i><b>5.2</b> 一元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="OLS.html"><a href="OLS.html#OLS-build"><i class="fa fa-check"></i><b>5.2.1</b> 模型建立</a></li>
+<li class="chapter" data-level="5.2.2" data-path="OLS.html"><a href="OLS.html#OLS-explain"><i class="fa fa-check"></i><b>5.2.2</b> 模型结果解读</a></li>
+<li class="chapter" data-level="5.2.3" data-path="OLS.html"><a href="OLS.html#OLS-residual"><i class="fa fa-check"></i><b>5.2.3</b> 残差分析</a></li>
+<li class="chapter" data-level="5.2.4" data-path="OLS.html"><a href="OLS.html#OLS-others"><i class="fa fa-check"></i><b>5.2.4</b> 其他线性模型</a></li>
+<li class="chapter" data-level="5.2.5" data-path="OLS.html"><a href="OLS.html#OLS-high"><i class="fa fa-check"></i><b>5.2.5</b> 高阶拟合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="OLS.html"><a href="OLS.html#OLS-multiple"><i class="fa fa-check"></i><b>5.3</b> 多元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="OLS.html"><a href="OLS.html#OLS-multisummary"><i class="fa fa-check"></i><b>5.3.1</b> 模型汇总</a></li>
+<li class="chapter" data-level="5.3.2" data-path="OLS.html"><a href="OLS.html#OLS-each"><i class="fa fa-check"></i><b>5.3.2</b> 交互模型效应</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="two-logit.html"><a href="two-logit.html"><i class="fa fa-check"></i><b>6</b> 二分变量回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-i"><i class="fa fa-check"></i><b>6.1</b> 二值型回归模型</a></li>
+<li class="chapter" data-level="6.2" data-path="two-logit.html"><a href="two-logit.html#更多的包-two-logit-o"><i class="fa fa-check"></i><b>6.2</b> 更多的包 {two-logit-o}</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="two-logit.html"><a href="two-logit.html#zelig-two-logit-o1"><i class="fa fa-check"></i><b>6.2.1</b> Zelig {two-logit-o1}</a></li>
+<li class="chapter" data-level="6.2.2" data-path="two-logit.html"><a href="two-logit.html#rms包-two-logit-o2"><i class="fa fa-check"></i><b>6.2.2</b> rms包 {two-logit-o2}</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="two-logit.html"><a href="two-logit.html#two-logit-e"><i class="fa fa-check"></i><b>6.3</b> 交互效应与可视化</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-e1"><i class="fa fa-check"></i><b>6.3.1</b> 对方程进行方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>7</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>7.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="7.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>7.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="7.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>7.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>8</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>8.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="8.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>8.2</b> 词频count</a></li>
+<li class="chapter" data-level="8.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>8.3</b> 词云</a></li>
+<li class="chapter" data-level="8.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>8.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>8.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>8.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>8.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>8.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>9</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>9.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>9.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="9.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>9.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>9.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>9.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>9.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>9.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="9.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>9.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="9.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>9.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>9.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="9.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>9.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>9.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="9.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>9.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ET" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> 英文文本分析<a href="ET.html#ET" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供：谢钰莹 倪云 谢桂芳</p>
+<p>主要内容：</p>
+<ul>
+<li>1、整洁文字</li>
+<li>2、词频分析及可视化</li>
+<li>3、词云</li>
+<li>4、分析单词和文档频率：tf-idf</li>
+<li>5、案例分析：挖掘NASA元数据</li>
+</ul>
+<div id="ET-a" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 整洁文字<a href="ET.html#ET-a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>载入Jane Austen作品的R包</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="ET.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janeaustenr)</span>
+<span id="cb418-2"><a href="ET.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p><br/></p>
+<p>建立行号、章节号</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="ET.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb419-2"><a href="ET.html#cb419-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-3"><a href="ET.html#cb419-3" aria-hidden="true" tabindex="-1"></a>original_books <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb419-4"><a href="ET.html#cb419-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># %&gt;%是管道函数，可将前一步的结果直接传参给下一步函数</span></span>
+<span id="cb419-5"><a href="ET.html#cb419-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span></span>
+<span id="cb419-6"><a href="ET.html#cb419-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">linenumber =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb419-7"><a href="ET.html#cb419-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">chapter =</span> <span class="fu">cumsum</span>(<span class="fu">str_detect</span>(text,</span>
+<span id="cb419-8"><a href="ET.html#cb419-8" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">regex</span>(<span class="st">&quot;^chapter [</span><span class="sc">\\</span><span class="st">divxlc]&quot;</span>,</span>
+<span id="cb419-9"><a href="ET.html#cb419-9" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span> <span class="co">#建立行号、章节号 </span></span>
+<span id="cb419-10"><a href="ET.html#cb419-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb419-11"><a href="ET.html#cb419-11" aria-hidden="true" tabindex="-1"></a>original_books</span></code></pre></div>
+<pre><code>## # A tibble: 73,422 × 4
+##    text                    book                linenumber chapter
+##    &lt;chr&gt;                   &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt;
+##  1 &quot;SENSE AND SENSIBILITY&quot; Sense &amp; Sensibility          1       0
+##  2 &quot;&quot;                      Sense &amp; Sensibility          2       0
+##  3 &quot;by Jane Austen&quot;        Sense &amp; Sensibility          3       0
+##  4 &quot;&quot;                      Sense &amp; Sensibility          4       0
+##  5 &quot;(1811)&quot;                Sense &amp; Sensibility          5       0
+##  6 &quot;&quot;                      Sense &amp; Sensibility          6       0
+##  7 &quot;&quot;                      Sense &amp; Sensibility          7       0
+##  8 &quot;&quot;                      Sense &amp; Sensibility          8       0
+##  9 &quot;&quot;                      Sense &amp; Sensibility          9       0
+## 10 &quot;CHAPTER 1&quot;             Sense &amp; Sensibility         10       1
+## # ℹ 73,412 more rows</code></pre>
+<p><br/></p>
+<p>用unnest_tokens函数分词（每行一词）</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="ET.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb421-2"><a href="ET.html#cb421-2" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="ot">&lt;-</span> original_books <span class="sc">%&gt;%</span></span>
+<span id="cb421-3"><a href="ET.html#cb421-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="co">#分词</span></span>
+<span id="cb421-4"><a href="ET.html#cb421-4" aria-hidden="true" tabindex="-1"></a>tidy_books</span></code></pre></div>
+<pre><code>## # A tibble: 725,055 × 4
+##    book                linenumber chapter word       
+##    &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+##  1 Sense &amp; Sensibility          1       0 sense      
+##  2 Sense &amp; Sensibility          1       0 and        
+##  3 Sense &amp; Sensibility          1       0 sensibility
+##  4 Sense &amp; Sensibility          3       0 by         
+##  5 Sense &amp; Sensibility          3       0 jane       
+##  6 Sense &amp; Sensibility          3       0 austen     
+##  7 Sense &amp; Sensibility          5       0 1811       
+##  8 Sense &amp; Sensibility         10       1 chapter    
+##  9 Sense &amp; Sensibility         10       1 1          
+## 10 Sense &amp; Sensibility         13       1 the        
+## # ℹ 725,045 more rows</code></pre>
+<p><br/></p>
+<p>用anti_join函数删去停用词（如”the”“to”“of”等无实义词）</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="ET.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(stop_words)</span>
+<span id="cb423-2"><a href="ET.html#cb423-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-3"><a href="ET.html#cb423-3" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="ot">&lt;-</span> tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb423-4"><a href="ET.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) </span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<p><br/></p>
+</div>
+<div id="ET-b" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 词频count<a href="ET.html#ET-b" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>统计词频（查找书中最常用的词汇）</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="ET.html#cb425-1" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb425-2"><a href="ET.html#cb425-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 13,914 × 2
+##    word       n
+##    &lt;chr&gt;  &lt;int&gt;
+##  1 miss    1855
+##  2 time    1337
+##  3 fanny    862
+##  4 dear     822
+##  5 lady     817
+##  6 sir      806
+##  7 day      797
+##  8 emma     787
+##  9 sister   727
+## 10 house    699
+## # ℹ 13,904 more rows</code></pre>
+<p><br/></p>
+<p>词频可视化(利用ggplot2）</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="ET.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb427-2"><a href="ET.html#cb427-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-3"><a href="ET.html#cb427-3" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb427-4"><a href="ET.html#cb427-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb427-5"><a href="ET.html#cb427-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">600</span>) <span class="sc">%&gt;%</span> <span class="co">#出现频次在600次以上</span></span>
+<span id="cb427-6"><a href="ET.html#cb427-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb427-7"><a href="ET.html#cb427-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, word)) <span class="sc">+</span></span>
+<span id="cb427-8"><a href="ET.html#cb427-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb427-9"><a href="ET.html#cb427-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><br/></p>
+</div>
+<div id="ET-c" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 词云<a href="ET.html#ET-c" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>基础操作</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="ET.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span></code></pre></div>
+<pre><code>## Loading required package: RColorBrewer</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="ET.html#cb430-1" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb430-2"><a href="ET.html#cb430-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span></span>
+<span id="cb430-3"><a href="ET.html#cb430-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb430-4"><a href="ET.html#cb430-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word, n, <span class="at">max.words =</span> <span class="dv">100</span>)) <span class="co">#限定词云的最大数量为100</span></span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>进阶版（用颜色区分词性）</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="ET.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="ET.html#cb435-1" aria-hidden="true" tabindex="-1"></a>tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb435-2"><a href="ET.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb435-3"><a href="ET.html#cb435-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb435-4"><a href="ET.html#cb435-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">acast</span>(word <span class="sc">~</span> sentiment, <span class="at">value.var =</span> <span class="st">&quot;n&quot;</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb435-5"><a href="ET.html#cb435-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray80&quot;</span>),</span>
+<span id="cb435-6"><a href="ET.html#cb435-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">max.words =</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<pre><code>## Warning in inner_join(., get_sentiments(&quot;bing&quot;)): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 131015 of `x` matches multiple rows in `y`.
+## ℹ Row 5051 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   &quot;many-to-many&quot;` to silence this warning.</code></pre>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><br/></p>
+<p>拓展</p>
+<p>借助文本挖掘，你可以了解一部小说文本的——</p>
+<ul>
+<li>高频词（词频、词云）</li>
+<li>最常用的正负面词语（词频+情感）</li>
+<li>全文情感变化趋势（情感分析可视化）</li>
+<li>同其他小说的风格差异</li>
+</ul>
+<p><br/></p>
+<p>示例1 最常用的正负面词语（基于前文bing词典的情感分析结果）</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="ET.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb438-2"><a href="ET.html#cb438-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-3"><a href="ET.html#cb438-3" aria-hidden="true" tabindex="-1"></a>jane_austen_sentiment <span class="ot">&lt;-</span> tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb438-4"><a href="ET.html#cb438-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb438-5"><a href="ET.html#cb438-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(book,<span class="at">index =</span> linenumber <span class="sc">%/%</span> <span class="dv">80</span>,sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb438-6"><a href="ET.html#cb438-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(sentiment, n, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb438-7"><a href="ET.html#cb438-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentiment =</span> positive <span class="sc">-</span> negative)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<pre><code>## Warning in inner_join(., get_sentiments(&quot;bing&quot;)): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 131015 of `x` matches multiple rows in `y`.
+## ℹ Row 5051 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   &quot;many-to-many&quot;` to silence this warning.</code></pre>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="ET.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="co">#直接呈现结果</span></span>
+<span id="cb441-2"><a href="ET.html#cb441-2" aria-hidden="true" tabindex="-1"></a>bing_word_counts <span class="ot">&lt;-</span> tidy_books <span class="sc">%&gt;%</span></span>
+<span id="cb441-3"><a href="ET.html#cb441-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb441-4"><a href="ET.html#cb441-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb441-5"><a href="ET.html#cb441-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<pre><code>## Warning in inner_join(., get_sentiments(&quot;bing&quot;)): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 131015 of `x` matches multiple rows in `y`.
+## ℹ Row 5051 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   &quot;many-to-many&quot;` to silence this warning.</code></pre>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="ET.html#cb444-1" aria-hidden="true" tabindex="-1"></a>bing_word_counts</span></code></pre></div>
+<pre><code>## # A tibble: 2,555 × 3
+##    word      sentiment     n
+##    &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
+##  1 miss      negative   1855
+##  2 happy     positive    534
+##  3 love      positive    495
+##  4 pleasure  positive    462
+##  5 poor      negative    424
+##  6 happiness positive    369
+##  7 comfort   positive    292
+##  8 doubt     negative    281
+##  9 affection positive    272
+## 10 perfectly positive    271
+## # ℹ 2,545 more rows</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="ET.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co">#进阶版：结果可视化</span></span>
+<span id="cb446-2"><a href="ET.html#cb446-2" aria-hidden="true" tabindex="-1"></a>bing_word_counts <span class="sc">%&gt;%</span></span>
+<span id="cb446-3"><a href="ET.html#cb446-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb446-4"><a href="ET.html#cb446-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb446-5"><a href="ET.html#cb446-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb446-6"><a href="ET.html#cb446-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb446-7"><a href="ET.html#cb446-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb446-8"><a href="ET.html#cb446-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb446-9"><a href="ET.html#cb446-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sentiment, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb446-10"><a href="ET.html#cb446-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Contribution to sentiment&quot;</span>,</span>
+<span id="cb446-11"><a href="ET.html#cb446-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><br/></p>
+<p>注：1.文中所用宏包需要用install.packages()安装后才能调用；2.运行带有管道函数%&gt;%的命令时最好上下文都运行，避免其找不到数据凭借；3.文本情绪分析有时需转变词汇的词性或对文本进行分句分析，避免如no good（消极）被分为no和good（积极）的情况而影响最终结果的准确性。分析时应多留意修饰词和含义丰富的词汇，有时词性可能会随着含义而改变。</p>
+<p><br/></p>
+</div>
+<div id="ET-d" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> 分析单词和文档频率：tf-idf<a href="ET.html#ET-d" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="简.奥斯汀小说中的术语频率" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> 简.奥斯汀小说中的术语频率<a href="ET.html#简.奥斯汀小说中的术语频率" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="ET.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb447-2"><a href="ET.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janeaustenr)</span>
+<span id="cb447-3"><a href="ET.html#cb447-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb447-4"><a href="ET.html#cb447-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-5"><a href="ET.html#cb447-5" aria-hidden="true" tabindex="-1"></a>book_words <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb447-6"><a href="ET.html#cb447-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span></span>
+<span id="cb447-7"><a href="ET.html#cb447-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(book, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb447-8"><a href="ET.html#cb447-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-9"><a href="ET.html#cb447-9" aria-hidden="true" tabindex="-1"></a>total_words <span class="ot">&lt;-</span> book_words <span class="sc">%&gt;%</span> </span>
+<span id="cb447-10"><a href="ET.html#cb447-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span> </span>
+<span id="cb447-11"><a href="ET.html#cb447-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb447-12"><a href="ET.html#cb447-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-13"><a href="ET.html#cb447-13" aria-hidden="true" tabindex="-1"></a>book_words <span class="ot">&lt;-</span> <span class="fu">left_join</span>(book_words, total_words)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(book)`</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="ET.html#cb449-1" aria-hidden="true" tabindex="-1"></a>book_words</span></code></pre></div>
+<pre><code>## # A tibble: 40,379 × 4
+##    book              word      n  total
+##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
+##  1 Mansfield Park    the    6206 160460
+##  2 Mansfield Park    to     5475 160460
+##  3 Mansfield Park    and    5438 160460
+##  4 Emma              to     5239 160996
+##  5 Emma              the    5201 160996
+##  6 Emma              and    4896 160996
+##  7 Mansfield Park    of     4778 160460
+##  8 Pride &amp; Prejudice the    4331 122204
+##  9 Emma              of     4291 160996
+## 10 Pride &amp; Prejudice to     4162 122204
+## # ℹ 40,369 more rows</code></pre>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="ET.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb451-2"><a href="ET.html#cb451-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb451-3"><a href="ET.html#cb451-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(book_words, <span class="fu">aes</span>(n<span class="sc">/</span>total, <span class="at">fill =</span> book)) <span class="sc">+</span></span>
+<span id="cb451-4"><a href="ET.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb451-5"><a href="ET.html#cb451-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="cn">NA</span>, <span class="fl">0.0009</span>) <span class="sc">+</span></span>
+<span id="cb451-6"><a href="ET.html#cb451-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>book, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 896 rows containing non-finite values (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 6 rows containing missing values (`geom_bar()`).</code></pre>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><br/></p>
+</div>
+<div id="zipfs-law" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Zipf’s law<a href="ET.html#zipfs-law" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="ET.html#cb455-1" aria-hidden="true" tabindex="-1"></a>freq_by_rank <span class="ot">&lt;-</span> book_words <span class="sc">%&gt;%</span> </span>
+<span id="cb455-2"><a href="ET.html#cb455-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span> </span>
+<span id="cb455-3"><a href="ET.html#cb455-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>(), </span>
+<span id="cb455-4"><a href="ET.html#cb455-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span> <span class="ot">=</span> n<span class="sc">/</span>total) <span class="sc">%&gt;%</span></span>
+<span id="cb455-5"><a href="ET.html#cb455-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb455-6"><a href="ET.html#cb455-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-7"><a href="ET.html#cb455-7" aria-hidden="true" tabindex="-1"></a>freq_by_rank</span></code></pre></div>
+<pre><code>## # A tibble: 40,379 × 6
+##    book              word      n  total  rank `term frequency`
+##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
+##  1 Mansfield Park    the    6206 160460     1           0.0387
+##  2 Mansfield Park    to     5475 160460     2           0.0341
+##  3 Mansfield Park    and    5438 160460     3           0.0339
+##  4 Emma              to     5239 160996     1           0.0325
+##  5 Emma              the    5201 160996     2           0.0323
+##  6 Emma              and    4896 160996     3           0.0304
+##  7 Mansfield Park    of     4778 160460     4           0.0298
+##  8 Pride &amp; Prejudice the    4331 122204     1           0.0354
+##  9 Emma              of     4291 160996     4           0.0267
+## 10 Pride &amp; Prejudice to     4162 122204     2           0.0341
+## # ℹ 40,369 more rows</code></pre>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="ET.html#cb457-1" aria-hidden="true" tabindex="-1"></a>freq_by_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb457-2"><a href="ET.html#cb457-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span>, <span class="at">color =</span> book)) <span class="sc">+</span> </span>
+<span id="cb457-3"><a href="ET.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb457-4"><a href="ET.html#cb457-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb457-5"><a href="ET.html#cb457-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ET.html#cb459-1" aria-hidden="true" tabindex="-1"></a>rank_subset <span class="ot">&lt;-</span> freq_by_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb459-2"><a href="ET.html#cb459-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;</span> <span class="dv">500</span>,</span>
+<span id="cb459-3"><a href="ET.html#cb459-3" aria-hidden="true" tabindex="-1"></a>         rank <span class="sc">&gt;</span> <span class="dv">10</span>)</span>
+<span id="cb459-4"><a href="ET.html#cb459-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb459-5"><a href="ET.html#cb459-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="fu">log10</span>(<span class="st">`</span><span class="at">term frequency</span><span class="st">`</span>) <span class="sc">~</span> <span class="fu">log10</span>(rank), <span class="at">data =</span> rank_subset)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log10(`term frequency`) ~ log10(rank), data = rank_subset)
+## 
+## Coefficients:
+## (Intercept)  log10(rank)  
+##     -0.6226      -1.1125</code></pre>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="ET.html#cb461-1" aria-hidden="true" tabindex="-1"></a>freq_by_rank <span class="sc">%&gt;%</span> </span>
+<span id="cb461-2"><a href="ET.html#cb461-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span>, <span class="at">color =</span> book)) <span class="sc">+</span> </span>
+<span id="cb461-3"><a href="ET.html#cb461-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="sc">-</span><span class="fl">0.62</span>, <span class="at">slope =</span> <span class="sc">-</span><span class="fl">1.1</span>, </span>
+<span id="cb461-4"><a href="ET.html#cb461-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb461-5"><a href="ET.html#cb461-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb461-6"><a href="ET.html#cb461-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb461-7"><a href="ET.html#cb461-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><br/></p>
+<p>注：我们在简.奥斯汀的小说语料库中发现了一个与经典版齐普夫定律相近的结果。我们在这里看到的高级语言的偏差在许多语言中并不罕见；一个语言语料库通常包含的稀有词比单一幂律所预测的要少。低等级的偏差更不寻常。简.奥斯汀使用的最常用词的百分比低于许多语言集合。这种分析可以扩展到比较作者，或者比较任何其他文本集合，它可以简单地通过使用简洁的数据原则来实现。</p>
+</div>
+<div id="bind_tf_idf-函数" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> bind_tf_idf ()函数<a href="ET.html#bind_tf_idf-函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>注：ti-idf的想法是通过减少常用词的权重，增加文档集合或语料中不常用的词的权重，来找到每个文档内容中的重要词。以下我们将从简.奥斯汀的小说集合入手，通过计算ti-idf来在文本中找到重要但不太常见的单词。</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="ET.html#cb462-1" aria-hidden="true" tabindex="-1"></a>book_tf_idf <span class="ot">&lt;-</span> book_words <span class="sc">%&gt;%</span></span>
+<span id="cb462-2"><a href="ET.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_tf_idf</span>(word, book, n)</span>
+<span id="cb462-3"><a href="ET.html#cb462-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb462-4"><a href="ET.html#cb462-4" aria-hidden="true" tabindex="-1"></a>book_tf_idf</span></code></pre></div>
+<pre><code>## # A tibble: 40,379 × 7
+##    book              word      n  total     tf   idf tf_idf
+##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Mansfield Park    the    6206 160460 0.0387     0      0
+##  2 Mansfield Park    to     5475 160460 0.0341     0      0
+##  3 Mansfield Park    and    5438 160460 0.0339     0      0
+##  4 Emma              to     5239 160996 0.0325     0      0
+##  5 Emma              the    5201 160996 0.0323     0      0
+##  6 Emma              and    4896 160996 0.0304     0      0
+##  7 Mansfield Park    of     4778 160460 0.0298     0      0
+##  8 Pride &amp; Prejudice the    4331 122204 0.0354     0      0
+##  9 Emma              of     4291 160996 0.0267     0      0
+## 10 Pride &amp; Prejudice to     4162 122204 0.0341     0      0
+## # ℹ 40,369 more rows</code></pre>
+<p>以下我们来看看简.奥斯汀作品中的高tf-idf术语</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="ET.html#cb464-1" aria-hidden="true" tabindex="-1"></a>book_tf_idf <span class="sc">%&gt;%</span></span>
+<span id="cb464-2"><a href="ET.html#cb464-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">%&gt;%</span></span>
+<span id="cb464-3"><a href="ET.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code></pre></div>
+<pre><code>## # A tibble: 40,379 × 6
+##    book                word          n      tf   idf  tf_idf
+##    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931
+##  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735
+##  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551
+##  4 Pride &amp; Prejudice   darcy       373 0.00305  1.79 0.00547
+##  5 Persuasion          elliot      254 0.00304  1.79 0.00544
+##  6 Emma                emma        786 0.00488  1.10 0.00536
+##  7 Northanger Abbey    tilney      196 0.00252  1.79 0.00452
+##  8 Emma                weston      389 0.00242  1.79 0.00433
+##  9 Pride &amp; Prejudice   bennet      294 0.00241  1.79 0.00431
+## 10 Persuasion          wentworth   191 0.00228  1.79 0.00409
+## # ℹ 40,369 more rows</code></pre>
+<p>接下来让我们看看这些高ti-idf单词的可视化</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="ET.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb466-2"><a href="ET.html#cb466-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb466-3"><a href="ET.html#cb466-3" aria-hidden="true" tabindex="-1"></a>book_tf_idf <span class="sc">%&gt;%</span></span>
+<span id="cb466-4"><a href="ET.html#cb466-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span></span>
+<span id="cb466-5"><a href="ET.html#cb466-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(tf_idf, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb466-6"><a href="ET.html#cb466-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb466-7"><a href="ET.html#cb466-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(tf_idf, <span class="fu">fct_reorder</span>(word, tf_idf), <span class="at">fill =</span> book)) <span class="sc">+</span></span>
+<span id="cb466-8"><a href="ET.html#cb466-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb466-9"><a href="ET.html#cb466-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>book, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb466-10"><a href="ET.html#cb466-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tf-idf&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="8001-chapter08_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><br/></p>
+</div>
+</div>
+<div id="ET-e" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> 案例分析：挖掘NASA元数据<a href="ET.html#ET-e" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>NASA如何组织数据？（首先让我们下载JSON文件并查看元数据中储存的内容的名称。）</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="ET.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;jsonlite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     flatten</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="ET.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co">#有时候网站下载数据很慢，改一下下载时间（默认是60s）</span></span>
+<span id="cb470-2"><a href="ET.html#cb470-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getOption</span>(<span class="st">&#39;timeout&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="ET.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout=</span><span class="dv">10000</span>)</span>
+<span id="cb472-2"><a href="ET.html#cb472-2" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&quot;https://data.nasa.gov/data.json&quot;</span>)</span>
+<span id="cb472-3"><a href="ET.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(metadata<span class="sc">$</span>dataset)</span></code></pre></div>
+<pre><code>##  [1] &quot;accessLevel&quot;                 &quot;landingPage&quot;                
+##  [3] &quot;bureauCode&quot;                  &quot;issued&quot;                     
+##  [5] &quot;@type&quot;                       &quot;modified&quot;                   
+##  [7] &quot;references&quot;                  &quot;keyword&quot;                    
+##  [9] &quot;contactPoint&quot;                &quot;publisher&quot;                  
+## [11] &quot;identifier&quot;                  &quot;description&quot;                
+## [13] &quot;title&quot;                       &quot;programCode&quot;                
+## [15] &quot;distribution&quot;                &quot;accrualPeriodicity&quot;         
+## [17] &quot;theme&quot;                       &quot;license&quot;                    
+## [19] &quot;citation&quot;                    &quot;temporal&quot;                   
+## [21] &quot;spatial&quot;                     &quot;language&quot;                   
+## [23] &quot;graphic-preview-description&quot; &quot;graphic-preview-file&quot;       
+## [25] &quot;data-presentation-form&quot;      &quot;release-place&quot;              
+## [27] &quot;series-name&quot;                 &quot;creator&quot;                    
+## [29] &quot;dataQuality&quot;                 &quot;editor&quot;                     
+## [31] &quot;issue-identification&quot;        &quot;describedBy&quot;                
+## [33] &quot;describedByType&quot;             &quot;rights&quot;                     
+## [35] &quot;systemOfRecords&quot;</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="ET.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(metadata<span class="sc">$</span>dataset<span class="sc">$</span>title)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="ET.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(metadata<span class="sc">$</span>dataset<span class="sc">$</span>description)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="ET.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(metadata<span class="sc">$</span>dataset<span class="sc">$</span>keyword)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>争论和整理数据（我们将为title、description和keyword分别设置整齐的数据框架，保留每个框架的数据集ID，以便我们可以在以后的分析中更具需要连接它们。）</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="ET.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb480-2"><a href="ET.html#cb480-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-3"><a href="ET.html#cb480-3" aria-hidden="true" tabindex="-1"></a>nasa_title <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span><span class="st">`</span><span class="at">_id</span><span class="st">`</span><span class="sc">$</span><span class="st">`</span><span class="at">$oid</span><span class="st">`</span>, </span>
+<span id="cb480-4"><a href="ET.html#cb480-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">title =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span>title)</span>
+<span id="cb480-5"><a href="ET.html#cb480-5" aria-hidden="true" tabindex="-1"></a>nasa_title</span></code></pre></div>
+<pre><code>## # A tibble: 22,199 × 1
+##    title                                                                        
+##    &lt;chr&gt;                                                                        
+##  1 &quot;ROSETTA-ORBITER EARTH RPCMAG 2 EAR2 RAW V3.0&quot;                               
+##  2 &quot;NEAR EROS RADIO SCIENCE DATA SET - EROS/ORBIT V1.0&quot;                         
+##  3 &quot;NEW HORIZONS\n      LEISA KEM1\n      CALIBRATED V2.0&quot;                      
+##  4 &quot;ROSETTA-ORBITER 67P RSI 1/2/3\n                                     COMET E…
+##  5 &quot;ASTEROID OCCULTATIONS V14.0&quot;                                                
+##  6 &quot;NARSTO SHEMP Particulate Matter Composition Data, Canada, 2000-2002&quot;        
+##  7 &quot;VOYAGER 2 JUPITER MAGNETOMETER RESAMPLED DATA 1.92 SEC&quot;                     
+##  8 &quot;Fire Particulate Emissions from Combined VIIRS and AHI Data for Indonesia, …
+##  9 &quot;Sounder SIPS: Suomi NPP CrIMSS Level 3 Comprehensive Quality Control Gridde…
+## 10 &quot;CATS-ISS Level 2 Operational Night Mode 7.2 Version 3-00 5 km Profile&quot;      
+## # ℹ 22,189 more rows</code></pre>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="ET.html#cb482-1" aria-hidden="true" tabindex="-1"></a>nasa_desc <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span><span class="st">`</span><span class="at">_id</span><span class="st">`</span><span class="sc">$</span><span class="st">`</span><span class="at">$oid</span><span class="st">`</span>, </span>
+<span id="cb482-2"><a href="ET.html#cb482-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">desc =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span>description)</span>
+<span id="cb482-3"><a href="ET.html#cb482-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-4"><a href="ET.html#cb482-4" aria-hidden="true" tabindex="-1"></a>nasa_desc <span class="sc">%&gt;%</span> </span>
+<span id="cb482-5"><a href="ET.html#cb482-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(desc) <span class="sc">%&gt;%</span> </span>
+<span id="cb482-6"><a href="ET.html#cb482-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 1
+##   desc                                                                          
+##   &lt;chr&gt;                                                                         
+## 1 Spectral classifications of asteroids.                                        
+## 2 This data set includes sub-sampled versions of Viking Orbiter images that are…
+## 3 This dataset provides thaw depth measurements made at seven locations across …
+## 4 This data set contains images acquired by the OSIRIS Wide Angle Camera during…
+## 5 The GPM Ground Validation Environment Canada (EC) Surface Meteorological Stat…</code></pre>
+<p>现在我们可以为关键字构建整洁的数据框架，在本例中，我们将使用tidyr中的unnest()函数。</p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="ET.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb484-2"><a href="ET.html#cb484-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-3"><a href="ET.html#cb484-3" aria-hidden="true" tabindex="-1"></a>nasa_keyword <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span><span class="st">`</span><span class="at">_id</span><span class="st">`</span><span class="sc">$</span><span class="st">`</span><span class="at">$oid</span><span class="st">`</span>, </span>
+<span id="cb484-4"><a href="ET.html#cb484-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">keyword =</span> metadata<span class="sc">$</span>dataset<span class="sc">$</span>keyword) <span class="sc">%&gt;%</span></span>
+<span id="cb484-5"><a href="ET.html#cb484-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(keyword)</span>
+<span id="cb484-6"><a href="ET.html#cb484-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-7"><a href="ET.html#cb484-7" aria-hidden="true" tabindex="-1"></a>nasa_keyword</span></code></pre></div>
+<pre><code>## # A tibble: 114,921 × 1
+##    keyword                                  
+##    &lt;chr&gt;                                    
+##  1 unknown                                  
+##  2 international rosetta mission            
+##  3 earth                                    
+##  4 near earth asteroid rendezvous           
+##  5 eros                                     
+##  6 vega                                     
+##  7 new horizons kuiper belt extended mission
+##  8 international rosetta mission            
+##  9 67p/churyumov-gerasimenko 1 (1969 r1)    
+## 10 satellite                                
+## # ℹ 114,911 more rows</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="ET.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb486-2"><a href="ET.html#cb486-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-3"><a href="ET.html#cb486-3" aria-hidden="true" tabindex="-1"></a>nasa_title <span class="ot">&lt;-</span> nasa_title <span class="sc">%&gt;%</span> </span>
+<span id="cb486-4"><a href="ET.html#cb486-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, title) <span class="sc">%&gt;%</span> </span>
+<span id="cb486-5"><a href="ET.html#cb486-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="ET.html#cb488-1" aria-hidden="true" tabindex="-1"></a>nasa_desc <span class="ot">&lt;-</span> nasa_desc <span class="sc">%&gt;%</span> </span>
+<span id="cb488-2"><a href="ET.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, desc) <span class="sc">%&gt;%</span> </span>
+<span id="cb488-3"><a href="ET.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="ET.html#cb490-1" aria-hidden="true" tabindex="-1"></a>nasa_title</span></code></pre></div>
+<pre><code>## # A tibble: 202,793 × 1
+##    word   
+##    &lt;chr&gt;  
+##  1 rosetta
+##  2 orbiter
+##  3 earth  
+##  4 rpcmag 
+##  5 2      
+##  6 ear2   
+##  7 raw    
+##  8 v3.0   
+##  9 eros   
+## 10 radio  
+## # ℹ 202,783 more rows</code></pre>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="ET.html#cb492-1" aria-hidden="true" tabindex="-1"></a>nasa_desc</span></code></pre></div>
+<pre><code>## # A tibble: 1,588,410 × 1
+##    word    
+##    &lt;chr&gt;   
+##  1 dataset 
+##  2 edited  
+##  3 raw     
+##  4 data    
+##  5 earth   
+##  6 flyby   
+##  7 ear2    
+##  8 closest 
+##  9 approach
+## 10 ca      
+## # ℹ 1,588,400 more rows</code></pre>
+<p>一些初步的简单勘探（NASA数据集标题中最常见的词是什么？我们可以使用dplyr中的count()来检查这一点。）</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="ET.html#cb494-1" aria-hidden="true" tabindex="-1"></a>nasa_title <span class="sc">%&gt;%</span></span>
+<span id="cb494-2"><a href="ET.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12,466 × 2
+##    word        n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 v1.0     6184
+##  2 data     4553
+##  3 2        4125
+##  4 rosetta  4031
+##  5 1        3945
+##  6 orbiter  3887
+##  7 3        3799
+##  8 67p      2676
+##  9 global   1731
+## 10 ges      1723
+## # ℹ 12,456 more rows</code></pre>
+<p>描述如何？</p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="ET.html#cb496-1" aria-hidden="true" tabindex="-1"></a>nasa_desc <span class="sc">%&gt;%</span> </span>
+<span id="cb496-2"><a href="ET.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 35,698 × 2
+##    word         n
+##    &lt;chr&gt;    &lt;int&gt;
+##  1 data     52781
+##  2 set      13070
+##  3 product  10582
+##  4 2         9754
+##  5 1         8559
+##  6 version   8078
+##  7 surface   7707
+##  8 global    7514
+##  9 level     7270
+## 10 products  7081
+## # ℹ 35,688 more rows</code></pre>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="ET.html#cb498-1" aria-hidden="true" tabindex="-1"></a>my_stopwords <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">word =</span> <span class="fu">c</span>(<span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), </span>
+<span id="cb498-2"><a href="ET.html#cb498-2" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;v1&quot;</span>, <span class="st">&quot;v03&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l3&quot;</span>, <span class="st">&quot;l4&quot;</span>, <span class="st">&quot;v5.2.0&quot;</span>, </span>
+<span id="cb498-3"><a href="ET.html#cb498-3" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;v003&quot;</span>, <span class="st">&quot;v004&quot;</span>, <span class="st">&quot;v005&quot;</span>, <span class="st">&quot;v006&quot;</span>, <span class="st">&quot;v7&quot;</span>))</span>
+<span id="cb498-4"><a href="ET.html#cb498-4" aria-hidden="true" tabindex="-1"></a>nasa_title <span class="ot">&lt;-</span> nasa_title <span class="sc">%&gt;%</span> </span>
+<span id="cb498-5"><a href="ET.html#cb498-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(my_stopwords)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="ET.html#cb500-1" aria-hidden="true" tabindex="-1"></a>nasa_desc <span class="ot">&lt;-</span> nasa_desc <span class="sc">%&gt;%</span> </span>
+<span id="cb500-2"><a href="ET.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(my_stopwords)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(word)`</code></pre>
+<p>最常见的关键词是什么？</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="ET.html#cb502-1" aria-hidden="true" tabindex="-1"></a>nasa_keyword <span class="sc">%&gt;%</span> </span>
+<span id="cb502-2"><a href="ET.html#cb502-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(keyword) <span class="sc">%&gt;%</span> </span>
+<span id="cb502-3"><a href="ET.html#cb502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 9,103 × 2
+## # Groups:   keyword [9,103]
+##    keyword                                   n
+##    &lt;chr&gt;                                 &lt;int&gt;
+##  1 earth science                          9727
+##  2 atmosphere                             4181
+##  3 international rosetta mission          3806
+##  4 67p/churyumov-gerasimenko 1 (1969 r1)  2977
+##  5 land surface                           2234
+##  6 oceans                                 1901
+##  7 spectral/engineering                   1562
+##  8 biosphere                              1410
+##  9 atmospheric water vapor                1344
+## 10 mars                                   1321
+## # ℹ 9,093 more rows</code></pre>
+<p>我们可能希望将所有的关键字都改写为大写或小写，以消除重复项，如“OCEANS”和“Oceans”，这里我们可以这么做。）</p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="ET.html#cb504-1" aria-hidden="true" tabindex="-1"></a>nasa_keyword <span class="ot">&lt;-</span> nasa_keyword <span class="sc">%&gt;%</span> </span>
+<span id="cb504-2"><a href="ET.html#cb504-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">keyword =</span> <span class="fu">toupper</span>(keyword))</span></code></pre></div>
+<p><br/></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ML.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="CT.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

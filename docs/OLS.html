@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 线性回归 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="5 线性回归 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 线性回归 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 线性回归 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rp.html"/>
+<link rel="next" href="two-logit.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dta.html"><a href="dta.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dta.html"><a href="dta.html#dta-read"><i class="fa fa-check"></i><b>1.1</b> 数据读入：以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dta.html"><a href="dta.html#dta-wrap1"><i class="fa fa-check"></i><b>1.2</b> 数据处理1</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="dta.html"><a href="dta.html#dta-cc"><i class="fa fa-check"></i><b>1.2.1</b> R中的变量类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="dta.html"><a href="dta.html#dta-wrap2"><i class="fa fa-check"></i><b>1.3</b> 数据处理2</a></li>
+<li class="chapter" data-level="1.4" data-path="dta.html"><a href="dta.html#dta-wrap3"><i class="fa fa-check"></i><b>1.4</b> 数据处理3</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="dta.html"><a href="dta.html#dta-dia"><i class="fa fa-check"></i><b>1.4.1</b> 诊断数据集</a></li>
+<li class="chapter" data-level="1.4.2" data-path="dta.html"><a href="dta.html#dta-values"><i class="fa fa-check"></i><b>1.4.2</b> 处理异常值和缺失值</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-Variable-labels"><i class="fa fa-check"></i><b>2.1</b> 变量标签</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-summary"><i class="fa fa-check"></i><b>2.2</b> gtsummary包</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="TB.html"><a href="TB.html#TB-summary1"><i class="fa fa-check"></i><b>2.2.1</b> 函数<code>tbl_summary()</code>的默认输出</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TB.html"><a href="TB.html#TB-summary2"><i class="fa fa-check"></i><b>2.2.2</b> 函数<code>tbl_summary()</code>的分组比较</a></li>
+<li class="chapter" data-level="2.2.3" data-path="TB.html"><a href="TB.html#TB-summary3"><i class="fa fa-check"></i><b>2.2.3</b> 函数<code>tbl_gtsummary()</code>的自定义输出</a></li>
+<li class="chapter" data-level="2.2.4" data-path="TB.html"><a href="TB.html#TB-cross"><i class="fa fa-check"></i><b>2.2.4</b> 函数<code>tbl_cross</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TB.html"><a href="TB.html#TB-table1"><i class="fa fa-check"></i><b>2.3</b> table1包</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TB.html"><a href="TB.html#TB-table1.1"><i class="fa fa-check"></i><b>2.3.1</b> 无分层</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TB.html"><a href="TB.html#TB-table1.2"><i class="fa fa-check"></i><b>2.3.2</b> 有分层</a></li>
+<li class="chapter" data-level="2.3.3" data-path="TB.html"><a href="TB.html#TB-table1.2.1"><i class="fa fa-check"></i><b>2.3.3</b> 一个分层</a></li>
+<li class="chapter" data-level="2.3.4" data-path="TB.html"><a href="TB.html#TB-table1.2.2"><i class="fa fa-check"></i><b>2.3.4</b> 两个分层</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="TB.html"><a href="TB.html#TB-kable"><i class="fa fa-check"></i><b>2.4</b> <code>KableExtra</code>包</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="TB.html"><a href="TB.html#TB-kable1"><i class="fa fa-check"></i><b>2.4.1</b> 小试牛刀</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 图形</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.1.1</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.1.2</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.1.3" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.1.3</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.1.4" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.1.4</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-plotly"><i class="fa fa-check"></i><b>3.2</b> plotly</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="PI.html"><a href="PI.html#PI-baisc"><i class="fa fa-check"></i><b>3.2.1</b> 基本图形</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="OLS.html"><a href="OLS.html"><i class="fa fa-check"></i><b>5</b> 线性回归</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="OLS.html"><a href="OLS.html#OLS-inro"><i class="fa fa-check"></i><b>5.1</b> 简单线性回归介绍</a></li>
+<li class="chapter" data-level="5.2" data-path="OLS.html"><a href="OLS.html#OLS-simple"><i class="fa fa-check"></i><b>5.2</b> 一元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="OLS.html"><a href="OLS.html#OLS-build"><i class="fa fa-check"></i><b>5.2.1</b> 模型建立</a></li>
+<li class="chapter" data-level="5.2.2" data-path="OLS.html"><a href="OLS.html#OLS-explain"><i class="fa fa-check"></i><b>5.2.2</b> 模型结果解读</a></li>
+<li class="chapter" data-level="5.2.3" data-path="OLS.html"><a href="OLS.html#OLS-residual"><i class="fa fa-check"></i><b>5.2.3</b> 残差分析</a></li>
+<li class="chapter" data-level="5.2.4" data-path="OLS.html"><a href="OLS.html#OLS-others"><i class="fa fa-check"></i><b>5.2.4</b> 其他线性模型</a></li>
+<li class="chapter" data-level="5.2.5" data-path="OLS.html"><a href="OLS.html#OLS-high"><i class="fa fa-check"></i><b>5.2.5</b> 高阶拟合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="OLS.html"><a href="OLS.html#OLS-multiple"><i class="fa fa-check"></i><b>5.3</b> 多元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="OLS.html"><a href="OLS.html#OLS-multisummary"><i class="fa fa-check"></i><b>5.3.1</b> 模型汇总</a></li>
+<li class="chapter" data-level="5.3.2" data-path="OLS.html"><a href="OLS.html#OLS-each"><i class="fa fa-check"></i><b>5.3.2</b> 交互模型效应</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="two-logit.html"><a href="two-logit.html"><i class="fa fa-check"></i><b>6</b> 二分变量回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-i"><i class="fa fa-check"></i><b>6.1</b> 二值型回归模型</a></li>
+<li class="chapter" data-level="6.2" data-path="two-logit.html"><a href="two-logit.html#更多的包-two-logit-o"><i class="fa fa-check"></i><b>6.2</b> 更多的包 {two-logit-o}</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="two-logit.html"><a href="two-logit.html#zelig-two-logit-o1"><i class="fa fa-check"></i><b>6.2.1</b> Zelig {two-logit-o1}</a></li>
+<li class="chapter" data-level="6.2.2" data-path="two-logit.html"><a href="two-logit.html#rms包-two-logit-o2"><i class="fa fa-check"></i><b>6.2.2</b> rms包 {two-logit-o2}</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="two-logit.html"><a href="two-logit.html#two-logit-e"><i class="fa fa-check"></i><b>6.3</b> 交互效应与可视化</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-e1"><i class="fa fa-check"></i><b>6.3.1</b> 对方程进行方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>7</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>7.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="7.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>7.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="7.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>7.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>8</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>8.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="8.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>8.2</b> 词频count</a></li>
+<li class="chapter" data-level="8.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>8.3</b> 词云</a></li>
+<li class="chapter" data-level="8.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>8.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>8.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>8.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>8.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>8.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>9</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>9.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>9.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="9.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>9.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>9.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>9.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>9.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>9.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="9.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>9.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="9.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>9.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>9.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="9.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>9.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>9.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="9.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>9.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="OLS" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> 线性回归<a href="OLS.html#OLS" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供： 胡慧怡 何舒欣 李清仪 于芊 黄国政</p>
+<div id="OLS-inro" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 简单线性回归介绍<a href="OLS.html#OLS-inro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>一个简单的线性回归分析只检验X和Y两个变量之间的关系，通常使用一个线性函数对它们的关系进行描述。什么是线性函数？线性函数指自变量X的一个单位变化会导致因变量Y一定数量的增加或减少。</p>
+<p>在R中，拟合线性模型最基本的函数就是<code>lm()</code>，格式为：</p>
+<p><code>myfit &lt;- lm(formula, data)</code></p>
+<p>其中，<code>formula</code>指要拟合的模型形式，<code>data</code>是一个数据框，包含了用于拟合模型的数据。</p>
+<p>读入CGSS2021核心模块的数据。</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="OLS.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;core.RData&quot;</span>)</span></code></pre></div>
+<p>拿到一份数据，需要知道其含义。</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="OLS.html#cb192-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 12
+##   stype gender   age agegroup height weight educ  poli  income famincome health 
+##   &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;  
+## 1 城镇  女        54 45~60岁     160    118 中等… 群众   96000    200000 很健康 
+## 2 城镇  女        76 60岁以上    160    120 中等… 共产…  60000    120000 很健康 
+## 3 农村  男        35 30~45岁     172    130 高等… 群众  160000    220000 比较健…
+## 4 城镇  女        63 60岁以上    158    115 中等… 群众   48000    100000 比较健…
+## 5 城镇  男        25 30岁以下    180    150 高等… 群众  600000   2000000 比较健…
+## 6 农村  男        34 30~45岁     187    198 高等… 群众  100000    200000 一般   
+## # ℹ 1 more variable: happy &lt;fct&gt;</code></pre>
+<p>进行回归分析前需要检查缺失值。</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="OLS.html#cb194-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb194-2"><a href="OLS.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(</span>
+<span id="cb194-3"><a href="OLS.html#cb194-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.))</span>
+<span id="cb194-4"><a href="OLS.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 12
+##   stype gender   age agegroup height weight  educ  poli income famincome health
+##   &lt;int&gt;  &lt;int&gt; &lt;int&gt;    &lt;int&gt;  &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
+## 1     0      0     0        0      0      0     0     0      0         0      0
+## # ℹ 1 more variable: happy &lt;int&gt;</code></pre>
+<p>导入的<code>core</code>数据我们已经在前面处理过了缺失值，不再赘述。</p>
+<p>查看CGSS2021调研中性别与城乡分布情况。</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="OLS.html#cb196-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span> <span class="fu">count</span>(gender,stype)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   gender stype     n
+##   &lt;fct&gt;  &lt;fct&gt; &lt;int&gt;
+## 1 男     农村   1373
+## 2 男     城镇    523
+## 3 女     农村   1523
+## 4 女     城镇    582</code></pre>
+<p>以城乡分组，查看年龄、身高、体重和收入的基本状况。</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="OLS.html#cb198-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb198-2"><a href="OLS.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(stype) <span class="sc">%&gt;%</span></span>
+<span id="cb198-3"><a href="OLS.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb198-4"><a href="OLS.html#cb198-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb198-5"><a href="OLS.html#cb198-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_age =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb198-6"><a href="OLS.html#cb198-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(height),</span>
+<span id="cb198-7"><a href="OLS.html#cb198-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(weight),</span>
+<span id="cb198-8"><a href="OLS.html#cb198-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income),</span>
+<span id="cb198-9"><a href="OLS.html#cb198-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_famincome =</span> <span class="fu">mean</span>(famincome)</span>
+<span id="cb198-10"><a href="OLS.html#cb198-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 7
+##   stype     n mean_age mean_height mean_weight mean_income mean_famincome
+##   &lt;fct&gt; &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+## 1 农村   2896     53.7        163.        124.      44957.        106865.
+## 2 城镇   1105     49.0        166.        129.      65900.        135902.</code></pre>
+<p><code>ggplot</code>作图会更加直观</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="OLS.html#cb200-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb200-2"><a href="OLS.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(income), <span class="at">color =</span> stype)) <span class="sc">+</span></span>
+<span id="cb200-3"><a href="OLS.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_density()`).</code></pre>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="OLS-simple" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 一元线性回归<a href="OLS.html#OLS-simple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="OLS-build" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> 模型建立<a href="OLS.html#OLS-build" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>身高的增长会导致体重的增加吗？</strong></p>
+<p>建立散点图观察是否存在直观的线性关系。</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="OLS.html#cb202-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb202-2"><a href="OLS.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> weight)) <span class="sc">+</span></span>
+<span id="cb202-3"><a href="OLS.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>建立“身高”和“体重”的简单线性回归模型。</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="OLS.html#cb203-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> weight <span class="sc">~</span> height, <span class="at">data =</span> core)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="OLS.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = weight ~ height, data = core)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -81.008 -13.305  -1.194  12.288 103.621 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -135.54740    6.29093  -21.55   &lt;2e-16 ***
+## height         1.59259    0.03831   41.57   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 19.75 on 3999 degrees of freedom
+## Multiple R-squared:  0.3017, Adjusted R-squared:  0.3015 
+## F-statistic:  1728 on 1 and 3999 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="OLS.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(core<span class="sc">$</span>weight)</span></code></pre></div>
+<pre><code>## [1] 23.62571</code></pre>
+</div>
+<div id="OLS-explain" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> 模型结果解读<a href="OLS.html#OLS-explain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>由输出结果可知，-135.54740是方程的截距，1.59259是方程的斜率。我们建立的线性回归模型可以写成：</p>
+<blockquote>
+<p>y = -135.55 + 1.59x</p>
+</blockquote>
+<ul>
+<li>对于斜率1.59而言，当一个人的身高是170厘米时，他的预期体重weight = -135.55 + 1.59*170 = 134.75斤。<br />
+</li>
+<li>对于截距-135.55而言，当身高为0时，预期的体重为-135.55。但这只是极端的理论设想，在现实中没有解释意义。</li>
+</ul>
+<p>对结果进行解释，首先判断<strong>模型显著性</strong>。由输出结果可知模型P值小于2.2e-16，拒绝原假设，回归模型显著性通过。</p>
+<p>接着进行回归模型<strong>拟合优度</strong>的评估。</p>
+<p><code>Residual standard error</code>（残差的标准差）和<code>R-squared</code>（R方）可以作为评估标准。</p>
+<p><code>R-squared</code>为0.3017，表示回归模型解释了30%的体重变化。由于<strong>在社会科学中，<code>R-squared</code>值在0.20-0.30之间已经具有较强的解释力，</strong>所以该回归模型与数据的吻合度较高。</p>
+<p><code>Residual standard error</code>与Y值标准差进行比较，前者小于后者时表明拟合的回归模型与实际数据的契合度比较高。该回归模型的残差标准差为19.75，Y值标准差为23.63，说明回归线比Y的算数平均值更加接近实际的Y观测值，因此模型拟合度较好。可以通过添加了拟合线和Y平均值基线的散点图进行观察。</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="OLS.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(core, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> weight))<span class="sc">+</span></span>
+<span id="cb208-2"><a href="OLS.html#cb208-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb208-3"><a href="OLS.html#cb208-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb208-4"><a href="OLS.html#cb208-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(core<span class="sc">$</span>weight), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb208-5"><a href="OLS.html#cb208-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb208-6"><a href="OLS.html#cb208-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;身高（厘米）&quot;</span>, <span class="at">y =</span> <span class="st">&quot;体重（斤）&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>最后检验回归模型中<strong>回归系数的显著度</strong>。从输出结果中可以看到<code>height</code>变量回归系数约为1.59，其P值为2.2e-16，显著不为0，拒绝原假设，说明身高对体重在统计学上有显著的正向影响，身高每增加1厘米，平均体重将预期增加约1.59斤。</p>
+<p><code>confint</code>函数可以输出模型的置信区间，置信水平默认为95%。</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="OLS.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod1)</span></code></pre></div>
+<pre><code>##                   2.5 %      97.5 %
+## (Intercept) -147.881126 -123.213674
+## height         1.517476    1.667712</code></pre>
+<p>根据输出结果，我们可以解释为身高每增长1厘米，体重平均增加1.51~1.66斤。这里的置信区间没有包含0，证实了回归系数和0显著不同，即身高对体重存在显著影响。这一种方法与P值得到的结果是一致的。</p>
+<p>在前面的介绍中，我们建立了回归模型，并可以籍此手工计算获取拟合值（即通过不同身高预测对应的平均体重）和残差，以下代码可以直接获取拟合值和残差。</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="OLS.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(core) <span class="sc">%&gt;%</span> modelr<span class="sc">::</span><span class="fu">add_predictions</span>(mod1) <span class="sc">%&gt;%</span> modelr<span class="sc">::</span><span class="fu">add_residuals</span>(mod1)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 14
+##   stype gender   age agegroup height weight educ  poli  income famincome health 
+##   &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;  
+## 1 城镇  女        54 45~60岁     160    118 中等… 群众   96000    200000 很健康 
+## 2 城镇  女        76 60岁以上    160    120 中等… 共产…  60000    120000 很健康 
+## 3 农村  男        35 30~45岁     172    130 高等… 群众  160000    220000 比较健…
+## 4 城镇  女        63 60岁以上    158    115 中等… 群众   48000    100000 比较健…
+## 5 城镇  男        25 30岁以下    180    150 高等… 群众  600000   2000000 比较健…
+## 6 农村  男        34 30~45岁     187    198 高等… 群众  100000    200000 一般   
+## # ℹ 3 more variables: happy &lt;fct&gt;, pred &lt;dbl&gt;, resid &lt;dbl&gt;</code></pre>
+<p>由散点图可以看出正相关趋势明显，符合回归模型与回归系数的显著性，但图像中明显存在着异常值。完成回归模型与回归系数显著性的检验后，还要进行残差分析（预测值和实际值之间的差，残差服从正态分布时为最佳。</p>
+</div>
+<div id="OLS-residual" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> 残差分析<a href="OLS.html#OLS-residual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>plot()</code>函数可生成4种用于模型诊断的图形，以进行直观的分析。</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="OLS.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod1)</span></code></pre></div>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="5001-chapter05_files/figure-html/unnamed-chunk-13-2.png" width="672" /><img src="5001-chapter05_files/figure-html/unnamed-chunk-13-3.png" width="672" /><img src="5001-chapter05_files/figure-html/unnamed-chunk-13-4.png" width="672" /></p>
+<p>第一幅图是残差对预测值散点图，散点应当在0线上下波动，若有曲线模式、分散程度增大模式、特别突出的离群点存在，则说明有异常。</p>
+<p>第二幅图是残差的正态QQ图，当散点接近直线的时候可以认为模型的残差服从正态分布。</p>
+<p>第三幅图误差大小（标准化残差绝对值的平方根）对拟合值的图形，可以判断方差齐性假设。</p>
+<p>第四幅图是残差对杠杠量图，并添加了Cook距离等值线。杠杆量代表回归自变量对结果的影响大小。</p>
+<p>由第一、第三副图，842、1146、2151、6861可能存在异常。</p>
+<p>可以使用<code>[]</code>和要选择的行的索引来实现从数据框中提取观测样本（行）的目的。<code>[]</code>左侧数字表示观测的样本数（行数），右侧数字表示变量数（列数）。如果将逗号前或后的空格留空，则将分别选择所有的行或列。</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="OLS.html#cb215-1" aria-hidden="true" tabindex="-1"></a>core[<span class="dv">660</span>,]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 12
+##   stype gender   age agegroup height weight educ  poli  income famincome health
+##   &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt; 
+## 1 农村  女        59 45~60岁     145    199 未受… 群众    8000     10000 一般  
+## # ℹ 1 more variable: happy &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="OLS.html#cb217-1" aria-hidden="true" tabindex="-1"></a>core[<span class="dv">3814</span>,]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 12
+##   stype gender   age agegroup height weight educ  poli  income famincome health 
+##   &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;  
+## 1 农村  男        75 60岁以上    117    110 初等… 群众       0      3000 很不健…
+## # ℹ 1 more variable: happy &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="OLS.html#cb219-1" aria-hidden="true" tabindex="-1"></a>core[<span class="dv">368</span>,]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 12
+##   stype gender   age agegroup height weight educ  poli  income famincome health 
+##   &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;  
+## 1 城镇  男        31 30~45岁     185    240 高等… 群众  300000    480000 比较健…
+## # ℹ 1 more variable: happy &lt;fct&gt;</code></pre>
+<p>660和3814的身高与体重显然异于常人，不符合现实状况。面对这些异常值，我们可以进行解释，也可以进行删除或置之不理。</p>
+</div>
+<div id="OLS-others" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> 其他线性模型<a href="OLS.html#OLS-others" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R语言每一个模型通常不只一个模型。实现回归的选择很多，下面选择一些个性化的包介绍。</p>
+<div id="OLS-others1" class="section level4 hasAnchor" number="5.2.4.1">
+<h4><span class="header-section-number">5.2.4.1</span> jmv包<a href="OLS.html#OLS-others1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>jmv包常用于统计分析，如描述，t检验，方差分析，相关矩阵，比例检验，应急表和因子分析。通过以下的实例来说明它的用法以及结果，数据集与解决目标同上。</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="OLS.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;jmv&quot;)</span></span>
+<span id="cb221-2"><a href="OLS.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="OLS.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">linReg</span>(<span class="at">data =</span> core, <span class="at">dep =</span> <span class="st">&#39;weight&#39;</span>,<span class="at">covs =</span> <span class="st">&#39;height&#39;</span>,<span class="at">blocks =</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="st">&#39;height&#39;</span>)))</span></code></pre></div>
+<pre><code>## 
+##  LINEAR REGRESSION
+## 
+##  Model Fit Measures                  
+##  ─────────────────────────────────── 
+##    Model    R            R²          
+##  ─────────────────────────────────── 
+##        1    0.5492710    0.3016987   
+##  ─────────────────────────────────── 
+## 
+## 
+##  MODEL SPECIFIC RESULTS
+## 
+##  MODEL 1
+## 
+##  Model Coefficients - weight                                           
+##  ───────────────────────────────────────────────────────────────────── 
+##    Predictor    Estimate       SE            t            p            
+##  ───────────────────────────────────────────────────────────────────── 
+##    Intercept    -135.547400    6.29092827    -21.54649    &lt; .0000001   
+##    height          1.592594    0.03831458     41.56626    &lt; .0000001   
+##  ─────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div id="OLS-others2" class="section level4 hasAnchor" number="5.2.4.2">
+<h4><span class="header-section-number">5.2.4.2</span> zelig包<a href="OLS.html#OLS-others2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>该包是社会科学领域鼎鼎大名的哈佛大学Gary King团队出品。在<a href="https://zeligproject.org/" class="uri">https://zeligproject.org/</a>上有更详细的介绍。</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="OLS.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;zeligverse&quot;) 如果这个命令无法下载，使用下面的命令，二选一。</span></span>
+<span id="cb224-2"><a href="OLS.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github(&#39;IQSS/Zelig&#39;)</span></span>
+<span id="cb224-3"><a href="OLS.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Zelig)</span></code></pre></div>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Zelig&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     reduce</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     stat</code></pre>
+<p>选择model为ls即为简单的线性回归.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="OLS.html#cb229-1" aria-hidden="true" tabindex="-1"></a>zelig_mod <span class="ot">&lt;-</span> <span class="fu">zelig</span>(weight <span class="sc">~</span> height, <span class="at">model =</span> <span class="st">&quot;ls&quot;</span>, <span class="at">data =</span> core)</span></code></pre></div>
+<pre><code>## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.
+## ℹ Please use `tibble::as_tibble()` instead.
+## ℹ The deprecated feature was likely used in the Zelig package.
+##   Please report the issue at &lt;https://github.com/IQSS/Zelig/issues&gt;.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre><code>## Warning: `group_by_()` was deprecated in dplyr 0.7.0.
+## ℹ Please use `group_by()` instead.
+## ℹ See vignette(&#39;programming&#39;) for more help
+## ℹ The deprecated feature was likely used in the Zelig package.
+##   Please report the issue at &lt;https://github.com/IQSS/Zelig/issues&gt;.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre><code>## How to cite this model in Zelig:
+##   R Core Team. 2007.
+##   ls: Least Squares Regression for Continuous Dependent Variables
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; https://zeligproject.org/</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="OLS.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(zelig_mod)</span></code></pre></div>
+<pre><code>## Model: 
+## 
+## Call:
+## z5$zelig(formula = weight ~ height, data = core)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -81.008 -13.305  -1.194  12.288 103.621 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) -135.54740    6.29093  -21.55   &lt;2e-16
+## height         1.59259    0.03831   41.57   &lt;2e-16
+## 
+## Residual standard error: 19.75 on 3999 degrees of freedom
+## Multiple R-squared:  0.3017, Adjusted R-squared:  0.3015 
+## F-statistic:  1728 on 1 and 3999 DF,  p-value: &lt; 2.2e-16
+## 
+## Next step: Use &#39;setx&#39; method</code></pre>
+</div>
+</div>
+<div id="OLS-high" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> 高阶拟合<a href="OLS.html#OLS-high" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在一元回归分析中，如果依变量y与自变量x的关系为非线性的（例如年龄和收入），但是又找不到适当的函数曲线来拟合，则可以采用一元多项式回归。多项式回归的最大优点就是可以通过增加x的高次项对实测点进行逼近，直至满意为止。事实上，多项式回归可以处理相当一类非线性问题，它在回归分析中占有重要的地位，因为任一函数都可以分段用多项式来逼近。因此，在通常的实际问题中，不论因变量与其他自变量的关系如何，我们总可以用多项式回归来进行分析。一般从图形当中我们也能看出应用高次项逼近的相关提示。以下通过一个实例来演示怎么样在R中操作多项式回归。</p>
+<p>变量为国民的身高和体重。在上述的简单线性回归分析结果当中看出，我们可能要添加一个高次项来提高回归的精确程度，因此我们加入了一个二次项进入回归方程当中进行再次拟合。</p>
+<p>多项式回归</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="OLS.html#cb235-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight<span class="sc">~</span>height<span class="sc">+</span><span class="fu">I</span>(height<span class="sc">^</span><span class="dv">2</span>),<span class="at">data=</span>core)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="OLS.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = weight ~ height + I(height^2), data = core)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -79.937 -13.224  -0.937  11.802  97.370 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 428.249286  84.174701   5.088 3.79e-07 ***
+## height       -5.296499   1.026402  -5.160 2.59e-07 ***
+## I(height^2)   0.020993   0.003126   6.717 2.12e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 19.64 on 3998 degrees of freedom
+## Multiple R-squared:  0.3095, Adjusted R-squared:  0.3091 
+## F-statistic:   896 on 2 and 3998 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>由输出结果可以得出新的回归方程：</p>
+<blockquote>
+<p>weight = 428.25-5.30*height+0.02*height^2</p>
+</blockquote>
+<p>在拟合含二次项的等式里面，添加了一个身高的平方项。在p&lt;0.001水平下，回归系数都是显著的。模型的方差解释率增加到了30.65%。如果你愿意，可以拟合更多的多项式。如拟合三次多项式，可用：</p>
+<blockquote>
+<p>mod3 &lt;- lm(weight ~ height + I(height^2) +I(height^3), data=core)</p>
+</blockquote>
+<p>社会科学的实践中很少拟合高阶曲线，仅供满足好奇心。</p>
+<p>接下来，我们用car包中的scatterplot函数加拟合线完成上述过程的可视化</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="OLS.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## 
+## Attaching package: &#39;car&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     some</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="OLS.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(weight<span class="sc">~</span>height,<span class="at">data=</span>core,<span class="at">spread=</span><span class="cn">FALSE</span>,<span class="at">lty.smooth=</span><span class="dv">2</span>, <span class="at">smoother=</span>gamLine,<span class="at">main=</span><span class="st">&quot;拟合示意图&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;身高&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;体重&quot;</span>) </span></code></pre></div>
+<pre><code>## Warning in plot.window(...): &quot;spread&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in plot.window(...): &quot;lty.smooth&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in plot.window(...): &quot;smoother&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): &quot;spread&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): &quot;lty.smooth&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): &quot;smoother&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;spread&quot; is not a
+## graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;lty.smooth&quot; is
+## not a graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;smoother&quot; is not
+## a graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;spread&quot; is not a
+## graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;lty.smooth&quot; is
+## not a graphical parameter</code></pre>
+<pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;smoother&quot; is not
+## a graphical parameter</code></pre>
+<pre><code>## Warning in box(...): &quot;spread&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in box(...): &quot;lty.smooth&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in box(...): &quot;smoother&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in title(...): &quot;spread&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in title(...): &quot;lty.smooth&quot; is not a graphical parameter</code></pre>
+<pre><code>## Warning in title(...): &quot;smoother&quot; is not a graphical parameter</code></pre>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+</div>
+<div id="OLS-multiple" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 多元线性回归<a href="OLS.html#OLS-multiple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在社会科学的研究中，影响因变量的因素不不可能是单一的。因此，实际的定量研究成果中，我们一般会使用多元回归模型。<br />
+### 多元线性回归模型拟合 {#OLS-multiplrfit}</p>
+<p>多元线性回归的一般形式如下</p>
+<blockquote>
+<p>mulmod1 &lt;- lm(y ~ x1 + x2 + x3 + x4 + ….xk, data = core)</p>
+</blockquote>
+<p>我们根据CGSS2021建立的core数据库里包含了收入、性别、教育等变量，以下分析中，我们想着重探究的问题是：<strong>性别和教育水平对收入的影响。</strong></p>
+<p>首先我们建立一个收入、性别和教育三个变量的多元线性回归模型。</p>
+<p>拟合多元回归模型</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="OLS.html#cb262-1" aria-hidden="true" tabindex="-1"></a>mulmod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> gender <span class="sc">+</span> educ, core)</span></code></pre></div>
+<p>输出模型结果</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="OLS.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mulmod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = income ~ gender + educ, data = core)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -140022  -30877   -9369    6631 9854123 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     31366      15170   2.068  0.03873 *  
+## gender女       -26508       8678  -3.055  0.00227 ** 
+## educ初等教育     1154      16435   0.070  0.94404    
+## educ中等教育    24511      15179   1.615  0.10644    
+## educ高等教育   108656      16813   6.462 1.15e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 270100 on 3996 degrees of freedom
+## Multiple R-squared:  0.02278,    Adjusted R-squared:  0.0218 
+## F-statistic: 23.29 on 4 and 3996 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>由输出的模型结果可以看出，模型的P值小于0.05，<code>Adjustted R-squared</code>为0.022，可以解释收入2.2%%的变异量。自变量女性和高等教育的P值均小于0.05，两个自变量对收入的影响都是显著的，进而可以做出如下解读：</p>
+<ol style="list-style-type: decimal">
+<li>在同一教育水平下，女性与男性（对照组，方程中未显示）相比，其期望平均收入比男性低26508元。</li>
+<li>在同一性别中，高等教育与未受教育（对照组，方程中未显示）相比，其期望平均收入比未受教育高108656元。</li>
+</ol>
+<p>引人深思的是，初等教育和中等教育的平均期望收入水平都未有显著高于未受教育。数据告诉我们，文化资本对于个人而言仍然十分重要。</p>
+<p>模型结果可视化</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="OLS.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;sjPlot&quot;)</span></span>
+<span id="cb265-2"><a href="OLS.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb265-3"><a href="OLS.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(mulmod1,<span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">width =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="OLS.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(mulmod1, </span>
+<span id="cb266-2"><a href="OLS.html#cb266-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">show.reflvl =</span> T, </span>
+<span id="cb266-3"><a href="OLS.html#cb266-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">show.intercept =</span> T, </span>
+<span id="cb266-4"><a href="OLS.html#cb266-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">p.style =</span> <span class="st">&quot;numeric_stars&quot;</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+个人2020年总收入
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+31366.07 <sup>*</sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1625.22 – 61106.92
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.039</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+男
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+女
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-26508.21 <sup>**</sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-43521.56 – -9494.85
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.002</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+未受教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+初等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1153.70 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-31068.53 – 33375.94
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.944
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+中等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+24511.03 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-5248.94 – 54271.00
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.106
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+高等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+108655.79 <sup>***</sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+75692.22 – 141619.36
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+其他
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+4001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.023 / 0.022
+</td>
+</tr>
+<tr>
+<td colspan="4" style="font-style:italic; border-top:double black; text-align:right;">
+<ul>
+<li>p&lt;0.05   ** p&lt;0.01   *** p&lt;0.001
+</td>
+</tr></li>
+</ul>
+</table>
+<div id="OLS-multisummary" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> 模型汇总<a href="OLS.html#OLS-multisummary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>下文我们将给出带交互效应的多元线性回归模型，并将其结果以学术论文中的标准表格呈现。如果两个预测变量的交互项显著，说明因变量(Y)与其中一个预测变量的关系与另外一个预测变量的值存在一定的相关性。说起来有点晦涩，我们看一个实例的可视化结果便可以清楚的理解。</p>
+<p>如下简单代码生成以下五个回归模型，并将结果依次存为mulmod2至mulmod6。</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="OLS.html#cb267-1" aria-hidden="true" tabindex="-1"></a>mulmod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> gender, core)</span>
+<span id="cb267-2"><a href="OLS.html#cb267-2" aria-hidden="true" tabindex="-1"></a>mulmod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> educ, core)</span>
+<span id="cb267-3"><a href="OLS.html#cb267-3" aria-hidden="true" tabindex="-1"></a>mulmod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> gender <span class="sc">+</span> educ, core)</span>
+<span id="cb267-4"><a href="OLS.html#cb267-4" aria-hidden="true" tabindex="-1"></a>mulmod5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> gender <span class="sc">+</span> educ <span class="sc">+</span> poli <span class="sc">+</span> height <span class="sc">+</span> weight <span class="sc">+</span> stype, core)</span>
+<span id="cb267-5"><a href="OLS.html#cb267-5" aria-hidden="true" tabindex="-1"></a>mulmod6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> gender <span class="sc">+</span> educ <span class="sc">+</span> poli <span class="sc">+</span> height <span class="sc">+</span> weight <span class="sc">+</span> stype <span class="sc">+</span> gender<span class="sc">:</span>educ, core)</span></code></pre></div>
+<p>作为案例，<code>mulmod5</code>中加入了除性别和教育外的更多预测变量。<code>mulmod6</code>中加入了交互项<code>educ:sex</code>。</p>
+<p>利用<code>stargazer</code>包，一行简单的代码就可以输出上述五个模型的汇总，稍加修改就能应用在我们的研究成果中。如下：</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="OLS.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span></code></pre></div>
+<pre><code>## 
+## Please cite as:</code></pre>
+<pre><code>##  Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.</code></pre>
+<pre><code>##  R package version 5.2.3. https://CRAN.R-project.org/package=stargazer</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="OLS.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(mulmod2,mulmod3,mulmod4,mulmod5,mulmod6,<span class="at">type=</span><span class="st">&quot;html&quot;</span>,<span class="at">out=</span><span class="st">&quot;result.html&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## &lt;table style=&quot;text-align:center&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;6&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;5&quot;&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=&quot;5&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td colspan=&quot;5&quot;&gt;income&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;td&gt;(4)&lt;/td&gt;&lt;td&gt;(5)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;6&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;gender女&lt;/td&gt;&lt;td&gt;-28,546.870&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-26,508.210&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;-11,841.320&lt;/td&gt;&lt;td&gt;2,392.594&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(8,636.321)&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(8,677.813)&lt;/td&gt;&lt;td&gt;(11,143.950)&lt;/td&gt;&lt;td&gt;(32,886.990)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;educ初等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;7,483.266&lt;/td&gt;&lt;td&gt;1,153.703&lt;/td&gt;&lt;td&gt;551.843&lt;/td&gt;&lt;td&gt;6,225.012&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(16,321.080)&lt;/td&gt;&lt;td&gt;(16,435.240)&lt;/td&gt;&lt;td&gt;(16,416.530)&lt;/td&gt;&lt;td&gt;(31,135.740)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;educ中等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;32,361.900&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;24,511.030&lt;/td&gt;&lt;td&gt;25,297.060&lt;/td&gt;&lt;td&gt;35,947.240&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(14,975.760)&lt;/td&gt;&lt;td&gt;(15,179.340)&lt;/td&gt;&lt;td&gt;(15,471.950)&lt;/td&gt;&lt;td&gt;(29,724.500)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;educ高等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;114,928.700&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;108,655.800&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;120,493.000&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;146,423.200&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(16,704.870)&lt;/td&gt;&lt;td&gt;(16,813.360)&lt;/td&gt;&lt;td&gt;(18,574.380)&lt;/td&gt;&lt;td&gt;(32,660.570)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;poli共青团员&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-68,172.010&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;-66,941.880&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(20,727.510)&lt;/td&gt;&lt;td&gt;(20,743.610)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;poli民主党派&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;4,716.027&lt;/td&gt;&lt;td&gt;138.283&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(155,985.600)&lt;/td&gt;&lt;td&gt;(156,025.100)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;poli共产党员&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;3,758.095&lt;/td&gt;&lt;td&gt;3,851.167&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(13,037.970)&lt;/td&gt;&lt;td&gt;(13,048.430)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;height&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;514.123&lt;/td&gt;&lt;td&gt;487.213&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(772.098)&lt;/td&gt;&lt;td&gt;(772.538)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;weight&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;430.972&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;384.912&lt;sup&gt;*&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(218.816)&lt;/td&gt;&lt;td&gt;(220.799)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;stype城镇&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-11,557.800&lt;/td&gt;&lt;td&gt;-11,541.820&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(10,251.890)&lt;/td&gt;&lt;td&gt;(10,252.840)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;gender女:educ初等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-3,632.507&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(36,896.280)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;gender女:educ中等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-12,399.900&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(34,554.990)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;gender女:educ高等教育&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;-41,606.860&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;(37,757.500)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Constant&lt;/td&gt;&lt;td&gt;65,759.920&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;10,995.890&lt;/td&gt;&lt;td&gt;31,366.070&lt;sup&gt;**&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;-111,139.800&lt;/td&gt;&lt;td&gt;-112,398.500&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;(6,264.271)&lt;/td&gt;&lt;td&gt;(13,639.470)&lt;/td&gt;&lt;td&gt;(15,169.580)&lt;/td&gt;&lt;td&gt;(120,224.800)&lt;/td&gt;&lt;td&gt;(122,574.300)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;6&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Observations&lt;/td&gt;&lt;td&gt;4,001&lt;/td&gt;&lt;td&gt;4,001&lt;/td&gt;&lt;td&gt;4,001&lt;/td&gt;&lt;td&gt;4,001&lt;/td&gt;&lt;td&gt;4,001&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.003&lt;/td&gt;&lt;td&gt;0.020&lt;/td&gt;&lt;td&gt;0.023&lt;/td&gt;&lt;td&gt;0.028&lt;/td&gt;&lt;td&gt;0.028&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.002&lt;/td&gt;&lt;td&gt;0.020&lt;/td&gt;&lt;td&gt;0.022&lt;/td&gt;&lt;td&gt;0.025&lt;/td&gt;&lt;td&gt;0.025&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;272,765.700 (df = 3999)&lt;/td&gt;&lt;td&gt;270,391.900 (df = 3997)&lt;/td&gt;&lt;td&gt;270,110.600 (df = 3996)&lt;/td&gt;&lt;td&gt;269,656.500 (df = 3990)&lt;/td&gt;&lt;td&gt;269,673.400 (df = 3987)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;F Statistic&lt;/td&gt;&lt;td&gt;10.926&lt;sup&gt;***&lt;/sup&gt; (df = 1; 3999)&lt;/td&gt;&lt;td&gt;27.880&lt;sup&gt;***&lt;/sup&gt; (df = 3; 3997)&lt;/td&gt;&lt;td&gt;23.287&lt;sup&gt;***&lt;/sup&gt; (df = 4; 3996)&lt;/td&gt;&lt;td&gt;11.293&lt;sup&gt;***&lt;/sup&gt; (df = 10; 3990)&lt;/td&gt;&lt;td&gt;8.878&lt;sup&gt;***&lt;/sup&gt; (df = 13; 3987)&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan=&quot;6&quot; style=&quot;border-bottom: 1px solid black&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left&quot;&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td colspan=&quot;5&quot; style=&quot;text-align:right&quot;&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+## &lt;/table&gt;</code></pre>
+</div>
+<div id="OLS-each" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> 交互模型效应<a href="OLS.html#OLS-each" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>用sjPlot的sjt.lm函数可以方便的输出单个模型的参数。如下：</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="OLS.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb274-2"><a href="OLS.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(mulmod6,</span>
+<span id="cb274-3"><a href="OLS.html#cb274-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">show.reflvl =</span> T, </span>
+<span id="cb274-4"><a href="OLS.html#cb274-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">show.intercept =</span> T, </span>
+<span id="cb274-5"><a href="OLS.html#cb274-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">p.style =</span> <span class="st">&quot;numeric_stars&quot;</span></span>
+<span id="cb274-6"><a href="OLS.html#cb274-6" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+个人2020年总收入
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-112398.55 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-352712.67 – 127915.58
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.359
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+身高（厘米）
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+487.21 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1027.39 – 2001.82
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.528
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+体重（斤）
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+384.91 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-47.98 – 817.80
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.081
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+男
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+女
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+2392.59 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-62084.29 – 66869.48
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.942
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+未受教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+初等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+6225.01 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-54818.44 – 67268.47
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.842
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+中等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+35947.24 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-22329.39 – 94223.87
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.227
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+gender女:educ初等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-3632.51 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-75969.84 – 68704.83
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.922
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+gender女:educ高等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-41606.86 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-115632.68 – 32418.96
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.271
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+gender女:educ中等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-12399.90 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-80147.01 – 55347.21
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.720
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+高等教育
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+146423.24 <sup>***</sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+82390.27 – 210456.22
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+其他
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+群众
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+共青团员
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-66941.89 <sup>**</sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-107610.96 – -26272.81
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+民主党派
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+138.28 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-305758.12 – 306034.69
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.999
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+共产党员
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+3851.17 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-21731.05 – 29433.39
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.768
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+不知道
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+拒绝回答
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+农村
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<em>Reference</em>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+城镇
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-11541.82 <sup></sup>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-31643.12 – 8559.48
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.260
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+4001
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.028 / 0.025
+</td>
+</tr>
+<tr>
+<td colspan="4" style="font-style:italic; border-top:double black; text-align:right;">
+<ul>
+<li>p&lt;0.05   ** p&lt;0.01   *** p&lt;0.001
+</td>
+</tr></li>
+</ul>
+</table>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="OLS.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
+<pre><code>## lattice theme set by effectsTheme()
+## See ?effectsTheme for details.</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="OLS.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">effect</span>(<span class="st">&quot;gender:educ&quot;</span>,mulmod6,<span class="at">xlevels=</span><span class="fu">list</span>(<span class="at">gender=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))),<span class="at">multiline=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="5001-chapter05_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>稳健性检验包</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="OLS.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;robust&quot;)</span></span>
+<span id="cb278-2"><a href="OLS.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robust)</span></code></pre></div>
+<pre><code>## Loading required package: fit.models</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="OLS.html#cb280-1" aria-hidden="true" tabindex="-1"></a>mulmod1_small <span class="ot">&lt;-</span> <span class="fu">lmRob</span>(income <span class="sc">~</span> gender <span class="sc">+</span> educ,  <span class="at">data =</span> core)</span>
+<span id="cb280-2"><a href="OLS.html#cb280-2" aria-hidden="true" tabindex="-1"></a>mulmod1_full <span class="ot">&lt;-</span> <span class="fu">lmRob</span>(income <span class="sc">~</span> . , <span class="at">data =</span> core)</span>
+<span id="cb280-3"><a href="OLS.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mulmod1_full)</span></code></pre></div>
+<pre><code>## 
+## Terms added sequentially (first to last)
+## 
+##             Chisq Df RobustF     Pr(F)    
+## (Intercept)        1                      
+## stype              1  343.32 &lt; 2.2e-16 ***
+## gender             1  100.46 &lt; 2.2e-16 ***
+## age                1   72.56 &lt; 2.2e-16 ***
+## agegroup           3  173.67 &lt; 2.2e-16 ***
+## height             1   35.06 1.603e-09 ***
+## weight             1    4.43  0.031954 *  
+## educ               3  383.71 &lt; 2.2e-16 ***
+## poli               3  129.21 &lt; 2.2e-16 ***
+## famincome          1  751.83 &lt; 2.2e-16 ***
+## health             4   18.51 1.161e-05 ***
+## happy              4    6.60  0.008868 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="OLS.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mulmod1_full, mulmod1_small)</span></code></pre></div>
+<pre><code>## 
+## Response: income
+##      Terms     Df RobustF     Pr(F)    
+## [1,]     2   1                         
+## [2,]     1   1 19  78.728 9.258e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="two-logit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="TB.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dta.html"><a href="dta.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dta.html"><a href="dta.html#dta-read"><i class="fa fa-check"></i><b>1.1</b> 数据读入：以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dta.html"><a href="dta.html#dta-wrap1"><i class="fa fa-check"></i><b>1.2</b> 数据处理1</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="dta.html"><a href="dta.html#dta-cc"><i class="fa fa-check"></i><b>1.2.1</b> R中的变量类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="dta.html"><a href="dta.html#dta-wrap2"><i class="fa fa-check"></i><b>1.3</b> 数据处理2</a></li>
+<li class="chapter" data-level="1.4" data-path="dta.html"><a href="dta.html#dta-wrap3"><i class="fa fa-check"></i><b>1.4</b> 数据处理3</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="dta.html"><a href="dta.html#dta-dia"><i class="fa fa-check"></i><b>1.4.1</b> 诊断数据集</a></li>
+<li class="chapter" data-level="1.4.2" data-path="dta.html"><a href="dta.html#dta-values"><i class="fa fa-check"></i><b>1.4.2</b> 处理异常值和缺失值</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-Variable-labels"><i class="fa fa-check"></i><b>2.1</b> 变量标签</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-summary"><i class="fa fa-check"></i><b>2.2</b> gtsummary包</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="TB.html"><a href="TB.html#TB-summary1"><i class="fa fa-check"></i><b>2.2.1</b> 函数<code>tbl_summary()</code>的默认输出</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TB.html"><a href="TB.html#TB-summary2"><i class="fa fa-check"></i><b>2.2.2</b> 函数<code>tbl_summary()</code>的分组比较</a></li>
+<li class="chapter" data-level="2.2.3" data-path="TB.html"><a href="TB.html#TB-summary3"><i class="fa fa-check"></i><b>2.2.3</b> 函数<code>tbl_gtsummary()</code>的自定义输出</a></li>
+<li class="chapter" data-level="2.2.4" data-path="TB.html"><a href="TB.html#TB-cross"><i class="fa fa-check"></i><b>2.2.4</b> 函数<code>tbl_cross</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TB.html"><a href="TB.html#TB-table1"><i class="fa fa-check"></i><b>2.3</b> table1包</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TB.html"><a href="TB.html#TB-table1.1"><i class="fa fa-check"></i><b>2.3.1</b> 无分层</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TB.html"><a href="TB.html#TB-table1.2"><i class="fa fa-check"></i><b>2.3.2</b> 有分层</a></li>
+<li class="chapter" data-level="2.3.3" data-path="TB.html"><a href="TB.html#TB-table1.2.1"><i class="fa fa-check"></i><b>2.3.3</b> 一个分层</a></li>
+<li class="chapter" data-level="2.3.4" data-path="TB.html"><a href="TB.html#TB-table1.2.2"><i class="fa fa-check"></i><b>2.3.4</b> 两个分层</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="TB.html"><a href="TB.html#TB-kable"><i class="fa fa-check"></i><b>2.4</b> <code>KableExtra</code>包</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="TB.html"><a href="TB.html#TB-kable1"><i class="fa fa-check"></i><b>2.4.1</b> 小试牛刀</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 图形</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.1.1</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.1.2</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.1.3" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.1.3</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.1.4" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.1.4</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-plotly"><i class="fa fa-check"></i><b>3.2</b> plotly</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="PI.html"><a href="PI.html#PI-baisc"><i class="fa fa-check"></i><b>3.2.1</b> 基本图形</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="OLS.html"><a href="OLS.html"><i class="fa fa-check"></i><b>5</b> 线性回归</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="OLS.html"><a href="OLS.html#OLS-inro"><i class="fa fa-check"></i><b>5.1</b> 简单线性回归介绍</a></li>
+<li class="chapter" data-level="5.2" data-path="OLS.html"><a href="OLS.html#OLS-simple"><i class="fa fa-check"></i><b>5.2</b> 一元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="OLS.html"><a href="OLS.html#OLS-build"><i class="fa fa-check"></i><b>5.2.1</b> 模型建立</a></li>
+<li class="chapter" data-level="5.2.2" data-path="OLS.html"><a href="OLS.html#OLS-explain"><i class="fa fa-check"></i><b>5.2.2</b> 模型结果解读</a></li>
+<li class="chapter" data-level="5.2.3" data-path="OLS.html"><a href="OLS.html#OLS-residual"><i class="fa fa-check"></i><b>5.2.3</b> 残差分析</a></li>
+<li class="chapter" data-level="5.2.4" data-path="OLS.html"><a href="OLS.html#OLS-others"><i class="fa fa-check"></i><b>5.2.4</b> 其他线性模型</a></li>
+<li class="chapter" data-level="5.2.5" data-path="OLS.html"><a href="OLS.html#OLS-high"><i class="fa fa-check"></i><b>5.2.5</b> 高阶拟合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="OLS.html"><a href="OLS.html#OLS-multiple"><i class="fa fa-check"></i><b>5.3</b> 多元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="OLS.html"><a href="OLS.html#OLS-multiplrfit"><i class="fa fa-check"></i><b>5.3.1</b> 多元线性回归模型拟合</a></li>
+<li class="chapter" data-level="5.3.2" data-path="OLS.html"><a href="OLS.html#OLS-multisummary"><i class="fa fa-check"></i><b>5.3.2</b> 模型汇总</a></li>
+<li class="chapter" data-level="5.3.3" data-path="OLS.html"><a href="OLS.html#OLS-each"><i class="fa fa-check"></i><b>5.3.3</b> 交互模型效应</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="two-logit.html"><a href="two-logit.html"><i class="fa fa-check"></i><b>6</b> 二分变量回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-i"><i class="fa fa-check"></i><b>6.1</b> 二值型回归模型</a></li>
+<li class="chapter" data-level="6.2" data-path="two-logit.html"><a href="two-logit.html#更多的包-two-logit-o"><i class="fa fa-check"></i><b>6.2</b> 更多的包 {two-logit-o}</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="two-logit.html"><a href="two-logit.html#zelig-two-logit-o1"><i class="fa fa-check"></i><b>6.2.1</b> Zelig {two-logit-o1}</a></li>
+<li class="chapter" data-level="6.2.2" data-path="two-logit.html"><a href="two-logit.html#rms包-two-logit-o2"><i class="fa fa-check"></i><b>6.2.2</b> rms包 {two-logit-o2}</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="two-logit.html"><a href="two-logit.html#two-logit-e"><i class="fa fa-check"></i><b>6.3</b> 交互效应与可视化</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-e1"><i class="fa fa-check"></i><b>6.3.1</b> 对方程进行方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>7</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>7.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="7.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>7.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="7.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>7.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>8</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>8.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="8.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>8.2</b> 词频count</a></li>
+<li class="chapter" data-level="8.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>8.3</b> 词云</a></li>
+<li class="chapter" data-level="8.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>8.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>8.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>8.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>8.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>8.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>9</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>9.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>9.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="9.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>9.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>9.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>9.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>9.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>9.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="9.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>9.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="9.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>9.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>9.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="9.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>9.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>9.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="9.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>9.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dta" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> 数据的读入与处理<a href="dta.html#dta" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供 and 整理： 曾子尧 黄国政</p>
+<div id="dta-read" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> 数据读入：以.dta格式为例<a href="dta.html#dta-read" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据读入包一般有haven、foreign和readstata13三种。<a href="https://www.rdocumentation.org/packages/haven/versions/2.5.2">包的详情可参见此处</a>。</p>
+<p>国内各大型数据库基本都有stata的.dta数据格式文件，我们这里以CGSS2021为案例，主要介绍haven包和readstata13包如何读入.dta数据格式的文件。其中，haven包的读入代码为<code>read_dta()</code>或<code>read_stata()</code>，readstata13包的读入代码为<code>read.dta13()</code>。</p>
+<p><code>read_dta()</code>和<code>read_stata()</code>的读入效果没有差别，我们选取<code>read_dta()</code>和<code>readstata13()</code>进行比较。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dta.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-2"><a href="dta.html#cb1-2" tabindex="-1"></a>CGSS2021a <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;D://04_Rrender/Bookdown/2020sRBook/2020sRBook1/CGSS2021.dta&quot;</span>)</span>
+<span id="cb1-3"><a href="dta.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(readstata13)</span>
+<span id="cb1-4"><a href="dta.html#cb1-4" tabindex="-1"></a>CGSS2021c <span class="ot">&lt;-</span> <span class="fu">read.dta13</span>(<span class="st">&quot;D://04_Rrender/Bookdown/2020sRBook/2020sRBook1/CGSS2021.dta&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in read.dta13(&quot;D://04_Rrender/Bookdown/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Duplicated factor levels for variables
+## 
+##    XA1, XA6, XB1, XB6, XC1, XC6, isco08_a57e,
+##    isco08_a59d, isco08_a60d, isco08_sp,
+##    isco08_f, isco08_m
+## 
+##    Unique labels for these variables have been generated.</code></pre>
+<pre><code>## Warning in read.dta13(&quot;D://04_Rrender/Bookdown/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Factor codes of type double or float detected in variables
+## 
+##    type, A8a, A8b, L2, L4b, L5, L8a, L8b, L9,
+##    A60m, A62, A75a, A75b
+## 
+##    No labels have been assigned.
+##    Set option &#39;nonint.factors = TRUE&#39; to assign labels anyway.</code></pre>
+<pre><code>## Warning in read.dta13(&quot;D://04_Rrender/Bookdown/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Missing factor labels for variables
+## 
+##    P18
+## 
+##    No labels have been assigned.
+##    Set option &#39;generate.factors=TRUE&#39; to generate labels.</code></pre>
+<p><code>typeof()</code>函数和<code>class()</code>函数可用于检查<strong>数据集</strong>或<strong>列</strong>中的数据类型。比较观察两种读入代码对变量数据类型的影响有什么不同。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dta.html#cb5-1" tabindex="-1"></a><span class="fu">class</span>(CGSS2021a<span class="sc">$</span>A2)</span></code></pre></div>
+<pre><code>## [1] &quot;haven_labelled&quot; &quot;vctrs_vctr&quot;     &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dta.html#cb7-1" tabindex="-1"></a><span class="fu">class</span>(CGSS2021c<span class="sc">$</span>A2)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>可以发现，stata的byte类型变量经由<code>read_dta()</code>读入后数据类型为double，同时由于haven包的影响，数据类型兼为haven_labelled和vctrs_vctr。前一种数据类型保留了数值型的性质，后两种数据类型则便于转换将数据为因子型，但有时也给数据分析带来一些问题，关于这一点，我们在后续分析时再具体进行讨论。</p>
+<p><strong>我们特别关心变量的类型，原因是变量的类型规定了可以对该变量执行的统计操作的类型。</strong></p>
+<p>概览数据库，可总结出两种语法存在以下两处明显的区别：</p>
+<ol style="list-style-type: decimal">
+<li>read_dta读入了对应的<strong>变量标签内容</strong>和<strong>变量选项编码数值</strong>，而read.dta13没有对应的<strong>变量标签内容</strong>，且直接读出<strong>变量编码数值的内容</strong>，视觉上呈现了选项的含义。</li>
+<li>read_dta读入的数据是<strong>数值型</strong>的，而read.dta13读入的数据是<strong>因子型</strong>的。</li>
+</ol>
+<p>我们认为，虽然<code>read.dta13()</code>会带来视觉上的方便，但是<code>read_dta()</code>和<code>read_stata()</code>在重新编码上更具有优势。</p>
+</div>
+<div id="dta-wrap1" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> 数据处理1<a href="dta.html#dta-wrap1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据读入完毕。由于CGSS2021数据库庞大且复杂，为便于分析，我们选取关注的变量并创建小型的数据集，再进一步进行数据的处理和诊断，最后再进行清洗。根据CGSS2021年的调查问卷，我们选取以下几个变量创建一级数据集cgss2021（相对原始数据集）。</p>
+<p>基本情况</p>
+<ol style="list-style-type: decimal">
+<li>A27d 出生户口登记地</li>
+<li>A2 性别</li>
+<li>A3_1出生日期</li>
+<li>A13 身高</li>
+<li>A14 体重</li>
+<li>A7a 目前最高教育程度</li>
+<li>A10 政治面貌</li>
+<li>A8a 个人2020年总收入</li>
+<li>A62 2020年全年家庭总收入</li>
+<li>A15 身体健康感受</li>
+<li>A36 生活幸福感</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="dta.html#cb9-1" tabindex="-1"></a>cgss2021 <span class="ot">&lt;-</span> CGSS2021a <span class="sc">%&gt;%</span> <span class="fu">select</span>(</span>
+<span id="cb9-2"><a href="dta.html#cb9-2" tabindex="-1"></a>    <span class="at">stype =</span> A27d,</span>
+<span id="cb9-3"><a href="dta.html#cb9-3" tabindex="-1"></a>    <span class="at">gender =</span> A2,</span>
+<span id="cb9-4"><a href="dta.html#cb9-4" tabindex="-1"></a>    <span class="at">birth =</span> A3_1,</span>
+<span id="cb9-5"><a href="dta.html#cb9-5" tabindex="-1"></a>    <span class="at">height =</span> A13,</span>
+<span id="cb9-6"><a href="dta.html#cb9-6" tabindex="-1"></a>    <span class="at">weight =</span> A14,</span>
+<span id="cb9-7"><a href="dta.html#cb9-7" tabindex="-1"></a>    <span class="at">edu =</span> A7a,</span>
+<span id="cb9-8"><a href="dta.html#cb9-8" tabindex="-1"></a>    <span class="at">poli =</span> A10,</span>
+<span id="cb9-9"><a href="dta.html#cb9-9" tabindex="-1"></a>    <span class="at">income =</span> A8a,</span>
+<span id="cb9-10"><a href="dta.html#cb9-10" tabindex="-1"></a>    <span class="at">famincome =</span> A62,</span>
+<span id="cb9-11"><a href="dta.html#cb9-11" tabindex="-1"></a>    <span class="at">health =</span> A15,</span>
+<span id="cb9-12"><a href="dta.html#cb9-12" tabindex="-1"></a>    <span class="at">happy =</span> A36</span>
+<span id="cb9-13"><a href="dta.html#cb9-13" tabindex="-1"></a>  )</span></code></pre></div>
+<p>使用<code>mutate()</code>函数，可以<strong>转换</strong>旧变量birth来<strong>增加</strong>新变量age，得出样本的具体年龄。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dta.html#cb10-1" tabindex="-1"></a>cgss2021 <span class="ot">&lt;-</span> cgss2021 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">age =</span> <span class="dv">2021</span><span class="sc">-</span>birth)</span></code></pre></div>
+<p>使用<code>head()</code>函数，可以查看数据集的前6行，观察增加的新变量age。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dta.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dta.html#cb14-1" tabindex="-1"></a><span class="fu">head</span>(cgss2021) <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="dta.html#cb14-2" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="dta.html#cb14-3" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;300px&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+stype
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+gender
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+birth
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+height
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+weight
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+poli
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+famincome
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+health
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+happy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+age
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1967
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+96000
+</td>
+<td style="text-align:right;">
+200000
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1945
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+60000
+</td>
+<td style="text-align:right;">
+120000
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1949
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+96000
+</td>
+<td style="text-align:right;">
+108000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1986
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+160000
+</td>
+<td style="text-align:right;">
+220000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1958
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+48000
+</td>
+<td style="text-align:right;">
+100000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+63
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1996
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+600000
+</td>
+<td style="text-align:right;">
+2000000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>age属于连续型变量，对连续型变量的重新编码同样可以使用<code>mutate()</code>函数。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dta.html#cb15-1" tabindex="-1"></a>cgss2021 <span class="ot">&lt;-</span> cgss2021 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">agegroup =</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-2"><a href="dta.html#cb15-2" tabindex="-1"></a>  age <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;30岁以下&quot;</span>,</span>
+<span id="cb15-3"><a href="dta.html#cb15-3" tabindex="-1"></a>  age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">&quot;30~45岁&quot;</span>,</span>
+<span id="cb15-4"><a href="dta.html#cb15-4" tabindex="-1"></a>  age <span class="sc">&gt;</span> <span class="dv">45</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;45~60岁&quot;</span>,</span>
+<span id="cb15-5"><a href="dta.html#cb15-5" tabindex="-1"></a>  age <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;60岁以上&quot;</span></span>
+<span id="cb15-6"><a href="dta.html#cb15-6" tabindex="-1"></a>))</span></code></pre></div>
+<p>使用<code>typeof()</code>函数查看agegroup变量类型，会发现已转化为离散变量中的字符型变量。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="dta.html#cb16-1" tabindex="-1"></a><span class="fu">typeof</span>(cgss2021<span class="sc">$</span>agegroup)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>使用<code>factor()</code>函数将agegroup转化为离散变量中的因子型变量。因子型变量属于类别，可以以数字的形式呈现，也可以以文本的形式呈现。因子型比字符型便于分析。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dta.html#cb18-1" tabindex="-1"></a>cgss2021<span class="sc">$</span>agegroup <span class="ot">&lt;-</span> <span class="fu">factor</span>(cgss2021<span class="sc">$</span>agegroup,</span>
+<span id="cb18-2"><a href="dta.html#cb18-2" tabindex="-1"></a>                              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;30岁以下&quot;</span>,<span class="st">&quot;30~45岁&quot;</span>,<span class="st">&quot;45~60岁&quot;</span>,<span class="st">&quot;60岁以上&quot;</span>))</span></code></pre></div>
+<div id="dta-cc" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> R中的变量类型<a href="dta.html#dta-cc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>前面提及到了R中的连续变量和离散变量等概念，在对数据进行处理之前，需要对R中可用的变量类型进行介绍。其中，R的主要变量类型有两种：离散变量和连续变量。</p>
+<div id="dta-di" class="section level4 hasAnchor" number="1.2.1.1">
+<h4><span class="header-section-number">1.2.1.1</span> 离散变量<a href="dta.html#dta-di" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>离散变量</strong>主要由<strong>可数</strong>的数字集合组成，例如从1到N的计数，或类别变量如女性和男性等，包括<strong>计数变量（整数）</strong>、<strong>顺序变量</strong>和<strong>类别变量</strong>，后两者又被称为分类变量。</p>
+</div>
+<div id="dta-con" class="section level4 hasAnchor" number="1.2.1.2">
+<h4><span class="header-section-number">1.2.1.2</span> 连续变量<a href="dta.html#dta-con" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>连续变量</strong>可以测量到<strong>任意</strong>精度，在刻度上的任意两个值之间加上额外的数。包括<strong>计数变量</strong>和<strong>数值变量</strong>。两者又被称为定量变量。</p>
+</div>
+<div id="dta-type" class="section level4 hasAnchor" number="1.2.1.3">
+<h4><span class="header-section-number">1.2.1.3</span> R的变量储存类型<a href="dta.html#dta-type" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>导入R中的数据储存格式有如下几种：double、integer、factor、character和logical、complex和raw。haven包导入的数据中，若变量的数据为连续型，则存储格式不变；若变量的数据为离散型，则存储为haven_labelled格式。
+double可以理解为连续变量中的数值变量，interger属于离散变量或连续变量中的计数变量，factor和character都属于离散变量中的类别变量。在R中，我们使用数字、整数、有序和因子分别表示数值变量、计数变量、顺序变量和类别变量。通常，我们可以使用<code>class()</code>或<code>typeof()</code>函数进行检验。</p>
+</div>
+</div>
+</div>
+<div id="dta-wrap2" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> 数据处理2<a href="dta.html#dta-wrap2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>接下来我们对”最高教育程度”edu变量进行再编码，先查看变量类型。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dta.html#cb19-1" tabindex="-1"></a><span class="fu">typeof</span>(cgss2021<span class="sc">$</span>edu)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>虽然edu显示为double（双精度），但实际上其中的值可数，相当于整数型，我们还是采取对离散型变量重新编码的方式（这同样适用于字符型和因子型）。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="dta.html#cb21-1" tabindex="-1"></a>cgss2021 <span class="ot">&lt;-</span> cgss2021 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">educ =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-2"><a href="dta.html#cb21-2" tabindex="-1"></a>  edu <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;未受教育&quot;</span>,</span>
+<span id="cb21-3"><a href="dta.html#cb21-3" tabindex="-1"></a>  edu <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;初等教育&quot;</span>,</span>
+<span id="cb21-4"><a href="dta.html#cb21-4" tabindex="-1"></a>  edu <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">6</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">7</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;中等教育&quot;</span>,</span>
+<span id="cb21-5"><a href="dta.html#cb21-5" tabindex="-1"></a>  edu <span class="sc">==</span> <span class="dv">9</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">10</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">11</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">12</span> <span class="sc">|</span> edu <span class="sc">==</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">&quot;高等教育&quot;</span>,</span>
+<span id="cb21-6"><a href="dta.html#cb21-6" tabindex="-1"></a>  edu <span class="sc">==</span> <span class="dv">14</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span></span>
+<span id="cb21-7"><a href="dta.html#cb21-7" tabindex="-1"></a>))</span>
+<span id="cb21-8"><a href="dta.html#cb21-8" tabindex="-1"></a><span class="co">#显然，对字符型或文本形式的因子型进行重新编码比较麻烦。</span></span>
+<span id="cb21-9"><a href="dta.html#cb21-9" tabindex="-1"></a><span class="co">#cgss2021&lt;- cgss2021 %&gt;% mutate(educ = case_when(</span></span>
+<span id="cb21-10"><a href="dta.html#cb21-10" tabindex="-1"></a><span class="co">#    edu == &quot;没有受过任何教育&quot; ~ &quot;未受教育&quot;,</span></span>
+<span id="cb21-11"><a href="dta.html#cb21-11" tabindex="-1"></a><span class="co">#    edu == &quot;私塾、扫盲班&quot;| edu == &quot;小学&quot; ~ &quot;初等教育&quot;,</span></span>
+<span id="cb21-12"><a href="dta.html#cb21-12" tabindex="-1"></a><span class="co">#    edu == &quot;初中&quot;| edu == &quot;职业高中&quot;| edu == &quot;普通高中&quot;| edu == &quot;中专&quot;| edu == &quot;技校&quot; ~ &quot;中等教育&quot;,</span></span>
+<span id="cb21-13"><a href="dta.html#cb21-13" tabindex="-1"></a><span class="co">#    edu == &quot;大学专科（成人高等教育）&quot;| edu == &quot;大学专科（正规高等教育）&quot;| edu == &quot;大学本科（成人高等教育）&quot;| #edu == &quot;大学本科（正规高等教育）&quot;| edu == &quot;研究生及以上&quot; ~ &quot;高等教育&quot;,</span></span>
+<span id="cb21-14"><a href="dta.html#cb21-14" tabindex="-1"></a><span class="co">#    edu == &quot;其他（请注明）&quot; ~ &quot;其他&quot;</span></span>
+<span id="cb21-15"><a href="dta.html#cb21-15" tabindex="-1"></a><span class="co">#  ))</span></span>
+<span id="cb21-16"><a href="dta.html#cb21-16" tabindex="-1"></a>cgss2021<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">factor</span>(cgss2021<span class="sc">$</span>educ,</span>
+<span id="cb21-17"><a href="dta.html#cb21-17" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;未受教育&quot;</span>,<span class="st">&quot;初等教育&quot;</span>,<span class="st">&quot;中等教育&quot;</span>,<span class="st">&quot;高等教育&quot;</span>,<span class="st">&quot;其他&quot;</span>))</span></code></pre></div>
+<p>另一种编码方式。</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="dta.html#cb22-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## 
+## Attaching package: &#39;car&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     some</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dta.html#cb27-1" tabindex="-1"></a>cgss2021<span class="sc">$</span>stype <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cgss2021<span class="sc">$</span>stype)</span>
+<span id="cb27-2"><a href="dta.html#cb27-2" tabindex="-1"></a><span class="fu">typeof</span>(cgss2021<span class="sc">$</span>stype)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dta.html#cb29-1" tabindex="-1"></a>cgss2021<span class="sc">$</span>stype <span class="ot">&lt;-</span> </span>
+<span id="cb29-2"><a href="dta.html#cb29-2" tabindex="-1"></a>  car<span class="sc">::</span><span class="fu">recode</span>(cgss2021<span class="sc">$</span>stype, <span class="st">&quot;1=&#39;1&#39;;2:5=&#39;2&#39;;6:99=&#39;99&#39;&quot;</span>)</span>
+<span id="cb29-3"><a href="dta.html#cb29-3" tabindex="-1"></a>cgss2021<span class="sc">$</span>stype <span class="ot">&lt;-</span> </span>
+<span id="cb29-4"><a href="dta.html#cb29-4" tabindex="-1"></a>  <span class="fu">factor</span>(cgss2021<span class="sc">$</span>stype,</span>
+<span id="cb29-5"><a href="dta.html#cb29-5" tabindex="-1"></a>         <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb29-6"><a href="dta.html#cb29-6" tabindex="-1"></a>         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;农村&quot;</span>,<span class="st">&quot;城镇&quot;</span>))</span></code></pre></div>
+</div>
+<div id="dta-wrap3" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> 数据处理3<a href="dta.html#dta-wrap3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>建立好一级数据集，并对部分变量进行再编码后，接下来进行异常值、缺失值和重复值的诊断和处理。</p>
+<div id="dta-dia" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> 诊断数据集<a href="dta.html#dta-dia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>CGSS2021中往往存在很多异常值和缺失值。<strong>异常值</strong>是指CGSS问卷中数值特别大的选项，往往指”不知道”、“拒绝回答”，或者是填了不合理的数据，比如特别高或低的体重、身高、收入等等。<strong>缺失值</strong>往往指受访者没有回答的问题。诊断数据集的目的是为了发现数据集的异常状况和缺失状况，然后再进行下一步的处理。</p>
+<p>我们先发现异常值，而后转化为缺失值，后续根据分析需要再将其与原有的缺失值一道删除。此处的数据集中变量较多，不适合立即删除所有的缺失值，以免影响其他变量。</p>
+<p><code>ExpData()</code>函数提供一份数据结构的分布情况，包含缺失值、唯一值等。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="dta.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(SmartEDA)</span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="dta.html#cb32-1" tabindex="-1"></a>res<span class="ot">&lt;-</span> <span class="fu">ExpData</span>(<span class="at">data=</span>cgss2021,<span class="at">type=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>根据res，我们可以直接得到各变量的缺失值数量，但我们更关心的是潜在的异常值。根据变量的不同类型，我们对异常值的勘察方式也有所不同。</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>离散变量
+对照离散变量的distincts值和问卷中的选项数量。distincts值是变量唯一取值的数量，包括NA。若distincts值大于问卷选项数量，说明存在异常值。</li>
+<li>连续变量
+连续变量一般查看其取值范围。</li>
+</ol>
+</blockquote>
+<p>离散变量：</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="dta.html#cb33-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>stype)</span></code></pre></div>
+<pre><code>## 
+## 农村 城镇 
+## 5931 2163</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dta.html#cb35-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>gender)</span></code></pre></div>
+<pre><code>## 
+##    1    2 
+## 3679 4469</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dta.html#cb37-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>edu)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5    6    7    8    9   10   11   12   13 
+##  858   47 1751 2311  127  960  374   28  261  361  194  738  117</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dta.html#cb39-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>poli)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4   98   99 
+## 6557  606    6  966   12    1</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="dta.html#cb41-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>health)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5   98 
+##  429 1069 2288 2864 1492    6</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="dta.html#cb43-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>happy)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5   98   99 
+##   75  243  698 3113 1319    7    3</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="dta.html#cb45-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>agegroup)</span></code></pre></div>
+<pre><code>## 
+## 30岁以下  30~45岁  45~60岁 60岁以上 
+##     1232     1684     2409     2823</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="dta.html#cb47-1" tabindex="-1"></a><span class="fu">table</span>(cgss2021<span class="sc">$</span>educ)</span></code></pre></div>
+<pre><code>## 
+## 未受教育 初等教育 中等教育 高等教育     其他 
+##      858     1798     3800     1671        0</code></pre>
+<p>连续变量：</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="dta.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span></code></pre></div>
+<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
+<pre><code>## 
+## Attaching package: &#39;sjmisc&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     is_empty</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     replace_na</code></pre>
+<pre><code>## The following object is masked from &#39;package:tibble&#39;:
+## 
+##     add_case</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="dta.html#cb55-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>birth)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                          label    n NA.prc    mean    sd   se   md
+##   dd numeric [年]  A3. 您的出生日期是什么？ 8148      0 1969.36 17.57 0.19 1968
+##  trimmed          range iqr skew
+##  1969.06 81 (1922-2003)  29 0.14</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dta.html#cb57-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                          label    n NA.prc  mean    sd   se md
+##   dd numeric [年]  A3. 您的出生日期是什么？ 8148      0 51.64 17.57 0.19 53
+##  trimmed      range iqr  skew
+##    51.94 81 (18-99)  29 -0.14</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="dta.html#cb59-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>height)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                 label    n NA.prc   mean     sd   se  md trimmed
+##   dd numeric A13. 您目前的身高是： 8148      0 178.46 110.25 1.22 163  178.46
+##         range iqr skew
+##  901 (98-999)  12 7.26</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="dta.html#cb61-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>weight)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                 label    n NA.prc   mean    sd   se  md trimmed
+##   dd numeric A14. 您目前的体重是： 8148      0 130.77 81.85 0.91 120  130.77
+##         range iqr skew
+##  959 (40-999)  31 9.64</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dta.html#cb63-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>income)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                              label    n NA.prc    mean      sd
+##   dd numeric 您个人去年（2020年）全年的总收入是 8148      0 1046361 3001742
+##        se    md trimmed               range   iqr skew
+##  33254.31 30000 1046361 9999999 (0-9999999) 67000 2.64</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="dta.html#cb65-1" tabindex="-1"></a><span class="fu">descr</span>(cgss2021<span class="sc">$</span>famincome)</span></code></pre></div>
+<pre><code>## 
+## ## Basic descriptive statistics
+## 
+##  var    type                          label    n NA.prc    mean      sd
+##   dd numeric 您家2020年全年家庭总收入是多少 8148      0 2216411 4066856
+##        se    md trimmed               range    iqr skew
+##  45053.99 80000 2216411 9999999 (0-9999999) 270000 1.39</code></pre>
+<p>可以发现，变量height、weight、income和famincome都有异常的极大值。</p>
+</div>
+<div id="dta-values" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> 处理异常值和缺失值<a href="dta.html#dta-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们往往选择将异常值转化为缺失值，而后进行删除。</p>
+<p>初始处理离散变量异常值的时候，我们的思路或许是将cgss2021中指定的值统一全部删掉。</p>
+<pre><code>cgss2021[cgss2021 == 98] &lt;- NA
+cgss2021[cgss2021 == 99] &lt;- NA</code></pre>
+<p>这种方法用来处理离散变量的异常值很常用，但可能会损失连续变量中具有意义的值。例如98在“户口登记地”中是“不知道”，但在“体重”中是有意义的。</p>
+<p>如果一一指定，似乎可以解决误删导致的信息损失问题。</p>
+<pre><code>cgss2021$stype[cgss2021$stype == 98] &lt;- NA
+cgss2021$stype[cgss2021$stype == 99] &lt;- NA</code></pre>
+<p>但如果一个变量中存在多个异常值，一一指定会十分麻烦。</p>
+<p>处理连续变量的异常值所要遭遇的问题与以上相近。</p>
+<pre><code>cgss2021[cgss2021 &gt;= 999] &lt;- NA</code></pre>
+<p>例如999在“身高”中指“拒绝回答”，但这样处理会使得收入中的大多数值也转换为NA。当然，我们可以具体指定只删除变量“身高”中的999以及999以上的数值，但当需要分析的连续变量较多时，也会十分麻烦。</p>
+<p>综上，我们会发现通过指定数值来转换异常值通常有两个问题：</p>
+<ol style="list-style-type: decimal">
+<li>将其他变量中的相关有效数值转换为无效数值。</li>
+<li>当特定变量的异常值比较多时，一一具体指定会十分麻烦。</li>
+</ol>
+<p>沿着这个问题，我想到的第一个可能的解决方案是搭配使用<code>sjlabelled</code>和<code>sjmisc</code>两个包。</p>
+<pre><code>library(sjlabelled)
+library(sjmisc)
+cgss &lt;- sjlabelled::drop_labels(cgss2021)
+head(cgss)
+cgss &lt;- sjmisc::to_label(cgss)
+head(cgss)</code></pre>
+<p>这两个包可以将haven_labelled类型变量转换为以文本形式显示的因子型变量，此时可以通过统一定义特定文本来转换异常值，例如：</p>
+<pre><code>cgss2021[cgss2021==“不知道”] &lt;- NA
+cgss2021[cgss2021==“拒绝回答”] &lt;- NA</code></pre>
+<p>如此转换将更加精准。</p>
+<p>但haven_labelled类型变量<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>中的纯数值会转换为NA，只有带有标签的数值会转换为文本显示（dbl类型的变量不会受到影响）</p>
+<p>下面我们将数据集分为离散型和连续型子数据集来分别处理，最后再进行合并。</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dta.html#cb72-1" tabindex="-1"></a><span class="fu">library</span>(sjlabelled)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;sjlabelled&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:haven&#39;:
+## 
+##     as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels</code></pre>
+<pre><code>## The following object is masked from &#39;package:forcats&#39;:
+## 
+##     as_factor</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     as_label</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     as_label</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="dta.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span></code></pre></div>
+<p>建立离散变量数据集cgss1</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="dta.html#cb79-1" tabindex="-1"></a>cgss1 <span class="ot">&lt;-</span> cgss2021 <span class="sc">%&gt;%</span> <span class="fu">select</span>(</span>
+<span id="cb79-2"><a href="dta.html#cb79-2" tabindex="-1"></a>  <span class="at">stype =</span> stype,</span>
+<span id="cb79-3"><a href="dta.html#cb79-3" tabindex="-1"></a>  <span class="at">gender =</span> gender,</span>
+<span id="cb79-4"><a href="dta.html#cb79-4" tabindex="-1"></a>  <span class="at">agegroup =</span> agegroup,</span>
+<span id="cb79-5"><a href="dta.html#cb79-5" tabindex="-1"></a>  <span class="at">edu =</span> edu,</span>
+<span id="cb79-6"><a href="dta.html#cb79-6" tabindex="-1"></a>  <span class="at">educ =</span> educ,</span>
+<span id="cb79-7"><a href="dta.html#cb79-7" tabindex="-1"></a>  <span class="at">poli =</span> poli,</span>
+<span id="cb79-8"><a href="dta.html#cb79-8" tabindex="-1"></a>  <span class="at">health =</span> health,</span>
+<span id="cb79-9"><a href="dta.html#cb79-9" tabindex="-1"></a>  <span class="at">happy =</span> happy</span>
+<span id="cb79-10"><a href="dta.html#cb79-10" tabindex="-1"></a>)</span>
+<span id="cb79-11"><a href="dta.html#cb79-11" tabindex="-1"></a></span>
+<span id="cb79-12"><a href="dta.html#cb79-12" tabindex="-1"></a><span class="fu">head</span>(cgss1)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##   stype gender    agegroup edu                    educ  poli    health  happy   
+##   &lt;fct&gt; &lt;dbl+lbl&gt; &lt;fct&gt;    &lt;dbl+lbl&gt;              &lt;fct&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+lb&gt;
+## 1 城镇  2 [女]    45~60岁   7 [中专]            … 中等… 1 [群… 5 [很…  3 [说…
+## 2 城镇  2 [女]    60岁以上  7 [中专]            … 中等… 4 [共… 5 [很…  5 [非…
+## 3 农村  1 [男]    60岁以上 11 [大学本科（成人高… 高等… 4 [共… 4 [比… NA     …
+## 4 农村  1 [男]    30~45岁  11 [大学本科（成人高… 高等… 1 [群… 4 [比…  4 [比…
+## 5 城镇  2 [女]    60岁以上  7 [中专]            … 中等… 1 [群… 4 [比…  4 [比…
+## 6 城镇  1 [男]    30岁以下  9 [大学专科（成人高… 高等… 1 [群… 4 [比…  4 [比…</code></pre>
+<p>处理离散变量数据集cgss1的异常值</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="dta.html#cb81-1" tabindex="-1"></a>cgss1[cgss1 <span class="sc">==</span> <span class="dv">98</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> </span>
+<span id="cb81-2"><a href="dta.html#cb81-2" tabindex="-1"></a>cgss1[cgss1 <span class="sc">==</span> <span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb81-3"><a href="dta.html#cb81-3" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="dta.html#cb81-4" tabindex="-1"></a>cgss1 <span class="ot">&lt;-</span> sjmisc<span class="sc">::</span><span class="fu">to_label</span>(cgss1)</span>
+<span id="cb81-5"><a href="dta.html#cb81-5" tabindex="-1"></a></span>
+<span id="cb81-6"><a href="dta.html#cb81-6" tabindex="-1"></a><span class="fu">head</span>(cgss1)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##   stype gender agegroup edu                      educ     poli     health  happy
+##   &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;    &lt;fct&gt;                    &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;   &lt;fct&gt;
+## 1 城镇  女     45~60岁  中专                     中等教育 群众     很健康  说不…
+## 2 城镇  女     60岁以上 中专                     中等教育 共产党员 很健康  非常…
+## 3 农村  男     60岁以上 大学本科（成人高等教育） 高等教育 共产党员 比较健… &lt;NA&gt; 
+## 4 农村  男     30~45岁  大学本科（成人高等教育） 高等教育 群众     比较健… 比较…
+## 5 城镇  女     60岁以上 中专                     中等教育 群众     比较健… 比较…
+## 6 城镇  男     30岁以下 大学专科（成人高等教育） 高等教育 群众     比较健… 比较…</code></pre>
+<blockquote>
+<p>!!!注意：本次分析的离散变量每个值都带有标签意义。但存在一种情况，例如询问满意度分值，分为1-5分，同时1分具有“非常不赞成”的标签含义，5分具有“非常赞成”的标签含义，而中间的2-4分不具有任何标签含义。此时若运行<code>cgss1 &lt;- sjmisc::to_label(cgss1)</code>，会将2-4分值转换为NA。解决的方法是直接用命令<code>factor()</code>将这一类变量转换为因 子型变量，无需给“98”和“99”定义标签和排序，它们会自动被归为NA。例如<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>：</p>
+</blockquote>
+<pre><code>cgss1$x &lt;- factor(cgss1$x,
+                        labels = c(1,2,3,4,5),           
+                        levels = c(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;))</code></pre>
+<p>处理以后，haven_lablled类型变量已全体转换因子型变量，并以文本的形式呈现。根据研究需要，我们后续也可以将文本形式的因子转换为数字形式的因子，或者将因子型变量转换为数值型变量。</p>
+<p>建立连续变量数据集cgss2</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="dta.html#cb84-1" tabindex="-1"></a>cgss2 <span class="ot">&lt;-</span> cgss2021 <span class="sc">%&gt;%</span> <span class="fu">select</span>(</span>
+<span id="cb84-2"><a href="dta.html#cb84-2" tabindex="-1"></a>  <span class="at">age =</span> age,</span>
+<span id="cb84-3"><a href="dta.html#cb84-3" tabindex="-1"></a>  <span class="at">height =</span> height,</span>
+<span id="cb84-4"><a href="dta.html#cb84-4" tabindex="-1"></a>  <span class="at">weight =</span> weight,</span>
+<span id="cb84-5"><a href="dta.html#cb84-5" tabindex="-1"></a>  <span class="at">income =</span> income,</span>
+<span id="cb84-6"><a href="dta.html#cb84-6" tabindex="-1"></a>  <span class="at">famincome =</span> famincome</span>
+<span id="cb84-7"><a href="dta.html#cb84-7" tabindex="-1"></a>)</span>
+<span id="cb84-8"><a href="dta.html#cb84-8" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="dta.html#cb84-9" tabindex="-1"></a><span class="fu">head</span>(cgss2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##     age height    weight    income    famincome
+##   &lt;dbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;
+## 1    54 160       118        96000     200000  
+## 2    76 160       120        60000     120000  
+## 3    72 172       156        96000     108000  
+## 4    35 172       130       160000     220000  
+## 5    63 158       115        48000     100000  
+## 6    25 180       150       600000    2000000</code></pre>
+<p>处理连续变量数据集cgss2的异常值</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="dta.html#cb86-1" tabindex="-1"></a>cgss2[cgss2 <span class="sc">&gt;</span> <span class="dv">9999996</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb86-2"><a href="dta.html#cb86-2" tabindex="-1"></a>cgss2<span class="sc">$</span>height[cgss2<span class="sc">$</span>height <span class="sc">&gt;=</span> <span class="dv">998</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb86-3"><a href="dta.html#cb86-3" tabindex="-1"></a>cgss2<span class="sc">$</span>weight[cgss2<span class="sc">$</span>weight <span class="sc">&gt;=</span> <span class="dv">998</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb86-4"><a href="dta.html#cb86-4" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="dta.html#cb86-5" tabindex="-1"></a>cgss2 <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">drop_labels</span>(cgss2)</span>
+<span id="cb86-6"><a href="dta.html#cb86-6" tabindex="-1"></a>cgss2 <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">zap_labels</span>(cgss2)</span></code></pre></div>
+<pre><code>## Warning: `na` is not allowed to be `NULL` or to contain `NA`-values.
+
+## Warning: `na` is not allowed to be `NULL` or to contain `NA`-values.
+
+## Warning: `na` is not allowed to be `NULL` or to contain `NA`-values.</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="dta.html#cb88-1" tabindex="-1"></a><span class="fu">head</span>(cgss2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##     age height weight income famincome
+##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+## 1    54    160    118  96000    200000
+## 2    76    160    120  60000    120000
+## 3    72    172    156  96000    108000
+## 4    35    172    130 160000    220000
+## 5    63    158    115  48000    100000
+## 6    25    180    150 600000   2000000</code></pre>
+<p>可以看到，haven_labelled类型的变量全部转换为了dal类型的变量。</p>
+<p>我们保留cgss1中变量的因子类型，合并cgss1和cgss2。</p>
+<p><code>cbind()</code>函数是按行合并。</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="dta.html#cb90-1" tabindex="-1"></a>cgss3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(cgss1,cgss2)</span></code></pre></div>
+<p>使用<code>select</code>函数对数据集中的变量重新进行排序。<code>everything()</code>函数相当于一个占位符，用于标明数据集中之前未被选中的其他所有列。</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="dta.html#cb91-1" tabindex="-1"></a>cgss3 <span class="ot">&lt;-</span> <span class="fu">select</span>(cgss3,</span>
+<span id="cb91-2"><a href="dta.html#cb91-2" tabindex="-1"></a>                stype,</span>
+<span id="cb91-3"><a href="dta.html#cb91-3" tabindex="-1"></a>                gender,</span>
+<span id="cb91-4"><a href="dta.html#cb91-4" tabindex="-1"></a>                age,</span>
+<span id="cb91-5"><a href="dta.html#cb91-5" tabindex="-1"></a>                agegroup,</span>
+<span id="cb91-6"><a href="dta.html#cb91-6" tabindex="-1"></a>                height,</span>
+<span id="cb91-7"><a href="dta.html#cb91-7" tabindex="-1"></a>                weight,</span>
+<span id="cb91-8"><a href="dta.html#cb91-8" tabindex="-1"></a>                edu,</span>
+<span id="cb91-9"><a href="dta.html#cb91-9" tabindex="-1"></a>                educ,</span>
+<span id="cb91-10"><a href="dta.html#cb91-10" tabindex="-1"></a>                poli,</span>
+<span id="cb91-11"><a href="dta.html#cb91-11" tabindex="-1"></a>                income,</span>
+<span id="cb91-12"><a href="dta.html#cb91-12" tabindex="-1"></a>                famincome,</span>
+<span id="cb91-13"><a href="dta.html#cb91-13" tabindex="-1"></a>                <span class="fu">everything</span>(),</span>
+<span id="cb91-14"><a href="dta.html#cb91-14" tabindex="-1"></a>                )</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="dta.html#cb92-1" tabindex="-1"></a>cgss3 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cgss3)</span></code></pre></div>
+<p><code>tibble</code>和<code>data.frame</code>各有长处，但<code>tibble</code>相对而言更稳定，例如从不改变输入的类型（不将字符串转换为因子），也从不改变变量的名称，也不创建行名。同时，<code>tibble</code>的打印只显示数据集的前10行（这使得处理大型数据更加容易），以及所有适合在屏幕上显示的列，除了列的名字，每一列还报告它的类型，相当于<code>str()</code>的功能。</p>
+<p>如果遇上旧的函数不能与<code>tibble</code>工作，可以用<code>as.data.frame()</code>将<code>tibble</code>转换回<code>data.frame</code>的格式，转换的代码：<code>as.data.frame(cgss3)</code></p>
+<p>再进行一次数据诊断，查看缺失值状况。</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="dta.html#cb93-1" tabindex="-1"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb93-2"><a href="dta.html#cb93-2" tabindex="-1"></a>res3<span class="ot">&lt;-</span> <span class="fu">ExpData</span>(<span class="at">data=</span>cgss3,<span class="at">type=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><code>save()</code>函数可以单独保存包含中间处理步骤的数据集。将新的数据集另存为新的.Rdata数据文件（由于.Rdata数据文件的内容会被加载并显示在Rstudio中，因此建议数据名与数据集的名称保持一致，避免数据混淆），这样在实际操作中，我们不必重复运行以上数据处理的代码便可导入我们已经处理好的数据集。</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="dta.html#cb94-1" tabindex="-1"></a><span class="fu">save</span>(cgss3, <span class="at">file =</span> <span class="st">&quot;cgss3.Rdata&quot;</span>)</span></code></pre></div>
+<p>至此，异常值清理完成，数据的处理初步完成。但由于缺失值较多，后续的分析仍然需要从cgss3中截取部分数据，建立新的数据集进行分析。</p>
+<p>接下来，让我们基于由CGSS2021截取的小型数据集cgss3展开数据分析之旅吧！</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>haven_labelled变量是指未明确类型的变量，往往同时含有没有标签的数值和具有标签的数值，即既体现出数值型变量的特性，也体现着因子型的变量，因而被认为是未明确类型的。<a href="dta.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>这里假设x是一个分值为1-5的变量，其中1为“非常不赞同”，5为“非常赞同”，2-4只具有数值意义，无标签意义。<a href="dta.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="TB.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

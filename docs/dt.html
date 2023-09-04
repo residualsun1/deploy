@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 数据的读入与处理 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="TB.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dt.html"><a href="dt.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dt.html"><a href="dt.html#dt-a"><i class="fa fa-check"></i><b>1.1</b> 数据读入，以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dt.html"><a href="dt.html#dta-b"><i class="fa fa-check"></i><b>1.2</b> 大型数据诊断</a></li>
+<li class="chapter" data-level="1.3" data-path="dt.html"><a href="dt.html#dt-c"><i class="fa fa-check"></i><b>1.3</b> 数据简单处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-a"><i class="fa fa-check"></i><b>2.1</b> gtsummary包</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-b"><i class="fa fa-check"></i><b>2.2</b> table1包</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 用ggplot2制图</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-a"><i class="fa fa-check"></i><b>3.1</b> 读取数据</a></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.2</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.3" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.3</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.4" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.4</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.5" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.5</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="VI.html"><a href="VI.html"><i class="fa fa-check"></i><b>5</b> 模型可视化</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="VI.html"><a href="VI.html#VI-a"><i class="fa fa-check"></i><b>5.1</b> PartI</a></li>
+<li class="chapter" data-level="5.2" data-path="VI.html"><a href="VI.html#VI-b"><i class="fa fa-check"></i><b>5.2</b> PartII</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>6</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>6.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="6.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>6.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="6.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>6.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>7</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>7.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="7.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>7.2</b> 词频count</a></li>
+<li class="chapter" data-level="7.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>7.3</b> 词云</a></li>
+<li class="chapter" data-level="7.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>7.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>7.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="7.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>7.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="7.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>7.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>7.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>8</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>8.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>8.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="8.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>8.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>8.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>8.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>8.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>8.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="8.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>8.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="8.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>8.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>8.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="8.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>8.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>8.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="8.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>8.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dt" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> 数据的读入与处理<a href="dt.html#dt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供 and 整理： 曾子尧 修改： 黄国政(2023.4.23)</p>
+<div id="dt-a" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> 数据读入，以.dta格式为例<a href="dt.html#dt-a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>.dta格式是stata使用的数据格式，国内各数据库大多都有这个格式的数据。</p>
+<p>这里介绍三种读取方式：read_dta、read_stata和read.dta13</p>
+<p>前两种来自于haven包，最后一种来自readstata13包</p>
+<p>read_dta和read_stata包功能一样，与readstata13有两次处明显区别：
+1、read_dta和read_stata读取对应的编码数值和标签，而read.dta13直接读出标签的内容，视觉上呈现所有选项的标签及其含义。
+2、read_dta和read_stata读入的数据是数值型的，而read.dta13读入的数据是因子型的。</p>
+<p>如下图展示。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dt.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-2"><a href="dt.html#cb1-2" aria-hidden="true" tabindex="-1"></a>CGSS2021a <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;</span>)</span>
+<span id="cb1-3"><a href="dt.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#CGSS2021b &lt;- read_stata(&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;)</span></span>
+<span id="cb1-4"><a href="dt.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readstata13)</span>
+<span id="cb1-5"><a href="dt.html#cb1-5" aria-hidden="true" tabindex="-1"></a>CGSS2021c <span class="ot">&lt;-</span> <span class="fu">read.dta13</span>(<span class="st">&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in read.dta13(&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Duplicated factor levels for variables
+## 
+##    XA1, XA6, XB1, XB6, XC1, XC6, isco08_a57e,
+##    isco08_a59d, isco08_a60d, isco08_sp,
+##    isco08_f, isco08_m
+## 
+##    Unique labels for these variables have been generated.</code></pre>
+<pre><code>## Warning in read.dta13(&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Factor codes of type double or float detected in variables
+## 
+##    type, A8a, A8b, L2, L4b, L5, L8a, L8b, L9,
+##    A60m, A62, A75a, A75b
+## 
+##    No labels have been assigned.
+##    Set option &#39;nonint.factors = TRUE&#39; to assign labels anyway.</code></pre>
+<pre><code>## Warning in read.dta13(&quot;D://02_work/2020sRBook/2020sRBook1/CGSS2021.dta&quot;): 
+##    Missing factor labels for variables
+## 
+##    P18
+## 
+##    No labels have been assigned.
+##    Set option &#39;generate.factors=TRUE&#39; to generate labels.</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dt.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#可以观察以下两行（受教育程度）</span></span>
+<span id="cb5-2"><a href="dt.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#class(CGSS2021a$A2)</span></span>
+<span id="cb5-3"><a href="dt.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#class(CGSS2021c$A2)</span></span></code></pre></div>
+<p>由此，虽然read.dta13会带来视觉上的方便，但是read_dta和read_stata在重新编码上具有优势。</p>
+<p>我们以“最高教育程度”变量A7a来进行再编码（注意：这里是类别变量的重新编码，连续变量的重新编码与此有所不同）</p>
+<p>这里查看read_dta读取的数据比较好，因为可以直接在data.frame中简介标签及其对应内容的整体情况。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dt.html#cb6-1" aria-hidden="true" tabindex="-1"></a>CGSS2021a<span class="sc">$</span>A7a</span></code></pre></div>
+<pre><code>## &lt;labelled&lt;double&gt;[8148]&gt;:  A7a. 您目前的最高教育程度是：
+##    [1]  7  7 11 11  7  9 13  6 10 12  9 12  4 10  1  9 12 12  4  6  4  4 10 12
+##   [25]  4 11  3 10 12  9 12  6  6  2 12  6 13  3 12 11 13  4  8  4 12 12  4  4
+##   [49] 13  4  6  7  6 12  4  7  8 12 12 13 11 12  4  1 12  6  6 12  6  9  3  4
+##   [73] 10  6  6  5  7  6 12  6  4 10  6 12 12 12  9  7  4  6 12 12  9  7  4 11
+##   [97]  4  9  1  4  3  7  4 11 12 12  4 13  6 13  4 12  4  9  5  6  3 12  6  4
+##  [121] 11  6  4  1  5 12 11 10 11 12 12  4 10 12  4  9  3 11 12 10  6 11  3  5
+##  [145]  4  4  3  6  6  9  6  4  6 10  3  3 10  9  9  4  6  3 11 11  4 13  6  3
+##  [169] 13  4  9  5  4  7 12  5  9  6  9  4  4  4  4 12 13  9 12  5 12 10  6 12
+##  [193] 11  9  7 13 11  4 NA  5  6  6 12 12 12 10 12  7 13  9  6  4 11  6  7 12
+##  [217]  5  4  4 NA 11  9  5  9 12  7  4  4 10  6 11  4 12 13  3 13 12  3  9 12
+##  [241]  6  7  4 NA 13  4 11  4  6  4  6 12  6  6 12  4 10  3 12  6  4 11  7 12
+##  [265]  9  4  1  6 12 12 12 12  9  7 12 12  4  9 12 13  6  4  6 12 11  9  3  1
+##  [289] 13 12  4 12  4 12  6  6 13  4 12  4 13 12  7  4  4 12 12  6 13  6 12 11
+##  [313] 12 13 13  6 12  4  6 12  3  3 13 13  4 11 10 11  7  6 11  4 11 12 12 11
+##  [337]  9 12  6 12 12  4  9  6 11  4 13 10  6  6 12 12  7  5  4 11  9  4  7  3
+##  [361]  4 10 13  9 13  7 10 12  3  4  9 12  7  4 13 NA 12 11 13  7  9  6 12  5
+##  [385] 12  3  8  6 13  7  6 11  7  6 13  7 12 13  3  4  9 13  6  6  6  7  5  6
+##  [409]  3  6 12  9  6 12 10  4  4  4  9  8 12  6  3  9  6  6  4  4 11  4  6  7
+##  [433] 11  6  3  6  9 12  5  3 13 12 13  6 10  9 13  4  4 12  6  9  4  6 12  6
+##  [457] 12  4  6  9  4  4  7  7  3  3  4  6  4  7 13 10  4  1  4  3 11  4  4  4
+##  [481]  9  7 10 12  7 11  5  6 13  9  6 11 12 12  4  9  3  9  4  3  9  4  6  4
+##  [505] 12  4  4  4 12 11 11  7 12  4  6 12  4  4  6  6  8  5  7  4  3  7  4  6
+##  [529] 12  4  6 13  6  4 12  3 11  6  7 12  6  6  3  4  6  6 12  4  6  6  4 12
+##  [553]  4 12 10  6  5  4  2 11 10  4 11 10  6 12  4  5 12  1  4 13  4 NA 11 12
+##  [577]  7  4  9 11  6  6  9 11  4  9  7  6  5 10  6  6 11  8  8 12  4  4  6  4
+##  [601]  6  6  6 11 12 13 12  9 13  4 11  4  9 13  6 12  7 12  6 12 11  9  6  6
+##  [625]  3 13 12  4  4 NA 11  4  6 10  6  4  6  6  1  7 13 12  4 13  6  9  4  5
+##  [649] 13 12 12  3  6  6  6 10 13 13  6 13 11 12  6  5 12 10 12 12 12 13 12  6
+##  [673]  6  4 12  3  9  4  4  1  3  1  4  3  4  3  1  4  1  4  6  4  4  6  6  3
+##  [697] 12  6  3  3  7  9 10  6 10  6  4  4  4  4  7  1  6  3  4  4  3  4  4  5
+##  [721]  6  4  3  7  9  6  2  6  3  4  1 11  4  4  4  4 10  4  3  3  3  4  3  3
+##  [745]  4 11 12  4  4  3 10  3  4  4  4  3  9  4  3  1  1  4  1  4  4  4  4  1
+##  [769]  3 12  4  6  4  4  4 10  4  4 12  4  3  6  9  7 12  4  3  3  1  3  1  4
+##  [793]  4  6  6  4  3  4  4 10  5  6  3  6  4  6  4  6  4  4  3  9  3  3  6  7
+##  [817]  4  6  4  9  4  2  9  6  7  6  6  9  9  4 11  4  7  6  4  3 10  6  4  4
+##  [841]  7  4  4  4  1  3  4  7  3  4  4  6  4  4  6  6  3  6  9  1 11  7  3  4
+##  [865]  3  4  4  4 12  6  4  3  4  3  4  4  7  6  4  4  4  4  4  4  3  4  3  1
+##  [889]  3  4  6  3  6  1  6  4  7  3  4  3  6  4  4  3  6  1  3  4  5  4  6  4
+##  [913]  4  4  6  9  9  4  1  3  3  1  3  4  4  3  4  6  4  4  7  3  4  3  7  4
+##  [937] 12  3  1  4  1  3  4  6  1  3  1  4  9  4  6  1  4  7  6  6  6 12  7 11
+##  [961] 11  3  3  4 12  4  9  1  4  4 12  6  4  9  4  4  6  3  3  4  6 11  4  4
+##  [985] 13  1  4  7  4  4  6  3 13  3  4  7  8 10  7  4  4  4  3 12 10  6  4  4
+## [1009]  4  6  6 12  7 12  6  4  1  4  4 10 10  3  3  8 12  7  3  3  4  3 12  4
+## [1033]  3  6  6 12  4  4 13  6 12 10 12 12  4 12  4 10  6  4  9  4  6  3  4  7
+## [1057]  9 11  4  3 10  7 12  3  6  9  4  4  4 12  3  6 12  1  7  3  1 10  9  4
+## [1081]  1  4  4  3 12  7  4 12 10  3  3  6 10  4  4  6 11  4  4  4  4 10  4 10
+## [1105]  6  7  4  9  4  4 10 12  3  6  4 12  4  4  6  6  4 13  6  9  3  4  4  3
+## [1129]  6  6 12  4  4  1  4  3  4  7  4  3  6 10  1 12  4  3  3  3  4  4 12 10
+## [1153]  4  6  4  4  4  4  6  4  6  4  3  4 10  3  4  4  6 12  9  9  3  3  4  3
+## [1177]  3  4  8  3 12  4  4  3  4  1 12  6 12 12 12  6  3  4  4  7  6  3 10  4
+## [1201] 12  3  4 10 12  6  4  4  4  4 12  4  4  6 13  4  4 12  4 12  1  6 12  3
+## [1225]  4  3  3  4  3  3 10 12  6  3  4  4 10  1  3  6  4  4  1 13  3  6 12  9
+## [1249]  4  4  4  6  3  1  4  6  3  3  3  5  1  4  4  3 10  3  4  6  4  4  2  3
+## [1273]  1  2  6 10 10  1  3  3  4  1  4  3  4  9  3  4  3  4  4  4  6  1  4  4
+## [1297] NA  4  6  5  3  4  3  6  4  3  4  3 10  3  4  6  3  4  4  4  4  4  4  1
+## [1321]  1  3  4 12  6  7  3  4  4  4  6  3  4  6  1  4  4  1  3  4  4  6  4  3
+## [1345]  1  4  3  3  1  3  1  1  3  4  4  3  3  3  3  1  6  1  4  3  3  3  1  4
+## [1369]  3  4  4 10  3  5  1  3  4  7  4  1  3  3  7  3 12 12  9  3 12 10  9  1
+## [1393]  3  9  7  7  3  4 12  3  6  1 12  4  9 10  7  7  1 12  4  3 11 13 12  3
+## [1417] 10  4  3  3 10  7  4  6  1  4  5  3  4  4  1  5  3 12 11  7  3  5 12  9
+## [1441]  4  3  3 10  6  3  4  3  3  9  7  4  4  7  4  3  4 11 11  3 10  7  6  4
+## [1465]  7  4 12  7  7  6  4  4 12  6  1  4 12 12 10  4  6 12 12  4  4 10  7  7
+## [1489]  4  1  1  7  6 12  1  4  3  1 12 10 13  4  7  6 NA 12  5  5  4 12 10  5
+## [1513]  4  6  6 11  4  4  3  6  4 12 12 11  3 13 10  3 10 10  4  6  4  6  4  4
+## [1537]  6 12  6 13 10  3  4  3 12  4 10  6  3 10  4  3  3  6  6  6  3 NA  6  3
+## [1561]  4  4  4  4  4  4  3  4  4  3  4  4  4 10  4  4 13 12  5  6  3 10  6  4
+## [1585]  9 12  4  6  3  9 12  4  4 10  4 12 12 10  9  3  9  4  6  9  7  6 12 10
+## [1609]  4  5  4  7  6 12  4  6  4  9  3  5  4  6  4 12 11  4  4  6  3  1  4 12
+## [1633]  4  6  5 12  3  5  4  5 10  3  1  4 10 12 12  4  4  6 12 12  7  4  4 11
+## [1657]  4 11  4 10 10  4  4  3  3  6  6  1  6  4  3 11  4  4 10  3 12  4 10  4
+## [1681]  7  1  4  6  9 10 12 12 12  4  4 12 12  4  4  7 12  6  4  8 12  4 12  1
+## [1705]  9 10  1  3 12  6 10 12  4  8  4  6  6  4  4  4  4  7  4  7 10  4  3  3
+## [1729] 10 10  3  7 12  3  6  3  1  7  3 12  1  3  3  4  6  4  3 11  9  1 12  3
+## [1753]  3 10  1  4  6  3  1 11 10  6  7  3  1  1  3  4  3  1 12  4  3  4  4  4
+## [1777]  4 10  1 12 12  4 13 11  4 11  4 12  3  1  3  1  4  3  3  3  4  3 10  5
+## [1801]  2 10  6  3  4  3  5  4  1  4  9  7  6  3 12  3  6  4 10  4  4  7  4  3
+## [1825] 12  1  6 10 10 12  4  1  5  3  4  3  3  4  4  4 10  6  1  3  4 12  8 12
+## [1849] 12  6  3  6  4  6  9  3  9 10  4  7  3  7  1 10  1  7  3  4 10  4  7  1
+## [1873]  3  1 NA  4  4  1 12  3  6  4 13  2  3  9  6  1  4  3  4  1  3  3  4 11
+## [1897]  2 10  6  7  1  1  1  4  3  6 12  1 12  4  4  3  4 10  4  4  4  4  4  4
+## [1921]  1 10  9 13  1  3  4 12  6  1  1  3  4  1 12 NA  4  3  6 12  6  4  9 10
+## [1945] 13  4  4 12  4  2 10  4  6  7  4  9  9  6  4  5  3  6  6  4 11  1  3  9
+## [1969]  1 13  4  4  4  4 10  4  4  3  1  6 12  6  9  4  4  3  4  4  4  1  3  6
+## [1993]  4  4 11 10  4  6  4  6  6  3 12 10  1  4  6  7  4  7  9  6  6  4  6  1
+## [2017]  3  4  5  4  1  4  6  4 10 12  4  1  4  6  1 12  4  4  6  4 12  7  5 11
+## [2041]  1  4  4  4  1  6  4  6  2  1 11  3  4  9  3 13  3 11  9  2  3  5  4  3
+## [2065] 12  7  4  1 10  3  3  1  4  3 11 10  1  1  4  4  4 10  3  7  6  4  3 10
+## [2089]  6  4  3  4  6  9  6  4  6  6  4  1  4  9  6  4  1  2  1  3  4  3  7  1
+## [2113]  9  4  6  3 10  4  6  3  6  4  1  6  4 10  4  4  4  6  4  4  6  4  4  4
+## [2137]  4 12  3  1  4  1  3  4 13  4  6  3  4  9  4  4  7  1  1 12 10  6  9 10
+## [2161]  6  3  3 10  1  6  6  1  1  6  9  5 12 10 12  9  6  4  9  6  4  7 10 13
+## [2185]  9  3  9  5  4  4 12  9 10 10 12  4 12  3 12  3 10  4  3  4  3  4  6  4
+## [2209]  9  6  7  1 12  4  4  6 12  6  6  3  4 12  4  9  3  3  3  3 12  3  2  7
+## [2233]  4  1  4  4 10  4  6 12  7  4 11  1 12  4 12  4  5  3  1 11 12  1  1  7
+## [2257]  4 10  3  6 10  3  4 12  3  3  3  3  4  6  7  4 11 12 10  4 10  9  4  4
+## [2281]  6  3 12  3  5  6 12  4  4  6  4 12  3  6  4  4  6  3  4  3  3 12 12 10
+## [2305] 10  3 13  7  3  3 12 12  4 10  1 10  4  9 13  6  3  7  6  9  7  4  6  3
+## [2329]  4 10  4 12  4  4  4  7  4  3  4  6 12  4  4  7 13 10 12  3  4  4  1  4
+## [2353] 12  3  4  3  4 10 12  9  4 11  1  1 12  3 11  4  6  3 12  3 12  3  4  3
+## [2377]  9  3  1 12  4  4  3  7  4 11  3  3  4  4  6  4  4  3  3  3 12  3  3  6
+## [2401]  4  1  1  4  4  4  4  4  6 13 12  4  3  6  3  4  4 12  8 12  7  3  4 10
+## [2425]  6  6  6  4  4 10  4  4  1  4 10 11  3  4  4  2 12 10 10  4 10  4  4 10
+## [2449]  6 13  3  4  4  5  4  4  4 12  4  4  4  5  6  6 12  4  4  3  3  3  9 11
+## [2473]  6  3  6  6 10  6  7  6 10  4  3  1  6  4  4  4 11  4  7  9  4 10 12  5
+## [2497] 12  9  4  4  6  4 12  4  7  3  1  4  4  4  7  4  3  4  4  3  4 12  6  4
+## [2521]  3  4  3  4  1  3  5  4  3  1  7 10 11  4  1  3 12 11  1 10  6  3  7  4
+## [2545]  3  4  4  3 11  3 12 12  4  4  3 12 12  4  3 13  4  7  3  6  4  3  4  6
+## [2569]  4  3  5  7  3  4 10 12 10  1 12 12  9  7  4  4 10 11 12  3  1  3  1  4
+## [2593] 10  5 12  3  6  4  6 12 12  6  3  3  4 10 11 10 12 12  4  6  6  4  4  9
+## [2617]  4 11  6  4 12  4  3  1  5  4  6 10  6 11  3  1  9 12  3 12  1  3  4  4
+## [2641]  2 12  3 12  2  4  4  3  3 12  3  4 12 12  7  4  4 12  4  4  4 12  7  9
+## [2665] 10  6  1 10  4 13  5  3  4  4  4  6  9  4  5 10  6  6  3  3  3  3  3  4
+## [2689] 12  4  6  3  1  7  4  4  7  5 12 12 12  6  7  4  4  4  6 12 12 12  4  1
+## [2713] 10  9  4  4  3  1  3  9  3  7  6  1  3  3  6  3 12  5 12  3  6 12 12 12
+## [2737]  3  4  4  3  4  4  4  3 11  3 11  4  3  6  1  4  6  4  3  7  4  1  3  4
+## [2761]  3  4  3  4  4  1  3  3  3  3 NA  4  6  3  4  4  3  3  3  4  4  3  4  4
+## [2785]  4  3  4  4  3  3  1  4  3  3  3  3  4  3  4  6  4  4  1  3 10  3 11  1
+## [2809]  3  6  3  4  4  1  7  4  1  4  4  1  4  3  4  4  4  4  4  3  5  4  4  4
+## [2833]  3  4  3  9  1  4  3  3  3  3  4  3  3  4  9  1  3  4  3  3  6  3  4  3
+## [2857]  4  4  3 11  7  4  6  3  6  4  9  1  6 11 12  1  4  6  4  4  4  3  1  3
+## [2881]  3  4  3  3  3  4  4  3  4  3  4  4  4  1  4  1  3  3  4  3  4  4  6  4
+## [2905]  1  7 11  3  4 11  3  6  4  3  6  3  4  3  4  4  4  3  4  3  3  4  7  1
+## [2929] 10  6  4  4  3  6  4  4  3  4  4  4  3  1  3  4  3  3  3  1  6  4  4  3
+## [2953]  4  6  6  3  4 12  7  4 11  4  6  4  1  6  3  9  3  1  4  4  4  6  3  3
+## [2977]  4  4  3 10  4  1  3  3  3  8  4  4  3  1  5  3  3  1  3  6  1  4  1  3
+## [3001]  3  3  4  4  3 10  4  5  3  3 12  1  3  1  4  1  4  9  4  5  1  3  3  3
+## [3025]  1  4 12  3 11  1  1  4  4  4  3  4  4  3  3  1  3 12  3  1 10  1  6  4
+## [3049]  4  3  1  3  3  1  4  4  3  4  7  1  3  1  3  3  3  1  3  4  4  3  4  9
+## [3073]  4  3 12  4  4  4  3  1  1  4  3  1  2  4  6  4  3  4  4  3  3  1  1  4
+## [3097]  4  1  3  1  3  3  3  1  3  3  4  4  4  4  4  3  4  4  3  4  4  2  1  3
+## [3121]  3  4  3  4  3  1  3  7  4  1  3  4  3  4  1 10 12  1  4  4  4  4  4  3
+## [3145]  3  3  1  4  3  3  4  7  3  3 12  6  3  4  4 12  7  6  4 12  4  6  3  1
+## [3169]  7  1  1  3  6  1 12  6  3  3  6  3  9  3  3  3 12  9  9  6  3 12  3  1
+## [3193]  3  6  4  4  9  1  1  3  4 10  3  4  6 11 10  4  7  6  4  3  3  6  3  3
+## [3217]  4  1  1  4  6  4  1 12  3  3  4 11  6  4  3  3  7  3  9  7  1  7  4  6
+## [3241]  3  1  6  3  4  3  7  1  4  4  7  6 10  1 12  3  4  3  1  3 10  4  4  2
+## [3265]  6  3  4  3  1  6  6 10  4  4  6  4 10  1  6  3  3  3  6  4  4 10  6  3
+## [3289]  1  3  3 11  4  6  4  1 10  1  4  4 12  1  4 12  1  3  1  3  4  3  4 11
+## [3313]  1  3 12 12  3 10  3  9  6  3  4  4 10  3  3 11 12  9  3 12  6  3  3  4
+## [3337]  1  3  7  1  3  4  4  6  1  7  3  6  1  4  4  4  4  9  3 10  6  4 11  7
+## [3361]  4 11  3  8  1  1  3  3  6  6  4  3  4  4  1  4  1  1  4 12  4  7  4  6
+## [3385]  6  6 11  6  1  4  3  6  9  4 12 12 10  6  3  6  4  4 10  6  3 10  3  4
+## [3409] 10  3  1  3  1  4  1 10  3  3  1  1 12  3  4  4 11  3  3  1  1  4  4  4
+## [3433]  3  4  1  1  1  1  3  1  3 10  3  3  4  3  7  3  4  1  4  3  1  4  4  1
+## [3457]  3  7  1  6  9 12  4 13  4  1 12 12  7 12 12  4  6  6  6  4  4  4  6  3
+## [3481]  1 12  6  3  4  4 12 13  7  6  7 12 12  4  6  2 12  3 12 12  3  3  3  3
+## [3505]  6  4  1 12  1  7  6  4  3  1  6  4  4  3  4  6 12  6  7  4  4  6 12  4
+## [3529] 12  5 12 12  6  7 12  4  5  4  6  4  7 10 12  3  6 12  6 12  6  6  3 13
+## [3553]  4  1 12  7 12  3  1  3  4 12  6  4  3  4  4  3  6 12  7 12  3  3 12 12
+## [3577]  5  3 12  6 13  4 10  4 12  4  4  4  6  3  7 12 12  4  4  6  3  1  3  3
+## [3601] 12  6 12 12 10 12  4 12  7 12  4  6 12  6  4 13  6  1 12  4  6  3  3  6
+## [3625]  6  3 12  4 12  9  9  4 10  3  9  6  3  4 13 12 12  4  6  5 13  1 12 12
+## [3649]  3 12  6 12 12  4  7  6  9  7  7  5  4  6  4  4  7  6  6  3  5 12 12  4
+## [3673]  6 10  7 10  3 12 10 12  6 12  5  3 12  3  6  6  3  3 12 10 12  3  3 12
+## [3697] 12 12  4  3  4  4  6  6  4  4  6  4 12  3 12 12  3  3 12  4 10  4  7 12
+## [3721] 12  4  3  4  3  3  3 13  6  6  5  3 10  4  6  4 11  6  3 10  4 13  4 12
+## [3745]  6  4  4 12 12  7  6  3  3  6  6  5  6 12  3 12  4  1  8  6 12  3  7 12
+## [3769]  1  4  6  4  5 12  4 12  6  4  3  7  6  4  6 12 10 12  4  3  3 12  4  6
+## [3793] 12  9  4 13  4  5 12  6  3  4  4  7  7  4 12 12  3  4 10  1  3  3  6  4
+## [3817]  7  3  6  1  3 12  4  4  3  4  3 10  6  6  4 10  4 12 12  5 10  7  6  6
+## [3841]  4  6 10 12  6  4  3  4  6  6  6  5 10 12  7  4  4  4 12 12  6  6  7  7
+## [3865]  6  4  7  4  4  7  6  3  6  7 13  3  4  6  4  4  6 12  3  4  6  3 12  6
+## [3889]  6  3 10  6  3  4 10  1  5 12 10  1  1  4  4 13  6 12 12 12  3 12 12  4
+## [3913]  5 12 12 12  3 12 12 12  4 12 12 12  6  3 12  3  1  4  1  6 12 12  4  3
+## [3937]  3  1  6  4  7  6  3  4  1  3  6  3  5 12  4  4  6  9  4  4  4  3  3  3
+## [3961]  3 12 12  3  4  1  6 11  1  6  4 11  3  4 10  4 10  4  3  7  4 12  4  1
+## [3985]  4  7  4  1  7  4  1  3 11  4  4  4 12  7  1  4  3  6  1  4 10  1  1 12
+## [4009]  3  1  6  1  3 12  7  1  6 11  4  7  7  1  4  3  4  4  9  3 10 10  6  7
+## [4033] 12 12  9  6  6  3  3  1  1  3  7  6 10  3  7 10  6  3  6  7  4  4  6  4
+## [4057]  1  4  1  4  4  1 11  4  4  3  3 10  4  2  9 10  1  6  4  4  1  1  3  4
+## [4081] 11  7 10  3  4  4  4 13  3  4  3 10  7  4  4  4  1  4  5  4  4  4  4  4
+## [4105]  6 10  3  4  4  5  4  4  4  1  7  4  1  3  4  3  9  4  4 11 10  3  6  1
+## [4129]  1  4  7 10 10  1  6  3  3  5  3  6  4  3  4 11  4  6  7  7  7  1  4 NA
+## [4153] 11  3  1 12  4  3  4  5 12  1  4  5  4  6  3  3 10  6  3 10  4  4  3  7
+## [4177]  4  9  4  4  4  4  3  7  4  1  9  3  4  7  7 10  4  1  4  4  1 12  6  4
+## [4201]  4 11  4  4  7  4  4  4  3  3  6  6  4 13  4  3  3  4  6  6  3  3 12  7
+## [4225]  3  7  6  4  3  4  6  3  3  3  1  6  4  4  1  4  9  6  3  1  4  7  1  4
+## [4249]  3  1  3  4 10 10  4  4 10  7 10 10  4  4  7  4  1  1  4  4  4  4  1 12
+## [4273]  3  3  7  4 12  3  6  1  4  1  4  3  1  4  3  4  2 10  3  9  2  4  6  9
+## [4297]  3  4  4  4  4  4 12  1 12  1  4  3  1  4  6  4  5  3  4  3  3 13  3  3
+## [4321] 10  6 12  4 10  1  3  1  9  4 12  6  4  1  1  3  4  6  4  4  4  6  1 12
+## [4345]  4  3  5  7  2  6  3  7  6  1  4  3  4  4 10 11  4  6  6  4  6 12  6  3
+## [4369] 10  3  7  1  4  3  7  3  3  7  4  6  1  3 11  4  3  3  7  1  4  5  4  6
+## [4393]  1 11  4 12  4  3  4  2  4 10  3  4  3  6  4  1  3  6  1  4  6 13  3  4
+## [4417]  7 NA  4  4  3  4 11  4  3  3  4  4 13  1  4  6 12  1  1 12  4 13  3  4
+## [4441]  4  3 12  4  3  4 13  4  4  6  6  6  3  1  1 12  4  1  4  4  4  3 10  5
+## [4465]  1  3  4  3  1  7  9  4  4  7  1  4  4  3  6  4  4  4  4  3  2  1 10  4
+## [4489]  4  1  1 11  9  3  3 12  4  4  1  1  7 13 13  6  6  4  6  9  4  1 10  6
+## [4513] 10  3  3  1  4  6  6  3  7  3  1  4  1 10  3  3 10  4  7 12  2  4  4  4
+## [4537] 10  3  3  4  4 10  1  3  3  6  3  3 12  6  5  1  4  1  1 12  3  4  1 12
+## [4561]  3 10  4 12  6 13  1  3  1  7  1  4  9 11  1 12  1  1  1 12  7  9 10  3
+## [4585]  6  3  1 12  1  4  9  4  6  6  4  3  4  1  1 12  4 12  7  4  6  1  1  4
+## [4609] 12 13  4  4  4  3  4  3  1  4  6  3  3 12  1  6  6  6 11 10 12  1  3 12
+## [4633] 12 12  4  7  4  5  4  4  4  6  3  1  1 10 10 12  3  7  3  4  6 11  4  4
+## [4657]  4  4  4  4  9  7  1  6  3  9  1  4  4  1  1 10 12 10  2  1  3  3  1  6
+## [4681] 12  4  1  4  6  3  6  4  6  6  4  3 10  6  3  4  6  6 12  7  4  1 12  4
+## [4705]  4  5  3  6 10  3  3  7  3 10 10  4  3  1 10  4  3  4  3  6  7  3  3  3
+## [4729]  4  4  6  4  1  3 12 13  1  4  3 12  1  6  2  4 12 12  7  3  6  1  4  1
+## [4753]  1  1 10  3  3  3  3  6 NA  4  3  1  3 12  4  1  4  3  1  4  1  3  6 10
+## [4777]  4  1  4  3 12 10  3  3 12  3 12  1  1  7  6 10  7  3  4 12  4  4  3  4
+## [4801]  3  3  1  3  4  3  3  3  3  4  1  1  7 11 11 12  3  4  4  4  4  6  4  4
+## [4825]  6 12  6  9 10 12  1  3  4 12  6 11  1 12 12  4 10  4 10  6  3  4  4  6
+## [4849]  4  4  6  9  1  1  9  1  4 12  4  9  6  3  9 11 10  3  4  4  1  7 10  1
+## [4873]  4  3  9  4 12  7  4  1  1  6  1  1  6  1  1  4 12 11  4 12  3  4 10  1
+## [4897]  3  9  4  3 12  4  3  1 12  3  1  6 10  1  3  4  3  9  1  6  3  1 12  4
+## [4921]  4  3  6  1  3  3  7  4  1  4  4 10  1  1  6  4  4  1  3  1  1  3 12  4
+## [4945]  3  4  4  4  4  4  9  4  1  3 12  3  6  1  4  3  3  7  6  4  6  4  6  6
+## [4969] 12  3  3  4  1  9  4  6  1  6  4  4  3  4  4 10  1  3  1  3  3  7  3  3
+## [4993]  6  4  1  6  6  9  4 10  6  7  3  4  4 10  4  3  6  4  3 10  4  3 10 10
+## [5017]  9  4  3  3  6  7  3  4 12  3  9  6  4  1  3  3 10 10  4  4  4  4  4  4
+## [5041]  3 10  4  4  1  4  4  8  9  4  3  1 12 11  4  3  6  3  1 10  4  7  3  1
+## [5065]  6  4  4  6  4  6  3  4  6  4  1  5  4  3  4  4  4  4  1  3  9  4  3  4
+## [5089]  1  1  6  3  4  1 10  4  9  6  1  6  3  4  3  1  4  3  3  4  1  4  4  6
+## [5113]  4  1  4  7  6  3  1  3  3  3  3  1  6  4  4  3  1  4  4  4  3  4  9  4
+## [5137]  4 12  3  4  7  4  6  1 10  3  1  4  1  3  4  6  6  3  9  6  6  4  3  6
+## [5161]  4  4  4  3  2  4 10  7  4  7  4  1  3  6 12  1  7  3  5  3  3  3  4  3
+## [5185]  7  4  4  4  9  6  4  6  1  4  4  3  4  6  3  4  4  1  6  9  4  1  4  3
+## [5209]  4  6  6  4  6  3  4  4  9  7  6  1  4  7  3  4  6  3  6  4 13  1  3  4
+## [5233]  1  4  3  4  4  6  3 10  6  4  4  6  4  1  3  4  4  4  3  5  4  7  3  1
+## [5257]  3  4  4 12  4 10  3  4  3 10  3  4  4 11  4  4  6  3  4  3  3  4  3  9
+## [5281]  7  3  4  4  3  4  6  1  6  4 12  6  1  6 12  1  4  3  3  6  3  6  4  4
+## [5305]  4  6  2  3  1  4  6  3  4  6  1  1  4  4  1  9  3 11 11  7  3  3  4  1
+## [5329]  1  1  4  4  1 11  3  4  7  4  3  4  4  6  6  6  1  3  4  7  6  4  3  3
+## [5353]  6  1  4  4  4  1  4  1  3  6 12  7  6  4  3 10  4  4  5 10  3 10  3  3
+## [5377]  4 10  3  4  3  4  4  4  1  1  4  4  4  3  6  1  4  4  7  3  4  3  4  4
+## [5401]  1  1  6  4  3  1  4  3  3  4  4 13  4  3  4  3  3  1  4 11  3  3  4  1
+## [5425]  4  3  1  6  1  3  3  6  4  4  4  6  4  4  5  3  3  4 12 11  4  3  5  4
+## [5449]  3  4  4  3  3  4  3  3  9  3  1  3  4  4  1  4  3  1  1  6  1  3  4  1
+## [5473]  4  6  3  3  3  4  3  6  6  3  3  4  4  9  6  6  3  4  4  6  3  3  4  6
+## [5497]  3  4  4  4  6  3  3  3  1  3  4  4  3  3  3  6  4  3  6  4  4  6  3  3
+## [5521]  3  6  4  7  7  3  3  1  4  4  3  1  3 12  6  1  6  1  3  3  1  6  6  3
+## [5545]  1  6  4  6  6  4  7  1  3  6  3  1  4  3 12 12  1  4  4  3  1 10  4  4
+## [5569]  3  4  1  4  4  3  4  1  4 12  4  3  3  3  4  7 12  3 12  4  1 10  7  1
+## [5593]  7  4  3  3  3  4 10  4  6 12  4 12  4 10  6  4  1 12  4  3  4  3  4  6
+## [5617]  9 12  4  4  3  4  7  3  1 12  6  4  4  6  3  4 10  3  7  1 12  5  4 12
+## [5641]  1  3  3  3  4  4  1  3  1  7  4  6  3  3  6  9  4  9  4  4 12 10 12  7
+## [5665] 10  3  6  3  4 10 10  4  6  3  4  4  4  4  6  6  4  3  3  4 NA  4  4  4
+## [5689]  6  3  4  4  6  4  3  4  4  6  3  4 12  3 12 10  6  3  3  6 11  3 12  1
+## [5713]  4  4  6  3  3  4  4  6  4  3  5  3  3  7  4  9  3  7  6  6  4  3  4  6
+## [5737]  7  1  4 12  4  4  7  3 12  6 10  6 10  3  6  3  4  7  7  3  1  4  6  3
+## [5761]  3  6  4  7  3  4  4  3  9  4  4  1  4  1 12  4  9 12  7  3  6  4  4  4
+## [5785]  3  6  1  4  3  3  3  3  3  6  7  3  4  4  4  6  3  5  3  4  4  3 11  6
+## [5809]  3  7 12  4  4  5  4  3  7 12  3  4  3  1  3  3 12  3  6  4  4  6  1  4
+## [5833]  3  1  3  4  3  4  3  3  3  4 10  7  4 12  5  4  7 12  4 13  1 13 NA  3
+## [5857]  1  6  6  9 12  6  3  4  4  3  4 12  7 12  3  6  7  6 12  7  9  4  4  4
+## [5881] 12  1  6  4  3  6 12  4  4  3  4  4  6  4  4 11  6  4  3  6  3 12  3  7
+## [5905]  6 12  1 12  6  4  4  3  3  9  3  6  3  3 12 12  7  4  6  6  3  6  6  4
+## [5929]  6  4 10  3  4  6  4  4 12 11  6  4  4  3  4 11  3  4  3  1  4  3  4  6
+## [5953]  4  6  6  3  3 12  3  4 12 12  6  4 12  7  4  4  4  3  3  6 10  3  7  4
+## [5977]  4  3  7  1  6  3  9  3  1  3  6  6  4  3  7  4  4  6  4  4  7  6  5  4
+## [6001]  4 12  1  7  4  4  3  4  9  4  1  7  4  3  3  1  6  6  4  3  4  3  3  3
+## [6025]  3 12  4  3 12  4  3  1  3  3  6  6  4  4  4  3  3  5  3  4  6  4  3  1
+## [6049]  4  7  4  4 12  3  4  4  3  3  7  9  3 11  3  3  4  3  6  3  3  9  1  4
+## [6073]  3  4 10  1  6 10  3  3  4  3  7  4  7  3  4  1  4  4  3  4  3  6  1  1
+## [6097] 10  4  4  1  6  4 12  4  6  3  4  4  3  4 10 12  4  6  3  1  6  4  3  5
+## [6121]  3  4  4  6  4  4  1  3  4  6 12  1  4  1  4  3  3  3  5 12  4  4 12  4
+## [6145]  3  4  3  3  4  3  6 12  4  4  3  4  4  6  4  3 10  6  6  9  4  4  4  3
+## [6169]  4  3 12  6  3  6  6  4  4  6  3 13  4  4  3  3  4  6  4  6  3  3  4  6
+## [6193]  4 11  4  4 10  4  4  4  3 12  4  3  4  6 12  3  4  4  1  3  6 12 12  4
+## [6217]  3  4  4  1  3  4  7  4  4  4  3  6  4  3  4  4  4  4  3  1  3  3  4  1
+## [6241]  4  3  4  4  6  6  3  3  4 12  3  3  7 12  4  3  4  4  7  1  6  4  4  4
+## [6265]  4  7  3  4  4  4  4  6  3  3 10  6  6  4  3  8  4  6  6  3  3  4 10  4
+## [6289]  4  3  6  1  4  3  6  1 12  3  6  9  6  2  1  4  6  4  3  6  1  3  3  4
+## [6313]  1  4  3  1  1  3  4  6 10  3  4 12  4  4  6  1  4  3  4  3  6  1  3 12
+## [6337]  3  3  3  4 10  6  4  3  8  6  3  6  6  1  3  4  4  4  3  3  7  4  6 12
+## [6361]  3  6  4  3 12  9  7  6 10  6  1  4  3  4  4  3  4  4  6  3  3  4  4  4
+## [6385]  4  4  3  4 10  7  3  1  4  4 12 10  7  3  3  3 12  3 12  1  1  6  4  4
+## [6409]  6  3  4  4  9  3  3  3  3  6  4  4  3  1  3  6  3  4 10  4  4 12  6  3
+## [6433]  3  4  4 13  4  6  7  9  4  4 12  3 12 12  4 12  3  4  4  4 12 12  4  4
+## [6457]  4  7  3  3  4  3  4  1  3  4  3  7  4  3  5  4  4  4  3  3  4  4  4  6
+## [6481]  6  1  6  4  4 12  4  3  3  1  3  4  4  6  1 12  3  1  3  3 11  3  4  1
+## [6505]  1 NA  3  3  3  3  3  3  1 12 12  1  3  1  4  4  4  1  1  3  3  3  3  4
+## [6529] 10  1  3  3  4  7  1  1  4  2  4  3  4 12  4 NA  1  6  3  3  5 11  3  3
+## [6553]  6  6  3  4  3  4  3  3  3  3  3  2  3  1  3 12  3  2  4  4  3  4  6  3
+## [6577]  4  4  4  4  1  3  7  1  6  3 11  1  1  4  3  3  1  5  4  3  3  4  3  3
+## [6601]  3  1  3 12  3  3  4  3  3  1  7  3 12  3  7  1  1  3  3  4  1  3  3  3
+## [6625]  3  4  3  9  6  3  3  3  1  3  1  3  4  1  3  4  6  4  3  1  4  4  3 12
+## [6649]  4  3  3  4  1  3  3 12  3  4  4 10  4  3  6  3  3  4  6  3 12  4  6  3
+## [6673]  2  4  1  1  3  3 11  3  3  3 10  3  3  3  3  4  1  3 11  6  4  3  3  4
+## [6697]  3  4  1  3  4  7  4  4  1  1  3  3  4 12  1  4  1  1  3  3  1  3  4  1
+## [6721]  4  3  4  5  3  4  3 12  1  4  1  1  3  3  3  3  3  3  1  1  4  3  3  4
+## [6745]  3  3  2  3  3  1  4  3  3  3  4  3  3  4  3  3  3  3  4  4  3  1  4  1
+## [6769]  1  1  1  7  3  4  3  3  3  3  3  5  4  6  9 13  4  6  3  3  3  1  6  1
+## [6793]  1  4 12  4  9  4  4  3  3 10  1  1  4  1 12  3 10  1  4 12  3 13  1  3
+## [6817]  3  1  3  1  1  6 12 12  9  3  4  4  4  1  6 12 12 12  4  4  6  3  6  4
+## [6841]  9 11  4  4 12  5 13  1 12 10  3  4  7 11  4 10 13  5  3  3  3  4  4  3
+## [6865]  1  1 13 11  9  4  3  3 11  3  3  6  1 NA  3  4  4  4  3  4 12  8  1  4
+## [6889]  4  9  4 12  3  3 12 12  3 11  1  3 12  4  4  9  1  4  9  7  4 11  1  4
+## [6913]  9 12  4  4 12  6  3  3 12  3  3  4  4  3 12  4 11  4  4  4  1  7  3  3
+## [6937] 11  6  4 12  2  3  1  9  4  3  3  4 12  4  9  4  4  9  3  6  4  4  3  4
+## [6961]  4  5  4 11  1  1  4  1  4  4  3  3 13  1  1 12  4  6 10  3  7  3 10  3
+## [6985] 12  1 12  1  4  4  4 12  9  3 12  1  1  3 12  4  4  4  4  3  3  6  4  7
+## [7009]  3  6 11  6  4 12  3  3  9  7  3 12 11 12  4  4  3  4  4  4  9 12  4  1
+## [7033]  3  3  4  8  3  5  3  1  3  4 12 10  6  3  7  2 11  4  4  4  1  4  4  1
+## [7057]  6 11  3  4  1  6  3  3 10  1  3  6  4  4 11  3  1  4  4  8  4  4  3  3
+## [7081]  1  3  4  1  6  9  3  1 10  6  1  5  4  4  1  1  6  3  4  3  4 11  4 12
+## [7105]  1  4 10 10  9  4  3  3  3  4 10  3  3  4  4 11 10  3  3  1  3  7  3  3
+## [7129]  9  1 12  3  7  7  3  3  4 12  7  4  3  3  3  4  3  1  4  4  3  4  6  4
+## [7153]  1  8  1  4  3  1  5  2  3  3  3 12  6  3  3  9  1  3  3  3  7  4  3 12
+## [7177]  3  4  1  3  3  4  3  3  4  3  3  3  3  1  4  1 12  4  3  4  4  1  4  4
+## [7201]  1  1  3  3  3  4 13  3  3  1  3  1  3  7  3  4  4  4  3  3  6  6  3  3
+## [7225]  4  6  4 13  3  6  4  3  4  3  3  1  4  1  1  3 13  9  3  3  3  1  3 12
+## [7249]  4  1  3  7  5  3 11  3  4  3  6  3  4  4  1  4  4  4  3  3  3  6  3  3
+## [7273]  3  1  4  3  1  3  4  3  3  1  3  4  3  4  3 12 12  3  3  3  3  1  3  1
+## [7297]  3  3  3  3  4  4  4  1 12  4  3  4  6  6  4  4  4  4  4  3  3  3  1  4
+## [7321]  1  3  9  1  3  3  3  3  3  4  3  3  3  4  1  3 12  4  3  3  4  1  3  4
+## [7345]  4  3  3  6  6  4 12  1  3  4  3  1  1  1  4  3 12  4  1  7  6  1  7  4
+## [7369] 11  4  6  4  5  1 11  4 12  3  1  4  4  6 10  3  4  4  3  4  3  1  4  1
+## [7393]  1  3  6  3  6 12  3  4  1  4  4  4  1  4 12  6  3  3  1 12  6  6  6 10
+## [7417]  4  3  9  3  1  3  3  4  1  4  3  6  1  1  4  1 10  6  1  1  1  3  4  4
+## [7441]  4  4  1  4  9 12  3  3  1  4  4  6  3  4  4  1  3  3  1  3  3  1  4  1
+## [7465]  4 12  3  4  4  4  3  3  1  1  4  4  4  7  9  3  3  1 11  4  3  4  4  9
+## [7489]  6  3  1  5  3  1  3  3  9 11  1  6  4  4  2  4  4  1  4  1  3 12  3  3
+## [7513]  1  4  4  7  3  4  3  4  6 12  1 12  4  3  1  3  4  3 10  4  4  3  1  6
+## [7537]  3  1  1  7  1  3  3  4  4  3  4  1  1 11  3  1 10  6  1  4  1  4  1  4
+## [7561]  6  7  3  1 10  4 12  3  3  4  6 12  4  6  2  7  4  5  4  4  4  4  4  4
+## [7585]  3  3  4  3  6 12  3  6 12  1  4  6  3  4  1  1  7  1  3  4  4  6 11  1
+## [7609]  1  6  1  3  3  6  4  4  3  1  3 11  1  4  6  4  9  4  3  1  4 12  6  3
+## [7633]  1  3  3  4  4  3 10  4  7  1  4  6  6 12  4  1  1  4 11  3 12 12  1  3
+## [7657]  4  4  7  3  3  3  4  4  1  1  4  4  3  4  3  1  4  4  7 12  4  4  4  4
+## [7681]  4  1  3  4  3  1  4  4  4  4  4  4  4  4  3  4  4  3  6  3  4  4  4  3
+## [7705]  1 10  1  4  4  1  1  4  3  3  4  7  3  6  6  5  7  4  3  4  2  6  3  7
+## [7729]  1 12  6  3  3  4  3  4  3  4  3  1  4  4  1 12 10  4  4  2  3 12 11  3
+## [7753]  3  5  4  1  1  6  1  3  3  3  1  1 10 12  4  4  4  3  1  1  1 12 11  7
+## [7777]  3  4 12  3  4  3  3 10  4  3  3  1  3  4 12  6  3 12  3  4  1  4  6 12
+## [7801]  3  3  6  3  1  3  4  1  3  4 12  4  3  3  9  6  4 10  3  1 10  4  1  4
+## [7825]  6  2  4  4  3  1  4  1 10 12  4  4  4  4  4  4  3  1  3  6  1 12  3  6
+## [7849]  3  5  1  3  4  4  4  6 12  1  3  4  3  5 10 12  4  6  1  7  4 12  4  4
+## [7873]  3 12  4  4  4  7  3 10  1  1  4  1  3  3 10 10  3  1  1  3  4  4  1  1
+## [7897]  4  4  6 12  3 10  6  3  4  3  3  4  4 12  6  1  3  6  4  6  3 12  7  3
+## [7921]  3  3  3  1 10  6  3  6  4  7  7  3  1  7  4 13 11  6  9  3  1  3  4  4
+## [7945]  4  3  3  3  6  6  1  9  4  4 11  4  4  4 12  1  2  4 12 12  4  4  3  1
+## [7969]  4 12  3 10  6 12  4  7 12  3  9  7  6  3  9  1  4 12  4  9  3  4  9  4
+## [7993]  3  4  7  4 12  4  6  8  4  6 10  4  7  9  6  6  1  6  4  3 11  1  3  4
+## [8017]  4  4  7  4  3  1  1  9 12  8  4  8 10 10  3 12 11  4  3 10  8  6 12 10
+## [8041]  3  6  4  1  6  6  4  3  3  7 11  3  1  3  1 12  1  3  1 11  9  3 NA 12
+## [8065]  3 12  4  1  6  3  4  4 12  9  9  3  6 12  9  3  3 12  1 12  4  3 12  7
+## [8089]  6  3  1  1  3  3  3 12  1  1  7  3  6  4  4  9 12  4  1  4 11  1 12  1
+## [8113]  1  4  9  3  7 11  6  3  6 12  4 12  3 12  1 12  3  4  1  3  3 12  3  1
+## [8137]  6  4  1 12  7  3  1  6  1  9 11  3
+## 
+## Labels:
+##  value                    label
+##      1         没有受过任何教育
+##      2             私塾、扫盲班
+##      3                     小学
+##      4                     初中
+##      5                 职业高中
+##      6                 普通高中
+##      7                     中专
+##      8                     技校
+##      9 大学专科（成人高等教育）
+##     10 大学专科（正规高等教育）
+##     11 大学本科（成人高等教育）
+##     12 大学本科（正规高等教育）
+##     13             研究生及以上
+##     14           其他（请注明）</code></pre>
+<p>下面两种代码书写的区别在于，第一种用于数值型，第二种用于字符型。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dt.html#cb8-1" aria-hidden="true" tabindex="-1"></a>CGSS2021a<span class="ot">&lt;-</span></span>
+<span id="cb8-2"><a href="dt.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  CGSS2021a <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="dt.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">A7a1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-4"><a href="dt.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;未受教育&quot;</span>,</span>
+<span id="cb8-5"><a href="dt.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;初等教育&quot;</span>,</span>
+<span id="cb8-6"><a href="dt.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">6</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">7</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;中等教育&quot;</span>,</span>
+<span id="cb8-7"><a href="dt.html#cb8-7" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="dv">9</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">10</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">11</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">12</span> <span class="sc">|</span> A7a <span class="sc">==</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">&quot;高等教育&quot;</span>,</span>
+<span id="cb8-8"><a href="dt.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="dv">14</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span></span>
+<span id="cb8-9"><a href="dt.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb8-10"><a href="dt.html#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="dt.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#CGSS2021a$A7a1 查看重新编码后的变量情况。</span></span>
+<span id="cb8-12"><a href="dt.html#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="dt.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#CGSS2021h &lt;- select(CGSS2021a,A7a,A7a1,everything()) 可给变量排序，将A7a1放在A7a后面。</span></span>
+<span id="cb8-14"><a href="dt.html#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="dt.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CGSS2021a<span class="sc">$</span>A7a1) <span class="co">#注意：从A7a到A7a1，数据类型从数值型转换为了字符型。</span></span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dt.html#cb10-1" aria-hidden="true" tabindex="-1"></a>CGSS2021c<span class="ot">&lt;-</span></span>
+<span id="cb10-2"><a href="dt.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  CGSS2021c <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="dt.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">A7a1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-4"><a href="dt.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="st">&quot;没有受过任何教育&quot;</span> <span class="sc">~</span> <span class="st">&quot;未受教育&quot;</span>,</span>
+<span id="cb10-5"><a href="dt.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="st">&quot;私塾、扫盲班&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;小学&quot;</span> <span class="sc">~</span> <span class="st">&quot;初等教育&quot;</span>,</span>
+<span id="cb10-6"><a href="dt.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="st">&quot;初中&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;职业高中&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;普通高中&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;中专&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;技校&quot;</span> <span class="sc">~</span> <span class="st">&quot;中等教育&quot;</span>,</span>
+<span id="cb10-7"><a href="dt.html#cb10-7" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="st">&quot;大学专科（成人高等教育）&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;大学专科（正规高等教育）&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;大学本科（成人高等教育）&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;大学本科（正规高等教育）&quot;</span><span class="sc">|</span> A7a <span class="sc">==</span> <span class="st">&quot;研究生及以上&quot;</span> <span class="sc">~</span> <span class="st">&quot;高等教育&quot;</span>,</span>
+<span id="cb10-8"><a href="dt.html#cb10-8" aria-hidden="true" tabindex="-1"></a>    A7a <span class="sc">==</span> <span class="st">&quot;其他（请注明）&quot;</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span></span>
+<span id="cb10-9"><a href="dt.html#cb10-9" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+</div>
+<div id="dta-b" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> 大型数据诊断<a href="dt.html#dta-b" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>大型数据诊断可以用eda_report()输出的数据诊断报告查看。但目前这里跑不出来，亟待解决。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dt.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dlookr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dlookr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     transform</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dt.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#eda_report(CGSS2021a, output_format = &quot;html&quot;)</span></span>
+<span id="cb15-2"><a href="dt.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="dt.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#数据整体概览</span></span>
+<span id="cb15-4"><a href="dt.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SmartEDA)</span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="dt.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpData</span>(<span class="at">data=</span>CGSS2021a,<span class="at">type=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##                                           Descriptions        Value
+## 1                                   Sample size (nrow)         8148
+## 2                              No. of variables (ncol)          701
+## 3                    No. of numeric/interger variables          697
+## 4                              No. of factor variables            0
+## 5                                No. of text variables            4
+## 6                             No. of logical variables            0
+## 7                          No. of identifier variables            1
+## 8                                No. of date variables            0
+## 9             No. of zero variance variables (uniform)            0
+## 10               %. of variables having complete cases 26.82% (188)
+## 11   %. of variables having &gt;0% and &lt;50% missing cases   7.28% (51)
+## 12 %. of variables having &gt;=50% and &lt;90% missing cases 57.92% (406)
+## 13          %. of variables having &gt;=90% missing cases   7.99% (56)</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dt.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#数据结构分布情况</span></span>
+<span id="cb19-2"><a href="dt.html#cb19-2" aria-hidden="true" tabindex="-1"></a>res<span class="ot">&lt;-</span> <span class="fu">ExpData</span>(<span class="at">data=</span>CGSS2021a,<span class="at">type=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>大型数据的诊断不用太精细，我们后续对需要专门挑出来分析的数据进行细致的诊断即可。</p>
+</div>
+<div id="dt-c" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> 数据简单处理<a href="dt.html#dt-c" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>重新编码，根据出生日期计算年龄，然后对年龄分组。
+这里刚好补充上连续变量的重新编码。</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dt.html#cb20-1" aria-hidden="true" tabindex="-1"></a>CGSS2021c <span class="ot">&lt;-</span> CGSS2021c <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">age =</span> <span class="dv">2021</span><span class="sc">-</span>A3_1)</span>
+<span id="cb20-2"><a href="dt.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="dt.html#cb20-3" aria-hidden="true" tabindex="-1"></a>CGSS2021c <span class="ot">&lt;-</span></span>
+<span id="cb20-4"><a href="dt.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  CGSS2021c <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="dt.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">agegroup =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-6"><a href="dt.html#cb20-6" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;30岁以下&quot;</span>,</span>
+<span id="cb20-7"><a href="dt.html#cb20-7" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">&quot;30-45岁&quot;</span>,</span>
+<span id="cb20-8"><a href="dt.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&gt;</span> <span class="dv">45</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span><span class="dv">60</span>  <span class="sc">~</span> <span class="st">&quot;45-60岁&quot;</span>,</span>
+<span id="cb20-9"><a href="dt.html#cb20-9" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;60岁以上&quot;</span></span>
+<span id="cb20-10"><a href="dt.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb20-11"><a href="dt.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CGSS2021c<span class="sc">$</span>agegroup)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="dt.html#cb22-1" aria-hidden="true" tabindex="-1"></a>CGSS2021c<span class="sc">$</span>agegroup <span class="ot">&lt;-</span> <span class="fu">factor</span>(CGSS2021c<span class="sc">$</span>agegroup,</span>
+<span id="cb22-2"><a href="dt.html#cb22-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;30岁以下&quot;</span>,<span class="st">&quot;30-45岁&quot;</span>,<span class="st">&quot;45-60岁&quot;</span>,<span class="st">&quot;60岁以上&quot;</span>),</span>
+<span id="cb22-3"><a href="dt.html#cb22-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;30岁以下&quot;</span>,<span class="st">&quot;30-45岁&quot;</span>,<span class="st">&quot;45-60岁&quot;</span>,<span class="st">&quot;60岁以上&quot;</span>))</span>
+<span id="cb22-4"><a href="dt.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#注意：这里可能是因为受到字符型特征影响，levels的设置不能标为数值，我一开始标为1、2、3、4，跑出来是NA。况且我们本来需要的也是因子表示，而非数值展示。</span></span>
+<span id="cb22-5"><a href="dt.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="dt.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#CGSS2021c &lt;- select(CGSS2021c,age,agegroup,everything()) #将age和agegroup排在一起，并放在最前面。</span></span></code></pre></div>
+<p>给大学专业重新编码并分组。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dt.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CGSS2021c<span class="sc">$</span>A7f)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dt.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#发现一个问题，read_stata13读入似乎会把数值型数据转化为因子型，导致重新编码遇到问题</span></span>
+<span id="cb25-2"><a href="dt.html#cb25-2" aria-hidden="true" tabindex="-1"></a>CGSS2021a<span class="sc">$</span>A7f</span></code></pre></div>
+<pre><code>## &lt;labelled&lt;double&gt;[8148]&gt;: A7f. 若您上过大学，请问您最后所学专业（学科大类）是什么
+##    [1] NA NA 14 12 NA 14  8 NA 12 10  2  2 NA  3 NA 12  2 12 NA NA NA NA 12  3
+##   [25] NA  3 NA  2  8 14  8 NA NA NA  8 NA  5 NA 13  2 10 NA 14 NA  8 12 NA NA
+##   [49]  2 NA NA NA NA  4 NA NA 14  8  5  8  3  3 NA NA 13 NA NA 12 NA  2 NA NA
+##   [73] 14 NA NA NA NA NA  8 NA NA  7 NA 12  2  4  2 NA NA NA  8  5 13 NA NA  2
+##   [97] NA 12 NA NA NA NA NA  2 13  8 NA  8 NA 12 NA  5 NA 14 NA NA NA 14 NA NA
+##  [121]  2 NA NA NA NA 12 12  7  8  5 12 NA 14  2 NA 12 NA 12  5  2 NA  4 NA NA
+##  [145] NA NA NA NA NA 14 NA NA NA  8 NA NA 13  2  2 NA NA NA  2  2 NA  7 NA NA
+##  [169]  9 NA  2 NA NA NA 12 NA 13 NA 14 NA NA NA NA  8  8 12  2 NA 12 12 NA 13
+##  [193]  5 12 NA  7 10 NA  5 NA NA NA  7  8 12  8  2 NA  2 14 NA NA  5 NA NA 10
+##  [217] NA NA NA 14  3  7 NA  3 13 NA NA NA  2 NA 12 NA 13 13 NA  3 12 NA  2 12
+##  [241] NA NA NA  2  8 NA  4 NA NA NA NA  9 NA NA  9 NA  8 NA  8 NA NA 13 NA  7
+##  [265]  5 NA NA NA  8  8  2 12 12 NA  8  2 NA  2 10  8 NA NA NA 12  2 12 NA NA
+##  [289]  4  8 NA  2 NA  5 NA NA 12 NA  8 NA  8  8 NA NA NA 12  2 NA  4 NA  4  5
+##  [313]  2  2  7 NA  4 NA NA  2 NA NA  7  8 NA  2  8 14 NA NA  8 NA 13  8  5  2
+##  [337]  3  7 NA 12  5 NA  4 NA  2 NA 12  8 NA NA  5  8 NA NA NA 12 12 NA NA NA
+##  [361] NA 10  8 13  5 NA  8  2 NA NA 12  5 NA NA 13 12  2  8 14 NA 14 NA 12 NA
+##  [385]  5 NA 14 NA  8 NA NA 12 NA NA  7 NA  2  8 NA NA  9  7 NA NA NA NA NA NA
+##  [409] NA NA  8 14 NA  4  7 NA NA NA 12 14  7 NA NA  8 NA NA NA NA 12 NA NA NA
+##  [433]  2 NA NA NA 12  6 NA NA  5 12  3 NA 12 14  2 NA NA 12 NA  2 NA NA 13 NA
+##  [457]  9 NA NA 14 NA NA NA NA NA NA NA NA NA NA  2  2 NA NA NA NA  2 NA NA NA
+##  [481]  8 NA  8  5 NA  2 NA NA  7 12 NA  4  4 12 NA 12 NA  8 NA NA  2 NA NA NA
+##  [505] 14 NA NA NA  8  3  2 NA 14 NA NA  8 NA NA NA NA 14 NA NA NA NA NA NA NA
+##  [529]  7 NA NA  8 NA NA  8 NA  5 NA NA  8 NA NA NA NA NA NA  2 NA NA NA NA  8
+##  [553] NA  5 14 NA NA NA NA  2  8 NA  5 13 NA  2 NA NA 14 NA NA  8 NA  5 12  8
+##  [577] NA NA  9 12 NA NA 14  2 NA  2 NA NA NA  5 NA NA  2  8  8  5 NA NA NA NA
+##  [601] NA NA NA  9  8  2 14 12  5 NA  2 NA  5  8 NA 10 NA  7 NA  1  3  2 NA NA
+##  [625] NA  8 13 NA NA 14  2 NA NA  2 NA NA NA NA NA NA  8  1 NA 12 NA 13 NA NA
+##  [649]  2  8  3 NA NA NA NA  2  2 12 NA  7 12  2 NA NA  8 13  8  6 12 12  2 NA
+##  [673] NA NA 12 NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [697]  5 NA NA NA NA  4 14 NA  7 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [721] NA NA NA NA  7 NA NA NA NA NA NA  8 NA NA NA NA 12 NA NA NA NA NA NA NA
+##  [745] NA  6  4 NA NA NA 14 NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA NA NA
+##  [769] NA  7 NA NA NA NA NA 10 NA NA 14 NA NA NA 12 NA  8 NA NA NA NA NA NA NA
+##  [793] NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA
+##  [817] NA NA NA 11 NA NA  4 NA NA NA NA 14  8 NA  2 NA NA NA NA NA  8 NA NA NA
+##  [841] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA  2 NA NA NA
+##  [865] NA NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [889] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [913] NA NA NA 12  4 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [937]  8 NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA NA NA NA NA  7 NA  2
+##  [961]  5 NA NA NA  8 NA  5 NA NA NA 11 NA NA  4 NA NA NA NA NA NA NA 10 NA NA
+##  [985]  2 NA NA NA NA NA NA NA  5 NA NA NA  8  9 NA NA NA NA NA 12 14 NA NA NA
+## [1009] NA NA NA 14 NA  5 NA NA NA NA NA 14 14 NA NA  8  4 NA NA NA NA NA  4 NA
+## [1033] NA NA NA  5 NA NA  5 NA 10 13 14  8 NA 12 NA 10 NA NA  2 NA NA NA NA NA
+## [1057] 12  3 NA NA 12 NA 10 NA NA 10 NA NA NA  5 NA NA  6 NA NA NA NA 13  2 NA
+## [1081] NA NA NA NA  1 NA NA  5 14 NA NA NA  2 NA NA NA  4 NA NA NA NA  8 NA  4
+## [1105] NA NA NA  4 NA NA 10  2 NA NA NA  2 NA NA NA NA NA  1 NA 10 NA NA NA NA
+## [1129] NA NA  7 NA NA NA NA NA NA NA NA NA NA  5 NA  5 NA NA NA NA NA NA 12  2
+## [1153] NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA  2  2 12 NA NA NA NA
+## [1177] NA NA  7 NA  8 NA NA NA NA NA 12 NA 13  8  5 NA NA NA NA NA NA NA 10 NA
+## [1201]  5 NA NA  8  5 NA NA NA NA NA  4 NA NA NA  8 NA NA  7 NA  6 NA NA  2 NA
+## [1225] NA NA NA NA NA NA 10  3 NA NA NA NA 12 NA NA NA NA NA NA  3 NA NA  2 14
+## [1249] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 14 NA NA NA NA NA NA NA
+## [1273] NA NA NA  4  8 NA NA NA NA NA NA NA NA  5 NA NA NA NA NA NA NA NA NA NA
+## [1297] 14 NA NA NA NA NA NA NA NA NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA
+## [1321] NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [1345] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [1369] NA NA NA  4 NA NA NA NA NA NA NA NA NA NA NA NA  4  7 12 NA 10  7  3 NA
+## [1393] NA 10 NA NA NA NA  6 NA NA NA  8 NA 13  2 NA NA NA  2 NA NA  2  4  2 NA
+## [1417]  2 NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA  5  3 NA NA NA  2  5
+## [1441] NA NA NA  2 NA NA NA NA NA  3 NA NA NA NA NA NA NA 12  8 NA 14 NA NA NA
+## [1465] NA NA  8 NA NA NA NA NA 14 NA NA NA  3  4 12 NA NA  3 14 NA NA 12 NA NA
+## [1489] NA NA NA NA NA 12 NA NA NA NA  3  8  3 NA NA NA 14  4 NA NA NA 11  2 NA
+## [1513] NA NA NA  7 NA NA NA NA NA  5  8  2 NA 10 13 NA  2 13 NA NA NA NA NA NA
+## [1537] NA  3 NA 10 10 NA NA NA  7 NA  2 NA NA  5 NA NA NA NA NA NA NA 14 NA NA
+## [1561] NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA  1  8 NA NA NA 14 NA NA
+## [1585] 14  5 NA NA NA  8 14 NA NA 14 NA 10  4  4 14 NA 14 NA NA 14 NA NA 10  8
+## [1609] NA NA NA NA NA  8 NA NA NA 12 NA NA NA NA NA 10  2 NA NA NA NA NA NA 10
+## [1633] NA NA NA  8 NA NA NA NA 12 NA NA NA  8  5 10 NA NA NA  3  2 NA NA NA  2
+## [1657] NA  5 NA  2  8 NA NA NA NA NA NA NA NA NA NA  5 NA NA 14 NA  8 NA 10 NA
+## [1681] NA NA NA NA 12  7  3  3  8 NA NA  8  3 NA NA NA  4 NA NA 14  3 NA  5 NA
+## [1705] 12 12 NA NA  2 NA  7  8 NA  8 NA NA NA NA NA NA NA NA NA NA  4 NA NA NA
+## [1729] 13  8 NA NA  7 NA NA NA NA NA NA  8 NA NA NA NA NA NA NA  4  5 NA  8 NA
+## [1753] NA  2 NA NA NA NA NA  3 10 NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA
+## [1777] NA  4 NA  8  7 NA  4 10 NA  8 NA 10 NA NA NA NA NA NA NA NA NA NA  5 NA
+## [1801] NA  8 NA NA NA NA NA NA NA NA  2 NA NA NA  6 NA NA NA 14 NA NA NA NA NA
+## [1825]  1 NA NA 10 13 12 NA NA NA NA NA NA NA NA NA NA  2 NA NA NA NA  8 14  5
+## [1849]  8 NA NA NA NA NA 12 NA  2  2 NA NA NA NA NA  8 NA NA NA NA  8 NA NA NA
+## [1873] NA NA 14 NA NA NA  8 NA NA NA  9 NA NA 12 NA NA NA NA NA NA NA NA NA 12
+## [1897] NA  8 NA NA NA NA NA NA NA NA 10 NA  8 NA NA NA NA  8 NA NA NA NA NA NA
+## [1921] NA  8  8  8 NA NA NA 10 NA NA NA NA NA NA  5 14 NA NA NA 14 NA NA  4  8
+## [1945]  3 NA NA 12 NA NA  7 NA NA NA NA  3 12 NA NA NA NA NA NA NA  3 NA NA  2
+## [1969] NA  3 NA NA NA NA  8 NA NA NA NA NA  8 NA  5 NA NA NA NA NA NA NA NA NA
+## [1993] NA NA 10 10 NA NA NA NA NA NA  7 12 NA NA NA NA NA NA 12 NA NA NA NA NA
+## [2017] NA NA NA NA NA NA NA NA 14  3 NA NA NA NA NA  1 NA NA NA NA  8 NA NA  3
+## [2041] NA NA NA NA NA NA NA NA NA NA  3 NA NA 12 NA  2 NA  8  2 NA NA NA NA NA
+## [2065]  8 NA NA NA 10 NA NA NA NA NA  4  8 NA NA NA NA NA 12 NA NA NA NA NA 13
+## [2089] NA NA NA NA NA 12 NA NA NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA NA
+## [2113] 12 NA NA NA  2 NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA
+## [2137] NA  8 NA NA NA NA NA NA  4 NA NA NA NA 12 NA NA NA NA NA 12  2 NA 14 10
+## [2161] NA NA NA 12 NA NA NA NA NA NA  2 NA 10 10  3  8 NA NA  8 NA NA NA 14  8
+## [2185] 14 NA  7 NA NA NA  7  2  8  8 11 NA  4 NA 12 NA  9 NA NA NA NA NA NA NA
+## [2209]  2 NA NA NA  3 NA NA NA 12 NA NA NA NA  3 NA  4 NA NA NA NA  5 NA NA NA
+## [2233] NA NA NA NA  7 NA NA  9 NA NA  8 NA  7 NA  2 NA NA NA NA 12 12 NA NA NA
+## [2257] NA  4 NA NA 14 NA NA  8 NA NA NA NA NA NA NA NA  8  8 12 NA  2  2 NA NA
+## [2281] NA NA  2 NA NA NA  2 NA NA NA NA 13 NA NA NA NA NA NA NA NA NA  7  5  8
+## [2305]  8 NA  8 NA NA NA  5 13 NA  8 NA  2 NA 14  5 NA NA NA NA  8 NA NA NA NA
+## [2329] NA 12 NA 13 NA NA NA NA NA NA NA NA  2 NA NA NA  7  8  8 NA NA NA NA NA
+## [2353]  9 NA NA NA NA 14  3 12 NA 12 NA NA  8 NA 10 NA NA NA 14 NA  7 NA NA NA
+## [2377] 12 NA NA 10 NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA NA 12 NA NA NA
+## [2401] NA NA NA NA NA NA NA NA NA 13  8 NA NA NA NA NA NA  8 14  4 NA NA NA  4
+## [2425] NA NA NA NA NA 12 NA NA NA NA 12  3 NA NA NA NA  7  4 10 NA  2 NA NA 12
+## [2449] NA  8 NA NA NA NA NA NA NA  4 NA NA NA NA NA NA  8 NA NA NA NA NA 12 14
+## [2473] NA NA NA NA 14 NA NA NA 14 NA NA NA NA NA NA NA 12 NA NA  2 NA 14  7 NA
+## [2497]  8 10 NA NA NA NA  5 NA NA NA NA NA NA NA NA NA NA NA NA NA NA 10 NA NA
+## [2521] NA NA NA NA NA NA NA NA NA NA NA 14 12 NA NA NA 14  3 NA 12 NA NA NA NA
+## [2545] NA NA NA NA 10 NA  7  8 NA NA NA 12  2 NA NA  3 NA NA NA NA NA NA NA NA
+## [2569] NA NA NA NA NA NA 12  8 11 NA 13  2  8 NA NA NA 12  3 12 NA NA NA NA NA
+## [2593]  2 NA  7 NA NA NA NA  2  5 NA NA NA NA 12  8  2  8 14 NA NA NA NA NA  2
+## [2617] NA 12 NA NA  8 NA NA NA NA NA NA  7 NA 12 NA NA  2  4 NA 10 NA NA NA NA
+## [2641] NA 12 NA  8 NA NA NA NA NA  2 NA NA 14  2 NA NA NA 13 NA NA NA 14 NA 12
+## [2665] 12 NA NA 10 NA  8 NA NA NA NA NA NA  8 NA NA 14 NA NA NA NA NA NA NA NA
+## [2689] 10 NA NA NA NA NA NA NA NA NA 10 10 10 NA NA NA NA NA NA  5 10 10 NA NA
+## [2713]  2  2 NA NA NA NA NA 12 NA NA NA NA NA NA NA NA 14 NA 12 NA NA  8 12 12
+## [2737] NA NA NA NA NA NA NA NA  2 NA  5 NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2761] NA NA NA NA NA NA NA NA NA NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2785] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  3 NA 13 NA
+## [2809] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2833] NA NA NA  4 NA NA NA NA NA NA NA NA NA NA  7 NA NA NA NA NA NA NA NA NA
+## [2857] NA NA NA  4 NA NA NA NA NA NA  7 NA NA  6  9 NA NA NA NA NA NA NA NA NA
+## [2881] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2905] NA NA  5 NA NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2929]  4 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [2953] NA NA NA NA NA  2 NA NA  4 NA NA NA NA NA NA 12 NA NA NA NA NA NA NA NA
+## [2977] NA NA NA  3 NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [3001] NA NA NA NA NA  2 NA NA NA NA  5 NA NA NA NA NA NA  5 NA NA NA NA NA NA
+## [3025] NA NA  5 NA  3 NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA  8 NA NA NA
+## [3049] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 10
+## [3073] NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [3097] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [3121] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 10 12 NA NA NA NA NA NA NA
+## [3145] NA NA NA NA NA NA NA NA NA NA  7 NA NA NA NA  8 NA NA NA  3 NA NA NA NA
+## [3169] NA NA NA NA NA NA  7 NA NA NA NA NA 14 NA NA NA  8 12 14 NA NA  5 NA NA
+## [3193] NA NA NA NA 14 NA NA NA NA 14 NA NA NA  4 10 NA NA NA NA NA NA NA NA NA
+## [3217] NA NA NA NA NA NA NA  5 NA NA NA  8 NA NA NA NA NA NA  4 NA NA NA NA NA
+## [3241] NA NA NA NA NA NA NA NA NA NA NA NA 13 NA  3 NA NA NA NA NA  3 NA NA NA
+## [3265] NA NA NA NA NA NA NA  4 NA NA NA NA  8 NA NA NA NA NA NA NA NA  2 NA NA
+## [3289] NA NA NA  9 NA NA NA NA  8 NA NA NA  4 NA NA  2 NA NA NA NA NA NA NA  6
+## [3313] NA NA  2  9 NA  8 NA  2 NA NA NA NA  4 NA NA 14  4  5 NA 10 NA NA NA NA
+## [3337] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 14 NA  8 NA NA  4 NA
+## [3361] NA  2 NA 14 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  7 NA NA NA NA
+## [3385] NA NA  2 NA NA NA NA NA 14 NA  2  9  8 NA NA NA NA NA  2 NA NA  7 NA NA
+## [3409]  8 NA NA NA NA NA NA  9 NA NA NA NA 14 NA NA NA  4 NA NA NA NA NA NA NA
+## [3433] NA NA NA NA NA NA NA NA NA  4 NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [3457] NA NA NA NA 12  5 NA  2 NA NA  7  5 NA  4  3 NA NA NA NA NA NA NA NA NA
+## [3481] NA  8 NA NA NA NA  2  5 NA NA NA  4  8 NA NA NA  2 NA 12  2 NA NA NA NA
+## [3505] NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA  4 NA NA NA NA NA  4 NA
+## [3529] 12 NA 12 12 NA NA  5 NA NA NA NA NA NA  8  8 NA NA  2 NA  8 NA NA NA 10
+## [3553] NA NA  7 NA  8 NA NA NA NA  4 NA NA NA NA NA NA NA  8 NA 12 NA NA  8  9
+## [3577] NA NA  2 NA  1 NA  8 NA 12 NA NA NA NA NA NA  3 14 NA NA NA NA NA NA NA
+## [3601]  2 NA  5  8  8 12 NA  5 NA  7 NA NA  6 NA NA  5 NA NA  4 NA NA NA NA NA
+## [3625] NA NA 12 NA  8 12 12 NA  4 NA  2 NA NA NA  7  5  4 NA NA NA  7 NA  8  5
+## [3649] NA 10 NA  7  2 NA NA NA  5 NA NA NA NA NA NA NA NA NA NA NA NA 10 12 NA
+## [3673] NA  2 NA 10 NA 12 12  5 NA 12 NA NA 14 NA NA NA NA NA  8 12  5 NA NA  8
+## [3697]  7  8 NA NA NA NA NA NA NA NA NA NA 12 NA  2  9 NA NA  7 NA  4 NA NA 12
+## [3721]  1 NA NA NA NA NA NA  8 NA NA NA NA  2 NA NA NA  5 NA NA  8 NA  5 NA  8
+## [3745] NA NA NA 10  4 NA NA NA NA NA NA NA NA  3 NA 12 NA NA 14 NA  7 NA NA  3
+## [3769] NA NA NA NA NA 12 NA 12 NA NA NA NA NA NA NA  1  8 12 NA NA NA  2 NA NA
+## [3793]  5 12 NA  7 NA NA  4 NA NA NA NA NA NA NA  7 14 NA NA  2 NA NA NA NA NA
+## [3817] NA NA NA NA NA  5 NA NA NA NA NA  4 NA NA NA  8 NA  3  5 NA  8 NA NA NA
+## [3841] NA NA  2  2 NA NA NA NA NA NA NA NA  8  1 NA NA NA NA 12  2 NA NA NA NA
+## [3865] NA NA NA NA NA NA NA NA NA NA  7 NA NA NA NA NA NA  8 NA NA NA NA 12 NA
+## [3889] NA NA  6 NA NA NA 12 NA NA  2  2 NA NA NA NA  2 NA  9 14  7 NA  5  4 NA
+## [3913] NA  2 12  3 NA 12  7  8 NA  2 13 12 NA NA  2 NA NA NA NA NA  2  4 NA NA
+## [3937] NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA 14 NA NA NA NA NA NA
+## [3961] NA  8  7 NA NA NA NA  7 NA NA NA 12 NA NA  1 NA  5 NA NA NA NA  7 NA NA
+## [3985] NA NA NA NA NA NA NA NA  2 NA NA NA 10 NA NA NA NA NA NA NA  8 NA NA 10
+## [4009] NA NA NA NA NA 11 NA NA NA  3 NA NA NA NA NA NA NA NA 10 NA  5 14 NA NA
+## [4033]  2 14  3 NA NA NA NA NA NA NA NA NA 12 NA NA  2 NA NA NA NA NA NA NA NA
+## [4057] NA NA NA NA NA NA 12 NA NA NA NA  7 NA NA 14  2 NA NA NA NA NA NA NA NA
+## [4081] 10 NA  8 NA NA NA NA  2 NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA
+## [4105] NA 12 NA NA NA NA NA NA NA NA NA NA NA NA NA NA 10 NA NA 12  7 NA NA NA
+## [4129] NA NA NA 12 14 NA NA NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA 14
+## [4153]  2 NA NA 11 NA NA NA NA  9 NA NA NA NA NA NA NA  7 NA NA 14 NA NA NA NA
+## [4177] NA  2 NA NA NA NA NA NA NA NA 14 NA NA NA NA  8 NA NA NA NA NA 13 NA NA
+## [4201] NA 12 NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA  8 NA
+## [4225] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA
+## [4249] NA NA NA NA 12  8 NA NA  3 NA  8  7 NA NA NA NA NA NA NA NA NA NA NA  2
+## [4273] NA NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA 14 NA  2 NA NA NA  7
+## [4297] NA NA NA NA NA NA 13 NA  2 NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA
+## [4321]  8 NA 10 NA  8 NA NA NA  3 NA 10 NA NA NA NA NA NA NA NA NA NA NA NA  8
+## [4345] NA NA NA NA NA NA NA NA NA NA NA NA NA NA  7  2 NA NA NA NA NA 12 NA NA
+## [4369] 13 NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA
+## [4393] NA  2 NA  4 NA NA NA NA NA 10 NA NA NA NA NA NA NA NA NA NA NA  8 NA NA
+## [4417] NA  2 NA NA NA NA  4 NA NA NA NA NA  5 NA NA NA  2 NA NA  8 NA  5 NA NA
+## [4441] NA NA 14 NA NA NA  1 NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA 12 NA
+## [4465] NA NA NA NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  2 NA
+## [4489] NA NA NA  8  5 NA NA  2 NA NA NA NA NA 12  3 NA NA NA NA 12 NA NA 14 NA
+## [4513]  2 NA NA NA NA NA NA NA NA NA NA NA NA  2 NA NA  7 NA NA  5 NA NA NA NA
+## [4537] 13 NA NA NA NA  2 NA NA NA NA NA NA 12 NA NA NA NA NA NA  9 NA NA NA  2
+## [4561] NA 14 NA  3 NA  6 NA NA NA NA NA NA 10  4 NA  8 NA NA NA  2 NA  5  8 NA
+## [4585] NA NA NA  5 NA NA 14 NA NA NA NA NA NA NA NA 12 NA 12 NA NA NA NA NA NA
+## [4609]  5  8 NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA  7  2  8 NA NA  5
+## [4633]  5  4 NA NA NA NA NA NA NA NA NA NA NA  8  7  5 NA NA NA NA NA 12 NA NA
+## [4657] NA NA NA NA  2 NA NA NA NA  8 NA NA NA NA NA 14 10  8 NA NA NA NA NA NA
+## [4681] 10 NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA NA  8 NA NA NA  7 NA
+## [4705] NA NA NA NA  8 NA NA NA NA 14 12 NA NA NA  7 NA NA NA NA NA NA NA NA NA
+## [4729] NA NA NA NA NA NA 10  8 NA NA NA  8 NA NA NA NA 12  7 NA NA NA NA NA NA
+## [4753] NA NA  8 NA NA NA NA NA 14 NA NA NA NA 12 NA NA NA NA NA NA NA NA NA 12
+## [4777] NA NA NA NA  4  8 NA NA  2 NA  4 NA NA NA NA  9 NA NA NA  2 NA NA NA NA
+## [4801] NA NA NA NA NA NA NA NA NA NA NA NA NA  5  9  3 NA NA NA NA NA NA NA NA
+## [4825] NA  7 NA  7  8  5 NA NA NA 12 NA  2 NA 14 13 NA 14 NA  7 NA NA NA NA NA
+## [4849] NA NA NA  2 NA NA 10 NA NA  8 NA  4 NA NA 12  7 12 NA NA NA NA NA  8 NA
+## [4873] NA NA  4 NA 14 NA NA NA NA NA NA NA NA NA NA NA  3  3 NA  4 NA NA  5 NA
+## [4897] NA  8 NA NA 14 NA NA NA  2 NA NA NA  2 NA NA NA NA  5 NA NA NA NA  5 NA
+## [4921] NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA NA NA  8 NA
+## [4945] NA NA NA NA NA NA 12 NA NA NA  3 NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [4969]  7 NA NA NA NA  8 NA NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA
+## [4993] NA NA NA NA NA 14 NA  4 NA NA NA NA NA  2 NA NA NA NA NA  8 NA NA  8 12
+## [5017]  4 NA NA NA NA NA NA NA 14 NA  3 NA NA NA NA NA  7  4 NA NA NA NA NA NA
+## [5041] NA 10 NA NA NA NA NA  8  2 NA NA NA 14  5 NA NA NA NA NA 10 NA NA NA NA
+## [5065] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA
+## [5089] NA NA NA NA NA NA 14 NA  2 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5113] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA
+## [5137] NA  3 NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA NA  5 NA NA NA NA NA
+## [5161] NA NA NA NA NA NA 13 NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA NA
+## [5185] NA NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA NA NA  9 NA NA NA NA
+## [5209] NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA
+## [5233] NA NA NA NA NA NA NA  7 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5257] NA NA NA 10 NA 14 NA NA NA  2 NA NA NA 10 NA NA NA NA NA NA NA NA NA  4
+## [5281] NA NA NA NA NA NA NA NA NA NA 12 NA NA NA  5 NA NA NA NA NA NA NA NA NA
+## [5305] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  2 NA  8  5 NA NA NA NA NA
+## [5329] NA NA NA NA NA  7 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5353] NA NA NA NA NA NA NA NA NA NA  4 NA NA NA NA 10 NA NA NA  8 NA  5 NA NA
+## [5377] NA 12 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5401] NA NA NA NA NA NA NA NA NA NA NA 10 NA NA NA NA NA NA NA  2 NA NA NA NA
+## [5425] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  5  2 NA NA NA NA
+## [5449] NA NA NA NA NA NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5473] NA NA NA NA NA NA NA NA NA NA NA NA NA  5 NA NA NA NA NA NA NA NA NA NA
+## [5497] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [5521] NA NA NA NA NA NA NA NA NA NA NA NA NA  3 NA NA NA NA NA NA NA NA NA NA
+## [5545] NA NA NA NA NA NA NA NA NA NA NA NA NA NA  9 12 NA NA NA NA NA 10 NA NA
+## [5569] NA NA NA NA NA NA NA NA NA  4 NA NA NA NA NA NA  5 NA  2 NA NA  8 NA NA
+## [5593] NA NA NA NA NA NA  5 NA NA 10 NA 12 NA  2 NA NA NA  8 NA NA NA NA NA NA
+## [5617] 12 12 NA NA NA NA NA NA NA  8 NA NA NA NA NA NA  8 NA NA NA  7 NA NA 12
+## [5641] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  2 NA  3 NA NA 13 14 10 NA
+## [5665]  2 NA NA NA NA  2  2 NA NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA
+## [5689] NA NA NA NA NA NA NA NA NA NA NA NA  2 NA  3 14 NA NA NA NA  9 NA  4 NA
+## [5713] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA NA
+## [5737] NA NA NA  4 NA NA NA NA  5 NA  8 NA 10 NA NA NA NA NA NA NA NA NA NA NA
+## [5761] NA NA NA NA NA NA NA NA  4 NA NA NA NA NA  8 NA 10  8 NA NA NA NA NA NA
+## [5785] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  9 NA
+## [5809] NA NA  8 NA NA NA NA NA NA  3 NA NA NA NA NA NA  8 NA NA NA NA NA NA NA
+## [5833] NA NA NA NA NA NA NA NA NA NA  2 NA NA  7 NA NA NA  5 NA 12 NA 14  7 NA
+## [5857] NA NA NA 10 13 NA NA NA NA NA NA  8 NA  4 NA NA NA NA 12 NA  4 NA NA NA
+## [5881] 11 NA NA NA NA NA  4 NA NA NA NA NA NA NA NA  4 NA NA NA NA NA  9 NA NA
+## [5905] NA  8 NA 14 NA NA NA NA NA 10 NA NA NA NA  8  5 NA NA NA NA NA NA NA NA
+## [5929] NA NA  5 NA NA NA NA NA  5 10 NA NA NA NA NA  4 NA NA NA NA NA NA NA NA
+## [5953] NA NA NA NA NA  5 NA NA  1  8 NA NA 10 NA NA NA NA NA NA NA  8 NA NA NA
+## [5977] NA NA NA NA NA NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6001] NA  4 NA NA NA NA NA NA  4 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6025] NA  4 NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6049] NA NA NA NA  3 NA NA NA NA NA NA 12 NA  2 NA NA NA NA NA NA NA  5 NA NA
+## [6073] NA NA  5 NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6097] 12 NA NA NA NA NA  8 NA NA NA NA NA NA NA 14 14 NA NA NA NA NA NA NA NA
+## [6121] NA NA NA NA NA NA NA NA NA NA  4 NA NA NA NA NA NA NA NA 14 NA NA 10 NA
+## [6145] NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA 14 NA NA  7 NA NA NA NA
+## [6169] NA NA 10 NA NA NA NA NA NA NA NA 14 NA NA NA NA NA NA NA NA NA NA NA NA
+## [6193] NA 12 NA NA  8 NA NA NA NA  2 NA NA NA NA 10 NA NA NA NA NA NA  7 14 NA
+## [6217] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6241] NA NA NA NA NA NA NA NA NA 14 NA NA NA 14 NA NA NA NA NA NA NA NA NA NA
+## [6265] NA NA NA NA NA NA NA NA NA NA  4 NA NA NA NA 14 NA NA NA NA NA NA  2 NA
+## [6289] NA NA NA NA NA NA NA NA  8 NA NA  2 NA NA NA NA NA NA NA NA NA NA NA NA
+## [6313] NA NA NA NA NA NA NA NA 13 NA NA  8 NA NA NA NA NA NA NA NA NA NA NA  4
+## [6337] NA NA NA NA  2 NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA NA  8
+## [6361] NA NA NA NA 10 14 NA NA  4 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6385] NA NA NA NA 10 NA NA NA NA NA 10  8 NA NA NA NA  5 NA  8 NA NA NA NA NA
+## [6409] NA NA NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA NA 14 NA NA 14 NA NA
+## [6433] NA NA NA 12 NA NA NA 12 NA NA 12 NA 14  8 NA  8 NA NA NA NA 14  3 NA NA
+## [6457] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6481] NA NA NA NA NA  2 NA NA NA NA NA NA NA NA NA 12 NA NA NA NA  5 NA NA NA
+## [6505] NA 14 NA NA NA NA NA NA NA  4  5 NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6529]  8 NA NA NA NA NA NA NA NA NA NA NA NA  7 NA 14 NA NA NA NA NA  5 NA NA
+## [6553] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 13 NA NA NA NA NA NA NA NA
+## [6577] NA NA NA NA NA NA NA NA NA NA  3 NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6601] NA NA NA 12 NA NA NA NA NA NA NA NA  7 NA NA NA NA NA NA NA NA NA NA NA
+## [6625] NA NA NA  2 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  8
+## [6649] NA NA NA NA NA NA NA  3 NA NA NA  4 NA NA NA NA NA NA NA NA  3 NA NA NA
+## [6673] NA NA NA NA NA NA  4 NA NA NA  8 NA NA NA NA NA NA NA 12 NA NA NA NA NA
+## [6697] NA NA NA NA NA NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA
+## [6721] NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6745] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [6769] NA NA NA NA NA NA NA NA NA NA NA NA NA NA  5 12 NA NA NA NA NA NA NA NA
+## [6793] NA NA 12 NA 14 NA NA NA NA 12 NA NA NA NA 12 NA  3 NA NA  2 NA  3 NA NA
+## [6817] NA NA NA NA NA NA 10  8 14 NA NA NA NA NA NA  3  2 12 NA NA NA NA NA NA
+## [6841] 14 10 NA NA 12 NA 10 NA 12  7 NA NA NA  4 NA 14  2 NA NA NA NA NA NA NA
+## [6865] NA NA  7  2 13 NA NA NA  4 NA NA NA NA 14 NA NA NA NA NA NA  8 14 NA NA
+## [6889] NA  2 NA  4 NA NA  4  2 NA 12 NA NA  5 NA NA 12 NA NA  5 NA NA  5 NA NA
+## [6913] 10 10 NA NA  2 NA NA NA  8 NA NA NA NA NA  7 NA  3 NA NA NA NA NA NA NA
+## [6937]  6 NA NA  8 NA NA NA 12 NA NA NA NA 10 NA  5 NA NA 10 NA NA NA NA NA NA
+## [6961] NA NA NA  5 NA NA NA NA NA NA NA NA 10 NA NA  2 NA NA 13 NA NA NA 14 NA
+## [6985]  7 NA  3 NA NA NA NA  5  8 NA  5 NA NA NA  4 NA NA NA NA NA NA NA NA NA
+## [7009] NA NA  3 NA NA  4 NA NA 10 NA NA  3  3 10 NA NA NA NA NA NA  8  2 NA NA
+## [7033] NA NA NA 14 NA NA NA NA NA NA  8 10 NA NA NA NA  2 NA NA NA NA NA NA NA
+## [7057] NA  4 NA NA NA NA NA NA  8 NA NA NA NA NA  4 NA NA NA NA 14 NA NA NA NA
+## [7081] NA NA NA NA NA 14 NA NA  8 NA NA NA NA NA NA NA NA NA NA NA NA  5 NA  8
+## [7105] NA NA 12  5  3 NA NA NA NA NA  8 NA NA NA NA 12  8 NA NA NA NA NA NA NA
+## [7129]  4 NA 10 NA NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7153] NA 14 NA NA NA NA NA NA NA NA NA  4 NA NA NA  2 NA NA NA NA NA NA NA  2
+## [7177] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  5 NA NA NA NA NA NA NA
+## [7201] NA NA NA NA NA NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7225] NA NA NA  3 NA NA NA NA NA NA NA NA NA NA NA NA  6  4 NA NA NA NA NA  2
+## [7249] NA NA NA NA NA NA 10 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7273] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  2 12 NA NA NA NA NA NA NA
+## [7297] NA NA NA NA NA NA NA NA  5 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7321] NA NA 12 NA NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA NA NA NA
+## [7345] NA NA NA NA NA NA  5 NA NA NA NA NA NA NA NA NA  2 NA NA NA NA NA NA NA
+## [7369]  5 NA NA NA NA NA 10 NA  2 NA NA NA NA NA 12 NA NA NA NA NA NA NA NA NA
+## [7393] NA NA NA NA NA  6 NA NA NA NA NA NA NA NA 14 NA NA NA NA  7 NA NA NA  8
+## [7417] NA NA  2 NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA NA NA NA NA NA NA
+## [7441] NA NA NA NA  5  5 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7465] NA  5 NA NA NA NA NA NA NA NA NA NA NA NA  2 NA NA NA  5 NA NA NA NA 12
+## [7489] NA NA NA NA NA NA NA NA  2 14 NA NA NA NA NA NA NA NA NA NA NA 12 NA NA
+## [7513] NA NA NA NA NA NA NA NA NA 12 NA  4 NA NA NA NA NA NA 12 NA NA NA NA NA
+## [7537] NA NA NA NA NA NA NA NA NA NA NA NA NA  5 NA NA 12 NA NA NA NA NA NA NA
+## [7561] NA NA NA NA  2 NA  8 NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA NA NA
+## [7585] NA NA NA NA NA 14 NA NA  4 NA NA NA NA NA NA NA NA NA NA NA NA NA 12 NA
+## [7609] NA NA NA NA NA NA NA NA NA NA NA 14 NA NA NA NA  3 NA NA NA NA 12 NA NA
+## [7633] NA NA NA NA NA NA 10 NA NA NA NA NA NA  5 NA NA NA NA 12 NA  5 10 NA NA
+## [7657] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA  8 NA NA NA NA
+## [7681] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7705] NA  7 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [7729] NA  4 NA NA NA NA NA NA NA NA NA NA NA NA NA  8 12 NA NA NA NA  2  4 NA
+## [7753] NA NA NA NA NA NA NA NA NA NA NA NA  8  3 NA NA NA NA NA NA NA  8  7 NA
+## [7777] NA NA  8 NA NA NA NA  5 NA NA NA NA NA NA  8 NA NA  8 NA NA NA NA NA  4
+## [7801] NA NA NA NA NA NA NA NA NA NA 10 NA NA NA  5 NA NA  4 NA NA  7 NA NA NA
+## [7825] NA NA NA NA NA NA NA NA 14 10 NA NA NA NA NA NA NA NA NA NA NA  8 NA NA
+## [7849] NA NA NA NA NA NA NA NA  2 NA NA NA NA NA  8 13 NA NA NA NA NA 13 NA NA
+## [7873] NA  4 NA NA NA NA NA  4 NA NA NA NA NA NA 14  8 NA NA NA NA NA NA NA NA
+## [7897] NA NA NA 12 NA  8 NA NA NA NA NA NA NA  4 NA NA NA NA NA NA NA  3 NA NA
+## [7921] NA NA NA NA  2 NA NA NA NA NA NA NA NA NA NA 12 14 NA 14 NA NA NA NA NA
+## [7945] NA NA NA NA NA NA NA 14 NA NA  8 NA NA NA  6 NA NA NA  5  3 NA NA NA NA
+## [7969] NA  4 NA 14 NA 14 NA NA  8 NA 12 NA NA NA 14 NA NA  8 NA 12 NA NA 14 NA
+## [7993] NA NA NA NA  5 NA NA 14 NA NA  3 NA NA 14 NA NA NA NA NA NA 14 NA NA NA
+## [8017] NA NA NA NA NA NA NA 14  8 14 NA 14  8 14 NA  8  8 NA NA  7 14 NA  8  8
+## [8041] NA NA NA NA NA NA NA NA NA NA  4 NA NA NA NA 10 NA NA NA 12  3 NA 14  8
+## [8065] NA  7 NA NA NA NA NA NA  4 10  2 NA NA  8  9 NA NA  2 NA 10 NA NA  2 NA
+## [8089] NA NA NA NA NA NA NA  5 NA NA NA NA NA NA NA  4  9 NA NA NA  2 NA 14 NA
+## [8113] NA NA 10 NA NA 13 NA NA NA 12 NA  7 NA 14 NA  5 NA NA NA NA NA 14 NA NA
+## [8137] NA NA NA  5 NA NA NA NA NA  2 10 NA
+## 
+## Labels:
+##  value          label
+##      1           哲学
+##      2         经济学
+##      3           法学
+##      4         教育学
+##      5           文学
+##      6         历史学
+##      7           理学
+##      8           工学
+##      9           农学
+##     10           医学
+##     11         军事学
+##     12         管理学
+##     13         艺术学
+##     14 其他（请注明）</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dt.html#cb27-1" aria-hidden="true" tabindex="-1"></a>CGSS2021c <span class="ot">&lt;-</span> </span>
+<span id="cb27-2"><a href="dt.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  CGSS2021c <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="dt.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">A7f1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-4"><a href="dt.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    A7f <span class="sc">==</span> <span class="st">&quot;哲学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;历史学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;文学&quot;</span> <span class="sc">~</span> <span class="st">&quot;人文学科&quot;</span>,</span>
+<span id="cb27-5"><a href="dt.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    A7f <span class="sc">==</span> <span class="st">&quot;经济学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;法学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;教育学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;军事学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;管理学&quot;</span> <span class="sc">~</span> <span class="st">&quot;社会科学&quot;</span> ,</span>
+<span id="cb27-6"><a href="dt.html#cb27-6" aria-hidden="true" tabindex="-1"></a>    A7f <span class="sc">==</span> <span class="st">&quot;理学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;工学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;农学&quot;</span> <span class="sc">~</span> <span class="st">&quot;理工科&quot;</span>,</span>
+<span id="cb27-7"><a href="dt.html#cb27-7" aria-hidden="true" tabindex="-1"></a>    A7f <span class="sc">==</span> <span class="st">&quot;医学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span> <span class="st">&quot;艺术学&quot;</span><span class="sc">|</span> A7f <span class="sc">==</span><span class="st">&quot;其他（请注明）&quot;</span> <span class="sc">~</span> <span class="st">&quot;医学、艺术学及其他&quot;</span></span>
+<span id="cb27-8"><a href="dt.html#cb27-8" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+<p>整一个CGSS数据库太庞大，可从其中选取一个数据集，便于展开进行分析。
+这里我们就选取性别A2、年龄age、年龄组agegroup、身高A13、体重A14、受教育程度A7a1、大学专业A7f1、收入A8a，形成数据集cgss1。
+可以好奇一下，比如身高体重和受教育程度的关系、身高体重和收入的关系、大学专业和收入的关系等等。</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="dt.html#cb28-1" aria-hidden="true" tabindex="-1"></a>cgss1 <span class="ot">&lt;-</span></span>
+<span id="cb28-2"><a href="dt.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  CGSS2021c <span class="sc">%&gt;%</span> <span class="fu">select</span>(</span>
+<span id="cb28-3"><a href="dt.html#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> A2,</span>
+<span id="cb28-4"><a href="dt.html#cb28-4" aria-hidden="true" tabindex="-1"></a>    age,</span>
+<span id="cb28-5"><a href="dt.html#cb28-5" aria-hidden="true" tabindex="-1"></a>    agegroup,</span>
+<span id="cb28-6"><a href="dt.html#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;身高（厘米）&quot;</span> <span class="ot">=</span> A13,</span>
+<span id="cb28-7"><a href="dt.html#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;体重（斤）&quot;</span> <span class="ot">=</span> A14,</span>
+<span id="cb28-8"><a href="dt.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    受教育程度 <span class="ot">=</span> A7a1,</span>
+<span id="cb28-9"><a href="dt.html#cb28-9" aria-hidden="true" tabindex="-1"></a>    大学专业类型 <span class="ot">=</span> A7f1,</span>
+<span id="cb28-10"><a href="dt.html#cb28-10" aria-hidden="true" tabindex="-1"></a>    大学专业 <span class="ot">=</span> A7f,</span>
+<span id="cb28-11"><a href="dt.html#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;2020全年总收入&quot;</span> <span class="ot">=</span> A8a,</span>
+<span id="cb28-12"><a href="dt.html#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;2020全年职业/劳动收入&quot;</span> <span class="ot">=</span> A8b</span>
+<span id="cb28-13"><a href="dt.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>建立好要分析的小型数据集后，接下来着手进行缺失值和异常值的勘察。
+注意：缺失值≠异常值！！！</p>
+<p>1、诊断数据集</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dt.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dlookr)</span>
+<span id="cb29-2"><a href="dt.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#使用overview查看cgss1的变量数目、观测数目、缺失值情况和变量类型等，但也只是一个大概</span></span>
+<span id="cb29-3"><a href="dt.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">overview</span>(cgss1)</span></code></pre></div>
+<pre><code>##      division               metrics   value
+## 1        size          observations    8148
+## 2        size             variables      10
+## 3        size                values   81480
+## 4        size           memory size 1560240
+## 5  duplicated duplicate observation      50
+## 6     missing  complete observation    1699
+## 7     missing   missing observation    6449
+## 8     missing     missing variables       3
+## 9     missing        missing values   12877
+## 10  data type              numerics       3
+## 11  data type              integers       2
+## 12  data type       factors/ordered       3
+## 13  data type            characters       2
+## 14  data type                 Dates       0
+## 15  data type              POSIXcts       0
+## 16  data type                others       0</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dt.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#查看每一个变量的名称和其类型</span></span>
+<span id="cb31-2"><a href="dt.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_class</span>(cgss1)</span></code></pre></div>
+<pre><code>##                 variable     class
+## 1                 gender    factor
+## 2                    age   numeric
+## 3               agegroup    factor
+## 4           身高（厘米）   integer
+## 5             体重（斤）   integer
+## 6             受教育程度 character
+## 7           大学专业类型 character
+## 8               大学专业    factor
+## 9         2020全年总收入   numeric
+## 10 2020全年职业/劳动收入   numeric</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="dt.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#数据整体概览</span></span>
+<span id="cb33-2"><a href="dt.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb33-3"><a href="dt.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpData</span>(<span class="at">data=</span>cgss1,<span class="at">type=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##                                           Descriptions   Value
+## 1                                   Sample size (nrow)    8148
+## 2                              No. of variables (ncol)      10
+## 3                    No. of numeric/interger variables       5
+## 4                              No. of factor variables       3
+## 5                                No. of text variables       2
+## 6                             No. of logical variables       0
+## 7                          No. of identifier variables       0
+## 8                                No. of date variables       0
+## 9             No. of zero variance variables (uniform)       0
+## 10               %. of variables having complete cases 70% (7)
+## 11   %. of variables having &gt;0% and &lt;50% missing cases 10% (1)
+## 12 %. of variables having &gt;=50% and &lt;90% missing cases 20% (2)
+## 13          %. of variables having &gt;=90% missing cases  0% (0)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dt.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#数据结构分布情况</span></span>
+<span id="cb35-2"><a href="dt.html#cb35-2" aria-hidden="true" tabindex="-1"></a>res<span class="ot">&lt;-</span> <span class="fu">ExpData</span>(<span class="at">data=</span>cgss1,<span class="at">type=</span><span class="dv">2</span>)</span>
+<span id="cb35-3"><a href="dt.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="dt.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="do">##查看连续型变量具体情况</span></span>
+<span id="cb35-5"><a href="dt.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpNumStat</span>(cgss1,</span>
+<span id="cb35-6"><a href="dt.html#cb35-6" aria-hidden="true" tabindex="-1"></a>           <span class="co">#group by A (summary statistics by All)</span></span>
+<span id="cb35-7"><a href="dt.html#cb35-7" aria-hidden="true" tabindex="-1"></a>           <span class="co">#对数据整体进行分析</span></span>
+<span id="cb35-8"><a href="dt.html#cb35-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">by=</span><span class="st">&quot;A&quot;</span>,</span>
+<span id="cb35-9"><a href="dt.html#cb35-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">gp=</span><span class="cn">NULL</span>,<span class="co"># 分组变量</span></span>
+<span id="cb35-10"><a href="dt.html#cb35-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Qnt=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>),<span class="co">#分位数设定，此设定位每10%的数值</span></span>
+<span id="cb35-11"><a href="dt.html#cb35-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">MesofShape=</span><span class="dv">2</span>,<span class="co"># 判断正态性的方法</span></span>
+<span id="cb35-12"><a href="dt.html#cb35-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">Outlier=</span><span class="cn">TRUE</span>, <span class="co"># 计算缺失值截断值及个数</span></span>
+<span id="cb35-13"><a href="dt.html#cb35-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">round=</span><span class="dv">2</span>)<span class="ot">-&gt;</span>res2</span>
+<span id="cb35-14"><a href="dt.html#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="do">##查看连续型变量之间的相关</span></span>
+<span id="cb35-15"><a href="dt.html#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpNumStat</span>(cgss1,</span>
+<span id="cb35-16"><a href="dt.html#cb35-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">by=</span><span class="st">&quot;A&quot;</span>,</span>
+<span id="cb35-17"><a href="dt.html#cb35-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">gp=</span><span class="st">&quot;2020全年总收入&quot;</span>,<span class="co">#待查看相关性的连续变量</span></span>
+<span id="cb35-18"><a href="dt.html#cb35-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">Qnt=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>),</span>
+<span id="cb35-19"><a href="dt.html#cb35-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">MesofShape=</span><span class="dv">1</span>,</span>
+<span id="cb35-20"><a href="dt.html#cb35-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">Outlier=</span><span class="cn">TRUE</span>,</span>
+<span id="cb35-21"><a href="dt.html#cb35-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">round=</span><span class="dv">2</span>)<span class="ot">-&gt;</span>res3</span></code></pre></div>
+<pre><code>## Note: Target variable is continuous
+## Summary statistics excluded group by statement
+## Results generated with correlation value against target variable</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dt.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 按照分类变量分组查看连续变量的分布情况</span></span>
+<span id="cb37-2"><a href="dt.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpNumStat</span>(cgss1,</span>
+<span id="cb37-3"><a href="dt.html#cb37-3" aria-hidden="true" tabindex="-1"></a>           <span class="co">#GA (summary statistics by group and Overall)</span></span>
+<span id="cb37-4"><a href="dt.html#cb37-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">by=</span><span class="st">&quot;GA&quot;</span>,<span class="co">#按照总体及分组进行描述</span></span>
+<span id="cb37-5"><a href="dt.html#cb37-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">gp=</span><span class="st">&quot;gender&quot;</span>,<span class="co"># 分组变量</span></span>
+<span id="cb37-6"><a href="dt.html#cb37-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">Qnt=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>),</span>
+<span id="cb37-7"><a href="dt.html#cb37-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">MesofShape=</span><span class="dv">2</span>,</span>
+<span id="cb37-8"><a href="dt.html#cb37-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">Outlier=</span><span class="cn">TRUE</span>,</span>
+<span id="cb37-9"><a href="dt.html#cb37-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">round=</span><span class="dv">2</span>)<span class="ot">-&gt;</span>res4</span>
+<span id="cb37-10"><a href="dt.html#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="dt.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#这一套代码可以分别看不同类型变量（字符型、因子型、数值型）的描述状况</span></span>
+<span id="cb37-12"><a href="dt.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb37-13"><a href="dt.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(cgss1)</span></code></pre></div>
+<table style="width: auto;" class="table table-condensed">
+<caption>
+<span id="tab:unnamed-chunk-8">表1.1: </span>Data summary
+</caption>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Name
+</td>
+<td style="text-align:left;">
+cgss1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of rows
+</td>
+<td style="text-align:left;">
+8148
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of columns
+</td>
+<td style="text-align:left;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_______________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Column type frequency:
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+________________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Group variables
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+empty
+</th>
+<th style="text-align:right;">
+n_unique
+</th>
+<th style="text-align:right;">
+whitespace
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+受教育程度
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+大学专业类型
+</td>
+<td style="text-align:right;">
+6428
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:left;">
+ordered
+</th>
+<th style="text-align:right;">
+n_unique
+</th>
+<th style="text-align:left;">
+top_counts
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+gender
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+女: 4469, 男: 3679
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+agegroup
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+60岁: 2823, 45-: 2409, 30-: 1684, 30岁: 1232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+大学专业
+</td>
+<td style="text-align:right;">
+6428
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+工学: 308, 经济学: 250, 管理学: 245, 其他（: 182
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p0
+</th>
+<th style="text-align:right;">
+p25
+</th>
+<th style="text-align:right;">
+p50
+</th>
+<th style="text-align:right;">
+p75
+</th>
+<th style="text-align:right;">
+p100
+</th>
+<th style="text-align:left;">
+hist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51.64
+</td>
+<td style="text-align:right;">
+17.57
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+▅▆▇▆▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+身高（厘米）
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+178.46
+</td>
+<td style="text-align:right;">
+110.25
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+999
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+体重（斤）
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+130.77
+</td>
+<td style="text-align:right;">
+81.85
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+999
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020全年总收入
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1046360.97
+</td>
+<td style="text-align:right;">
+3001742.43
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+30000
+</td>
+<td style="text-align:right;">
+70000
+</td>
+<td style="text-align:right;">
+9999999
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020全年职业/劳动收入
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1225032.23
+</td>
+<td style="text-align:right;">
+3233813.54
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+18000
+</td>
+<td style="text-align:right;">
+60000
+</td>
+<td style="text-align:right;">
+9999999
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dt.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#这一套代码用作数据探索和诊断是比较好用的，便于接下来展开异常值和缺失值的处理</span></span>
+<span id="cb38-2"><a href="dt.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(funModeling)</span></code></pre></div>
+<pre><code>## Loading required package: Hmisc</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Hmisc&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dlookr&#39;:
+## 
+##     describe</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     src, summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     format.pval, units</code></pre>
+<pre><code>## funModeling v.1.9.4 :)
+## Examples and tutorials at livebook.datascienceheroes.com
+##  / Now in Spanish: librovivodecienciadedatos.ai</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="dt.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cgss1)</span></code></pre></div>
+<pre><code>## Rows: 8,148
+## Columns: 10
+## $ gender                  &lt;fct&gt; 女, 女, 男, 男, 女, 男, 女, 男, 男, 男, 男, 女…
+## $ age                     &lt;dbl&gt; 54, 76, 72, 35, 63, 25, 38, 76, 34, 30, 34, 24…
+## $ agegroup                &lt;fct&gt; 45-60岁, 60岁以上, 60岁以上, 30-45岁, 60岁以上…
+## $ `身高（厘米）`          &lt;int&gt; 160, 160, 172, 172, 158, 180, 160, 164, 187, 1…
+## $ `体重（斤）`            &lt;int&gt; 118, 120, 156, 130, 115, 150, 90, 100, 198, 12…
+## $ 受教育程度              &lt;chr&gt; &quot;中等教育&quot;, &quot;中等教育&quot;, &quot;高等教育&quot;, &quot;高等教育&quot;…
+## $ 大学专业类型            &lt;chr&gt; NA, NA, &quot;医学、艺术学及其他&quot;, &quot;社会科学&quot;, NA, …
+## $ 大学专业                &lt;fct&gt; NA, NA, 其他（请注明）, 管理学, NA, 其他（请注…
+## $ `2020全年总收入`        &lt;dbl&gt; 96000, 60000, 96000, 160000, 48000, 600000, 40…
+## $ `2020全年职业/劳动收入` &lt;dbl&gt; 96000, 0, 0, 120000, 9999997, 600000, 400000, …</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="dt.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df_status</span>(cgss1)</span></code></pre></div>
+<pre><code>##                 variable q_zeros p_zeros q_na  p_na q_inf p_inf      type
+## 1                 gender       0    0.00    0  0.00     0     0    factor
+## 2                    age       0    0.00    0  0.00     0     0   numeric
+## 3               agegroup       0    0.00    0  0.00     0     0    factor
+## 4           身高（厘米）       0    0.00    0  0.00     0     0   integer
+## 5             体重（斤）       0    0.00    0  0.00     0     0   integer
+## 6             受教育程度       0    0.00   21  0.26     0     0 character
+## 7           大学专业类型       0    0.00 6428 78.89     0     0 character
+## 8               大学专业       0    0.00 6428 78.89     0     0    factor
+## 9         2020全年总收入    1468   18.02    0  0.00     0     0   numeric
+## 10 2020全年职业/劳动收入    2812   34.51    0  0.00     0     0   numeric
+##    unique
+## 1       2
+## 2      78
+## 3       4
+## 4      63
+## 5     156
+## 6       4
+## 7       4
+## 8      14
+## 9     391
+## 10    251</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="dt.html#cb49-1" aria-hidden="true" tabindex="-1"></a>cgss1 <span class="sc">%&gt;%</span> summary</span></code></pre></div>
+<pre><code>##  gender         age            agegroup     身高（厘米）     体重（斤）   
+##  男:3679   Min.   :18.00   30岁以下:1232   Min.   : 98.0   Min.   : 40.0  
+##  女:4469   1st Qu.:37.00   30-45岁 :1684   1st Qu.:158.0   1st Qu.:109.0  
+##            Median :53.00   45-60岁 :2409   Median :163.0   Median :120.0  
+##            Mean   :51.64   60岁以上:2823   Mean   :178.5   Mean   :130.8  
+##            3rd Qu.:66.00                   3rd Qu.:170.0   3rd Qu.:140.0  
+##            Max.   :99.00                   Max.   :999.0   Max.   :999.0  
+##                                                                           
+##   受教育程度        大学专业类型                 大学专业    2020全年总收入   
+##  Length:8148        Length:8148        工学          : 308   Min.   :      0  
+##  Class :character   Class :character   经济学        : 250   1st Qu.:   3000  
+##  Mode  :character   Mode  :character   管理学        : 245   Median :  30000  
+##                                        其他（请注明）: 182   Mean   :1046361  
+##                                        文学          : 156   3rd Qu.:  70000  
+##                                        (Other)       : 579   Max.   :9999999  
+##                                        NA&#39;s          :6428                    
+##  2020全年职业/劳动收入
+##  Min.   :      0      
+##  1st Qu.:      0      
+##  Median :  18000      
+##  Mean   :1225032      
+##  3rd Qu.:  60000      
+##  Max.   :9999999      
+## </code></pre>
+<p>事实上，在我们处理完异常值和缺失值后还需要再诊断一次。</p>
+<p>2、勘察异常值
+结合上面的探索、数据界面的排序和问卷设置情况，我们将对身高、体重、2020全年总收入和2020全年职业/劳动收入进行异常值的处理。</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="dt.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#处理身高、体重的异常值，用的==，没什么问题</span></span>
+<span id="cb51-2"><a href="dt.html#cb51-2" aria-hidden="true" tabindex="-1"></a>cgss1[cgss1 <span class="sc">==</span> <span class="dv">998</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb51-3"><a href="dt.html#cb51-3" aria-hidden="true" tabindex="-1"></a>cgss1[cgss1 <span class="sc">==</span> <span class="dv">999</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb51-4"><a href="dt.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="dt.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">#这里需要将原本作为字符型变量的“受教育程度”和“大学专业类型”转换为因子型变量，这样后面&gt;=才不会使得前述两个变量数据全部变成NA。我还不知道原理，但需要警惕，时刻注意变量的类型，一般出错都因为变量的类型没匹配操作。</span></span>
+<span id="cb51-6"><a href="dt.html#cb51-6" aria-hidden="true" tabindex="-1"></a>cgss1<span class="sc">$</span>受教育程度 <span class="ot">&lt;-</span> <span class="fu">factor</span>(cgss1<span class="sc">$</span>受教育程度,</span>
+<span id="cb51-7"><a href="dt.html#cb51-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;未受教育&quot;</span>,<span class="st">&quot;初等教育&quot;</span>,<span class="st">&quot;中等教育&quot;</span>,<span class="st">&quot;高等教育&quot;</span>,<span class="st">&quot;其他&quot;</span>),</span>
+<span id="cb51-8"><a href="dt.html#cb51-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;未受教育&quot;</span>,<span class="st">&quot;初等教育&quot;</span>,<span class="st">&quot;中等教育&quot;</span>,<span class="st">&quot;高等教育&quot;</span>,<span class="st">&quot;其他&quot;</span>))</span>
+<span id="cb51-9"><a href="dt.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cgss1<span class="sc">$</span>受教育程度)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="dt.html#cb53-1" aria-hidden="true" tabindex="-1"></a>cgss1<span class="sc">$</span>大学专业类型 <span class="ot">&lt;-</span> <span class="fu">factor</span>(cgss1<span class="sc">$</span>大学专业类型)</span>
+<span id="cb53-2"><a href="dt.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cgss1<span class="sc">$</span>大学专业类型)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="dt.html#cb55-1" aria-hidden="true" tabindex="-1"></a>cgss1[cgss1 <span class="sc">&gt;=</span> <span class="dv">9999997</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+<pre><code>## Warning in Ops.factor(left, right): &#39;&gt;=&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;&gt;=&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;&gt;=&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;&gt;=&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;&gt;=&#39; not meaningful for factors</code></pre>
+<p>异常值清理初步完成，会发现两种总收入之间还是会对照出异常来。</p>
+<p>3、勘察缺失值
+异常值处理完会出现大量的缺失值，再来一次数据诊断。</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dt.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(funModeling)</span>
+<span id="cb57-2"><a href="dt.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cgss1)</span></code></pre></div>
+<pre><code>## Rows: 8,148
+## Columns: 10
+## $ gender                  &lt;fct&gt; 女, 女, 男, 男, 女, 男, 女, 男, 男, 男, 男, 女…
+## $ age                     &lt;dbl&gt; 54, 76, 72, 35, 63, 25, 38, 76, 34, 30, 34, 24…
+## $ agegroup                &lt;fct&gt; 45-60岁, 60岁以上, 60岁以上, 30-45岁, 60岁以上…
+## $ `身高（厘米）`          &lt;int&gt; 160, 160, 172, 172, 158, 180, 160, 164, 187, 1…
+## $ `体重（斤）`            &lt;int&gt; 118, 120, 156, 130, 115, 150, 90, 100, 198, 12…
+## $ 受教育程度              &lt;fct&gt; 中等教育, 中等教育, 高等教育, 高等教育, 中等教…
+## $ 大学专业类型            &lt;fct&gt; NA, NA, 医学、艺术学及其他, 社会科学, NA, 医学…
+## $ 大学专业                &lt;fct&gt; NA, NA, 其他（请注明）, 管理学, NA, 其他（请注…
+## $ `2020全年总收入`        &lt;dbl&gt; 96000, 60000, 96000, 160000, 48000, 600000, 40…
+## $ `2020全年职业/劳动收入` &lt;dbl&gt; 96000, 0, 0, 120000, NA, 600000, 400000, NA, 1…</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="dt.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df_status</span>(cgss1)</span></code></pre></div>
+<pre><code>##                 variable q_zeros p_zeros q_na  p_na q_inf p_inf    type unique
+## 1                 gender       0    0.00    0  0.00     0     0  factor      2
+## 2                    age       0    0.00    0  0.00     0     0 numeric     78
+## 3               agegroup       0    0.00    0  0.00     0     0  factor      4
+## 4           身高（厘米）       0    0.00  144  1.77     0     0 integer     61
+## 5             体重（斤）       0    0.00   66  0.81     0     0 integer    154
+## 6             受教育程度       0    0.00   21  0.26     0     0  factor      4
+## 7           大学专业类型       0    0.00 6428 78.89     0     0  factor      4
+## 8               大学专业       0    0.00 6428 78.89     0     0  factor     14
+## 9         2020全年总收入    1468   18.02  814  9.99     0     0 numeric    388
+## 10 2020全年职业/劳动收入    2812   34.51  969 11.89     0     0 numeric    248</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="dt.html#cb61-1" aria-hidden="true" tabindex="-1"></a>cgss1 <span class="sc">%&gt;%</span> summary</span></code></pre></div>
+<pre><code>##  gender         age            agegroup     身高（厘米）     体重（斤）   
+##  男:3679   Min.   :18.00   30岁以下:1232   Min.   : 98.0   Min.   : 40.0  
+##  女:4469   1st Qu.:37.00   30-45岁 :1684   1st Qu.:158.0   1st Qu.:108.0  
+##            Median :53.00   45-60岁 :2409   Median :163.0   Median :120.0  
+##            Mean   :51.64   60岁以上:2823   Mean   :163.7   Mean   :123.7  
+##            3rd Qu.:66.00                   3rd Qu.:170.0   3rd Qu.:140.0  
+##            Max.   :99.00                   Max.   :193.0   Max.   :260.0  
+##                                            NA&#39;s   :144     NA&#39;s   :66     
+##     受教育程度               大学专业类型            大学专业   
+##  未受教育: 858   理工科            : 447   工学          : 308  
+##  初等教育:1798   人文学科          : 186   经济学        : 250  
+##  中等教育:3800   社会科学          : 728   管理学        : 245  
+##  高等教育:1671   医学、艺术学及其他: 359   其他（请注明）: 182  
+##  其他    :   0   NA&#39;s              :6428   文学          : 156  
+##  NA&#39;s    :  21                             (Other)       : 579  
+##                                            NA&#39;s          :6428  
+##  2020全年总收入    2020全年职业/劳动收入
+##  Min.   :      0   Min.   :      0      
+##  1st Qu.:   2000   1st Qu.:      0      
+##  Median :  20000   Median :  10000      
+##  Mean   :  52598   Mean   :  40614      
+##  3rd Qu.:  50000   3rd Qu.:  45000      
+##  Max.   :9999996   Max.   :9993000      
+##  NA&#39;s   :814       NA&#39;s   :969</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dt.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb63-2"><a href="dt.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(cgss1)</span></code></pre></div>
+<table style="width: auto;" class="table table-condensed">
+<caption>
+<span id="tab:unnamed-chunk-10">表1.2: </span>Data summary
+</caption>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Name
+</td>
+<td style="text-align:left;">
+cgss1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of rows
+</td>
+<td style="text-align:left;">
+8148
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of columns
+</td>
+<td style="text-align:left;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_______________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Column type frequency:
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+________________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Group variables
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:left;">
+ordered
+</th>
+<th style="text-align:right;">
+n_unique
+</th>
+<th style="text-align:left;">
+top_counts
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+gender
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+女: 4469, 男: 3679
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+agegroup
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+60岁: 2823, 45-: 2409, 30-: 1684, 30岁: 1232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+受教育程度
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+中等教: 3800, 初等教: 1798, 高等教: 1671, 未受教: 858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+大学专业类型
+</td>
+<td style="text-align:right;">
+6428
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+社会科: 728, 理工科: 447, 医学、: 359, 人文学: 186
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+大学专业
+</td>
+<td style="text-align:right;">
+6428
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+工学: 308, 经济学: 250, 管理学: 245, 其他（: 182
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p0
+</th>
+<th style="text-align:right;">
+p25
+</th>
+<th style="text-align:right;">
+p50
+</th>
+<th style="text-align:right;">
+p75
+</th>
+<th style="text-align:right;">
+p100
+</th>
+<th style="text-align:left;">
+hist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+51.64
+</td>
+<td style="text-align:right;">
+17.57
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+▅▆▇▆▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+身高（厘米）
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:right;">
+0.98
+</td>
+<td style="text-align:right;">
+163.71
+</td>
+<td style="text-align:right;">
+8.30
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:left;">
+▁▁▂▇▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+体重（斤）
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+<td style="text-align:right;">
+123.68
+</td>
+<td style="text-align:right;">
+23.60
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:left;">
+▁▇▆▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020全年总收入
+</td>
+<td style="text-align:right;">
+814
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+<td style="text-align:right;">
+52597.62
+</td>
+<td style="text-align:right;">
+352071.37
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+20000
+</td>
+<td style="text-align:right;">
+50000
+</td>
+<td style="text-align:right;">
+9999996
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020全年职业/劳动收入
+</td>
+<td style="text-align:right;">
+969
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:right;">
+40613.59
+</td>
+<td style="text-align:right;">
+267492.22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+45000
+</td>
+<td style="text-align:right;">
+9993000
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+</tbody>
+</table>
+<p>会发现大学专业这块缺失值特别多，到时候单独分析这一人群即可。</p>
+<p>我在这里先进行了数据处理再进行编码。</p>
+<p>处理缺失值</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="TB.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

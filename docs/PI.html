@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 图形 | 2020级创新班R课程内容总集（修改版）</title>
+  <meta name="description" content="3 图形 | 2020级创新班R课程内容总集（修改版）" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 图形 | 2020级创新班R课程内容总集（修改版）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 图形 | 2020级创新班R课程内容总集（修改版）" />
+  
+  
+  
+
+<meta name="author" content="广州大学社会学系2020级创新班、黄国政" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="TB.html"/>
+<link rel="next" href="rp.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="dta.html"><a href="dta.html"><i class="fa fa-check"></i><b>1</b> 数据的读入与处理</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="dta.html"><a href="dta.html#dta-read"><i class="fa fa-check"></i><b>1.1</b> 数据读入：以.dta格式为例</a></li>
+<li class="chapter" data-level="1.2" data-path="dta.html"><a href="dta.html#dta-wrap1"><i class="fa fa-check"></i><b>1.2</b> 数据处理1</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="dta.html"><a href="dta.html#dta-cc"><i class="fa fa-check"></i><b>1.2.1</b> R中的变量类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="dta.html"><a href="dta.html#dta-wrap2"><i class="fa fa-check"></i><b>1.3</b> 数据处理2</a></li>
+<li class="chapter" data-level="1.4" data-path="dta.html"><a href="dta.html#dta-wrap3"><i class="fa fa-check"></i><b>1.4</b> 数据处理3</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="dta.html"><a href="dta.html#dta-dia"><i class="fa fa-check"></i><b>1.4.1</b> 诊断数据集</a></li>
+<li class="chapter" data-level="1.4.2" data-path="dta.html"><a href="dta.html#dta-values"><i class="fa fa-check"></i><b>1.4.2</b> 处理异常值和缺失值</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="TB.html"><a href="TB.html"><i class="fa fa-check"></i><b>2</b> 表格</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="TB.html"><a href="TB.html#TB-Variable-labels"><i class="fa fa-check"></i><b>2.1</b> 变量标签</a></li>
+<li class="chapter" data-level="2.2" data-path="TB.html"><a href="TB.html#TB-summary"><i class="fa fa-check"></i><b>2.2</b> gtsummary包</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="TB.html"><a href="TB.html#TB-summary1"><i class="fa fa-check"></i><b>2.2.1</b> 函数<code>tbl_summary()</code>的默认输出</a></li>
+<li class="chapter" data-level="2.2.2" data-path="TB.html"><a href="TB.html#TB-summary2"><i class="fa fa-check"></i><b>2.2.2</b> 函数<code>tbl_summary()</code>的分组比较</a></li>
+<li class="chapter" data-level="2.2.3" data-path="TB.html"><a href="TB.html#TB-summary3"><i class="fa fa-check"></i><b>2.2.3</b> 函数<code>tbl_gtsummary()</code>的自定义输出</a></li>
+<li class="chapter" data-level="2.2.4" data-path="TB.html"><a href="TB.html#TB-cross"><i class="fa fa-check"></i><b>2.2.4</b> 函数<code>tbl_cross</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="TB.html"><a href="TB.html#TB-table1"><i class="fa fa-check"></i><b>2.3</b> table1包</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="TB.html"><a href="TB.html#TB-table1.1"><i class="fa fa-check"></i><b>2.3.1</b> 无分层</a></li>
+<li class="chapter" data-level="2.3.2" data-path="TB.html"><a href="TB.html#TB-table1.2"><i class="fa fa-check"></i><b>2.3.2</b> 有分层</a></li>
+<li class="chapter" data-level="2.3.3" data-path="TB.html"><a href="TB.html#TB-table1.2.1"><i class="fa fa-check"></i><b>2.3.3</b> 一个分层</a></li>
+<li class="chapter" data-level="2.3.4" data-path="TB.html"><a href="TB.html#TB-table1.2.2"><i class="fa fa-check"></i><b>2.3.4</b> 两个分层</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="TB.html"><a href="TB.html#TB-kable"><i class="fa fa-check"></i><b>2.4</b> <code>KableExtra</code>包</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="TB.html"><a href="TB.html#TB-kable1"><i class="fa fa-check"></i><b>2.4.1</b> 小试牛刀</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="PI.html"><a href="PI.html"><i class="fa fa-check"></i><b>3</b> 图形</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="PI.html"><a href="PI.html#PI-ggplot2"><i class="fa fa-check"></i><b>3.1</b> ggplot2</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="PI.html"><a href="PI.html#PI-b"><i class="fa fa-check"></i><b>3.1.1</b> 散点图 抖散图 箱线图 直方图</a></li>
+<li class="chapter" data-level="3.1.2" data-path="PI.html"><a href="PI.html#PI-f"><i class="fa fa-check"></i><b>3.1.2</b> 密度图 提琴图 山峦图 椭圆图 2D密度图</a></li>
+<li class="chapter" data-level="3.1.3" data-path="PI.html"><a href="PI.html#PI-i"><i class="fa fa-check"></i><b>3.1.3</b> 图的分面{facet_grid() / facet_wrap()}</a></li>
+<li class="chapter" data-level="3.1.4" data-path="PI.html"><a href="PI.html#PI-l"><i class="fa fa-check"></i><b>3.1.4</b> 图上标注文本</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="PI.html"><a href="PI.html#PI-plotly"><i class="fa fa-check"></i><b>3.2</b> plotly</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="PI.html"><a href="PI.html#PI-baisc"><i class="fa fa-check"></i><b>3.2.1</b> 基本图形</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="rp.html"><a href="rp.html"><i class="fa fa-check"></i><b>4</b> 自动报告</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="rp.html"><a href="rp.html#rp1"><i class="fa fa-check"></i><b>4.1</b> 使用方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="OLS.html"><a href="OLS.html"><i class="fa fa-check"></i><b>5</b> 线性回归</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="OLS.html"><a href="OLS.html#OLS-inro"><i class="fa fa-check"></i><b>5.1</b> 简单线性回归介绍</a></li>
+<li class="chapter" data-level="5.2" data-path="OLS.html"><a href="OLS.html#OLS-simple"><i class="fa fa-check"></i><b>5.2</b> 一元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="OLS.html"><a href="OLS.html#OLS-build"><i class="fa fa-check"></i><b>5.2.1</b> 模型建立</a></li>
+<li class="chapter" data-level="5.2.2" data-path="OLS.html"><a href="OLS.html#OLS-explain"><i class="fa fa-check"></i><b>5.2.2</b> 模型结果解读</a></li>
+<li class="chapter" data-level="5.2.3" data-path="OLS.html"><a href="OLS.html#OLS-residual"><i class="fa fa-check"></i><b>5.2.3</b> 残差分析</a></li>
+<li class="chapter" data-level="5.2.4" data-path="OLS.html"><a href="OLS.html#OLS-others"><i class="fa fa-check"></i><b>5.2.4</b> 其他线性模型</a></li>
+<li class="chapter" data-level="5.2.5" data-path="OLS.html"><a href="OLS.html#OLS-high"><i class="fa fa-check"></i><b>5.2.5</b> 高阶拟合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="OLS.html"><a href="OLS.html#OLS-multiple"><i class="fa fa-check"></i><b>5.3</b> 多元线性回归</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="OLS.html"><a href="OLS.html#OLS-multisummary"><i class="fa fa-check"></i><b>5.3.1</b> 模型汇总</a></li>
+<li class="chapter" data-level="5.3.2" data-path="OLS.html"><a href="OLS.html#OLS-each"><i class="fa fa-check"></i><b>5.3.2</b> 交互模型效应</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="two-logit.html"><a href="two-logit.html"><i class="fa fa-check"></i><b>6</b> 二分变量回归</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-i"><i class="fa fa-check"></i><b>6.1</b> 二值型回归模型</a></li>
+<li class="chapter" data-level="6.2" data-path="two-logit.html"><a href="two-logit.html#更多的包-two-logit-o"><i class="fa fa-check"></i><b>6.2</b> 更多的包 {two-logit-o}</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="two-logit.html"><a href="two-logit.html#zelig-two-logit-o1"><i class="fa fa-check"></i><b>6.2.1</b> Zelig {two-logit-o1}</a></li>
+<li class="chapter" data-level="6.2.2" data-path="two-logit.html"><a href="two-logit.html#rms包-two-logit-o2"><i class="fa fa-check"></i><b>6.2.2</b> rms包 {two-logit-o2}</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="two-logit.html"><a href="two-logit.html#two-logit-e"><i class="fa fa-check"></i><b>6.3</b> 交互效应与可视化</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="two-logit.html"><a href="two-logit.html#two-logit-e1"><i class="fa fa-check"></i><b>6.3.1</b> 对方程进行方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ML.html"><a href="ML.html"><i class="fa fa-check"></i><b>7</b> 简单的机器学习</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ML.html"><a href="ML.html#ML-a"><i class="fa fa-check"></i><b>7.1</b> 决策树模型</a></li>
+<li class="chapter" data-level="7.2" data-path="ML.html"><a href="ML.html#ML-b"><i class="fa fa-check"></i><b>7.2</b> 随机森林模型</a></li>
+<li class="chapter" data-level="7.3" data-path="ML.html"><a href="ML.html#ML-c"><i class="fa fa-check"></i><b>7.3</b> 预测身价</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ET.html"><a href="ET.html"><i class="fa fa-check"></i><b>8</b> 英文文本分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ET.html"><a href="ET.html#ET-a"><i class="fa fa-check"></i><b>8.1</b> 整洁文字</a></li>
+<li class="chapter" data-level="8.2" data-path="ET.html"><a href="ET.html#ET-b"><i class="fa fa-check"></i><b>8.2</b> 词频count</a></li>
+<li class="chapter" data-level="8.3" data-path="ET.html"><a href="ET.html#ET-c"><i class="fa fa-check"></i><b>8.3</b> 词云</a></li>
+<li class="chapter" data-level="8.4" data-path="ET.html"><a href="ET.html#ET-d"><i class="fa fa-check"></i><b>8.4</b> 分析单词和文档频率：tf-idf</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="ET.html"><a href="ET.html#简.奥斯汀小说中的术语频率"><i class="fa fa-check"></i><b>8.4.1</b> 简.奥斯汀小说中的术语频率</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ET.html"><a href="ET.html#zipfs-law"><i class="fa fa-check"></i><b>8.4.2</b> Zipf’s law</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ET.html"><a href="ET.html#bind_tf_idf-函数"><i class="fa fa-check"></i><b>8.4.3</b> bind_tf_idf ()函数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ET.html"><a href="ET.html#ET-e"><i class="fa fa-check"></i><b>8.5</b> 案例分析：挖掘NASA元数据</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CT.html"><a href="CT.html"><i class="fa fa-check"></i><b>9</b> 中文文本分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="CT.html"><a href="CT.html#CT-a"><i class="fa fa-check"></i><b>9.1</b> 安装拓展包和导入</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="CT.html"><a href="CT.html#安装拓展包"><i class="fa fa-check"></i><b>9.1.1</b> 安装拓展包</a></li>
+<li class="chapter" data-level="9.1.2" data-path="CT.html"><a href="CT.html#导入文档建议用记事本格式为uttf-8-运用scan函数"><i class="fa fa-check"></i><b>9.1.2</b> 导入文档，建议用记事本，格式为UTTF-8 运用scan函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="CT.html"><a href="CT.html#CT-b"><i class="fa fa-check"></i><b>9.2</b> 结巴分词处理</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="CT.html"><a href="CT.html#制作词表"><i class="fa fa-check"></i><b>9.2.1</b> 制作词表</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="CT.html"><a href="CT.html#CT-c"><i class="fa fa-check"></i><b>9.3</b> 运用SQL</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="CT.html"><a href="CT.html#安装并载入sqldf程序包-group-by根据一定的规则进行分组通过一定的规则将一个数据集划分成若干个笑的区域然后针对若干个小区域进行数据处理-count1来计数-select检索数据"><i class="fa fa-check"></i><b>9.3.1</b> 安装并载入sqldf程序包 &gt;group by“根据一定的规则进行分组”，通过一定的规则将一个数据集划分成若干个笑的区域，然后针对若干个小区域进行数据处理 &gt;count(1)来计数 &gt;select检索数据</a></li>
+<li class="chapter" data-level="9.3.2" data-path="CT.html"><a href="CT.html#按顺序排列"><i class="fa fa-check"></i><b>9.3.2</b> 按顺序排列</a></li>
+<li class="chapter" data-level="9.3.3" data-path="CT.html"><a href="CT.html#抽取频次为前一百的词语"><i class="fa fa-check"></i><b>9.3.3</b> 抽取频次为前一百的词语</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="CT.html"><a href="CT.html#CT-d"><i class="fa fa-check"></i><b>9.4</b> 绘制词云</a></li>
+<li class="chapter" data-level="9.5" data-path="CT.html"><a href="CT.html#CT-e"><i class="fa fa-check"></i><b>9.5</b> 词频可视化</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="CT.html"><a href="CT.html#barplot绘制排名前30的高频词-第一个参数源为数据源第二个参数源为标签"><i class="fa fa-check"></i><b>9.5.1</b> barplot绘制排名前30的高频词 第一个参数源为数据源，第二个参数源为标签</a></li>
+<li class="chapter" data-level="9.5.2" data-path="CT.html"><a href="CT.html#利用pie函数绘制饼图对高频词语进行可视化"><i class="fa fa-check"></i><b>9.5.2</b> 利用pie函数绘制饼图对高频词语进行可视化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">2020级创新班R课程内容总集（修改版）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="PI" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> 图形<a href="PI.html#PI" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>代码提供：</p>
+<p>张洛宏 徐颖 陈宇祥 柯颖婷 黄国政</p>
+<p>主要内容：
+-散点图
+抖散图
+箱线图
+直方图
+密度图
+提琴图
+山峦图
+椭圆图
+2D密度图
+-图的分面
+-图上标注文本</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="PI.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;core.Rdata&quot;</span>)</span>
+<span id="cb131-2"><a href="PI.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(core)</span></code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div id="PI-ggplot2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> ggplot2<a href="PI.html#PI-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="PI-b" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 散点图 抖散图 箱线图 直方图<a href="PI.html#PI-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>散点图</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="PI.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,<span class="fu">aes</span>(<span class="at">x=</span>height,<span class="at">y=</span>weight))<span class="sc">+</span></span>
+<span id="cb133-2"><a href="PI.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="PI.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co">#设置颜色</span></span>
+<span id="cb134-2"><a href="PI.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb134-3"><a href="PI.html#cb134-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>height,<span class="at">y=</span>weight,<span class="at">color=</span>gender))<span class="sc">+</span></span>
+<span id="cb134-4"><a href="PI.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>抖散图</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="PI.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,<span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span><span class="fu">log</span>(income)))<span class="sc">+</span></span>
+<span id="cb135-2"><a href="PI.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="PI.html#cb136-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span> </span>
+<span id="cb136-2"><a href="PI.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> educ, <span class="at">y =</span><span class="fu">log</span>(income))) <span class="sc">+</span></span>
+<span id="cb136-3"><a href="PI.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="co">#为每个点的位置增加了少量的随机变化，能够处理点相互重叠的问题</span></span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>箱线图</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="PI.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb137-2"><a href="PI.html#cb137-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span><span class="fu">log</span>(income),<span class="at">fill=</span>stype,<span class="at">color=</span>stype))<span class="sc">+</span></span>
+<span id="cb137-3"><a href="PI.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="PI.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co">#添加标题、横纵轴标签</span></span>
+<span id="cb139-2"><a href="PI.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb139-3"><a href="PI.html#cb139-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span><span class="fu">log</span>(income),<span class="at">fill=</span>stype,<span class="at">color=</span>stype))<span class="sc">+</span></span>
+<span id="cb139-4"><a href="PI.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb139-5"><a href="PI.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;受教育状况&quot;</span>,<span class="at">y=</span><span class="st">&quot;2020年个人收入&quot;</span>,<span class="at">title=</span><span class="st">&quot;受教育状况和个人收入关系分布箱线图&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>直方图</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="PI.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,<span class="fu">aes</span>(<span class="at">x=</span>height))<span class="sc">+</span></span>
+<span id="cb141-2"><a href="PI.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>)</span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="PI-f" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 密度图 提琴图 山峦图 椭圆图 2D密度图<a href="PI.html#PI-f" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>密度图</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="PI.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb142-2"><a href="PI.html#cb142-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(income),<span class="at">fill=</span>educ))<span class="sc">+</span></span>
+<span id="cb142-3"><a href="PI.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_density()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>提琴图</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="PI.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb144-2"><a href="PI.html#cb144-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span><span class="fu">log</span>(income),<span class="at">fill=</span>educ))<span class="sc">+</span></span>
+<span id="cb144-3"><a href="PI.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_ydensity()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="PI.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>core,</span>
+<span id="cb146-2"><a href="PI.html#cb146-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span><span class="fu">log</span>(income),<span class="at">fill=</span>stype))<span class="sc">+</span></span>
+<span id="cb146-3"><a href="PI.html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_ydensity()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>山峦图</p>
+<p>x为连续变量，y为离散变量</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="PI.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb148-2"><a href="PI.html#cb148-2" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb148-3"><a href="PI.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height ,<span class="at">y =</span> stype ,<span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb148-4"><a href="PI.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  ggridges<span class="sc">::</span><span class="fu">geom_density_ridges</span>()</span></code></pre></div>
+<pre><code>## Picking joint bandwidth of 1.21</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>椭圆图</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="PI.html#cb150-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="PI.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> weight)) <span class="sc">+</span></span>
+<span id="cb150-3"><a href="PI.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb150-4"><a href="PI.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>(<span class="at">type =</span> <span class="st">&quot;norm&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#level=0.95为95%置信区间</span></span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>2D密度图</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="PI.html#cb151-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb151-2"><a href="PI.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>height , <span class="at">y =</span> weight)) <span class="sc">+</span></span>
+<span id="cb151-3"><a href="PI.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bin2d</span>() <span class="co">#作长方形分块的二维直方图</span></span></code></pre></div>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="PI-i" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> 图的分面{facet_grid() / facet_wrap()}<a href="PI.html#PI-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="PI.html#cb152-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb152-2"><a href="PI.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(income))) <span class="sc">+</span></span>
+<span id="cb152-3"><a href="PI.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb152-4"><a href="PI.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> stype)</span></code></pre></div>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_density()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="PI.html#cb154-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href="PI.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(income), <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb154-3"><a href="PI.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb154-4"><a href="PI.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(gender <span class="sc">~</span> .)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_bin()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="PI.html#cb157-1" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb157-2"><a href="PI.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(income), <span class="at">y =</span> <span class="fu">stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb157-3"><a href="PI.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> stype)) <span class="sc">+</span></span>
+<span id="cb157-4"><a href="PI.html#cb157-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb157-5"><a href="PI.html#cb157-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(stype <span class="sc">~</span> .)</span></code></pre></div>
+<pre><code>## Warning: `stat(density)` was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(density)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 624 rows containing non-finite values (`stat_bin()`).
+## Removed 624 rows containing non-finite values (`stat_density()`).</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+</div>
+<div id="PI-l" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> 图上标注文本<a href="PI.html#PI-l" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="PI.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co">#在图上用文本标注</span></span>
+<span id="cb161-2"><a href="PI.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb161-3"><a href="PI.html#cb161-3" aria-hidden="true" tabindex="-1"></a>core <span class="sc">%&gt;%</span></span>
+<span id="cb161-4"><a href="PI.html#cb161-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> weight)) <span class="sc">+</span></span>
+<span id="cb161-5"><a href="PI.html#cb161-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb161-6"><a href="PI.html#cb161-6" aria-hidden="true" tabindex="-1"></a>  ggforce<span class="sc">::</span><span class="fu">geom_mark_ellipse</span>(<span class="fu">aes</span>(</span>
+<span id="cb161-7"><a href="PI.html#cb161-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">filter =</span> height <span class="sc">&gt;</span> <span class="fl">1.75</span>,</span>
+<span id="cb161-8"><a href="PI.html#cb161-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;height &gt;1.75&quot;</span>))</span></code></pre></div>
+<pre><code>## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="3001-chapter03_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+<div id="PI-plotly" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> plotly<a href="PI.html#PI-plotly" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="PI-baisc" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 基本图形<a href="PI.html#PI-baisc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="PI.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;plotly&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     last_plot</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     layout</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="PI.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(core, <span class="at">x =</span> <span class="sc">~</span>educ) <span class="sc">%&gt;%</span></span>
+<span id="cb168-2"><a href="PI.html#cb168-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_histogram</span>()</span></code></pre></div>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0421c1ca09c6d1b965e8" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-0421c1ca09c6d1b965e8">{"x":{"visdat":{"1f4065496dba":["function () ","plotlyVisDat"]},"cur_data":"1f4065496dba","attrs":{"1f4065496dba":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"educ","type":"category","categoryorder":"array","categoryarray":["未受教育","初等教育","中等教育","高等教育","其他"]},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","高等教育","高等教育","高等教育","中等教育","高等教育","中等教育","初等教育","高等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","初等教育","高等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","初等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","初等教育","初等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","初等教育","高等教育","高等教育","高等教育","中等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","高等教育","初等教育","中等教育","高等教育","初等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","初等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","中等教育","高等教育","初等教育","高等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","未受教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","初等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","高等教育","中等教育","中等教育","未受教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","初等教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","高等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","初等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","未受教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","未受教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","高等教育","初等教育","中等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","高等教育","初等教育","初等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","高等教育","初等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","未受教育","高等教育","中等教育","初等教育","高等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","高等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","未受教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","未受教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","初等教育","初等教育","中等教育","中等教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","初等教育","中等教育","初等教育","高等教育","高等教育","初等教育","高等教育","未受教育","初等教育","初等教育","中等教育","初等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","初等教育","高等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","初等教育","中等教育","高等教育","高等教育","初等教育","初等教育","高等教育","初等教育","初等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","未受教育","中等教育","高等教育","未受教育","中等教育","初等教育","未受教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","高等教育","初等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","高等教育","中等教育","初等教育","高等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","初等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","初等教育","未受教育","高等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","高等教育","高等教育","初等教育","中等教育","高等教育","中等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","未受教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","高等教育","初等教育","中等教育","初等教育","未受教育","中等教育","初等教育","高等教育","未受教育","初等教育","中等教育","初等教育","高等教育","高等教育","初等教育","未受教育","中等教育","中等教育","初等教育","未受教育","中等教育","未受教育","初等教育","中等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","初等教育","中等教育","初等教育","初等教育","初等教育","初等教育","高等教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","高等教育","中等教育","初等教育","初等教育","中等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","初等教育","高等教育","高等教育","初等教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","未受教育","中等教育","未受教育","中等教育","中等教育","中等教育","未受教育","中等教育","未受教育","初等教育","高等教育","中等教育","中等教育","未受教育","未受教育","中等教育","高等教育","未受教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","未受教育","未受教育","初等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","未受教育","高等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","高等教育","中等教育","初等教育","中等教育","未受教育","中等教育","高等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","高等教育","初等教育","中等教育","高等教育","初等教育","高等教育","高等教育","初等教育","初等教育","中等教育","中等教育","未受教育","高等教育","初等教育","初等教育","未受教育","高等教育","高等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","高等教育","未受教育","未受教育","初等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","初等教育","初等教育","未受教育","中等教育","未受教育","高等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","初等教育","中等教育","高等教育","高等教育","初等教育","高等教育","初等教育","高等教育","初等教育","中等教育","中等教育","高等教育","未受教育","高等教育","中等教育","高等教育","中等教育","中等教育","初等教育","初等教育","初等教育","初等教育","初等教育","初等教育","中等教育","未受教育","中等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","未受教育","高等教育","高等教育","中等教育","高等教育","中等教育","初等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","初等教育","中等教育","高等教育","初等教育","中等教育","初等教育","中等教育","初等教育","高等教育","高等教育","未受教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","初等教育","高等教育","高等教育","高等教育","高等教育","中等教育","中等教育","高等教育","初等教育","高等教育","初等教育","中等教育","中等教育","高等教育","中等教育","中等教育","初等教育","初等教育","初等教育","初等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","初等教育","中等教育","高等教育","中等教育","高等教育","初等教育","高等教育","中等教育","未受教育","高等教育","高等教育","初等教育","初等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","未受教育","中等教育","中等教育","初等教育","未受教育","高等教育","未受教育","未受教育","中等教育","初等教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","中等教育","高等教育","初等教育","高等教育","中等教育","高等教育","高等教育","初等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","高等教育","中等教育","高等教育","中等教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","高等教育","初等教育","高等教育","高等教育","高等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","高等教育","初等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","初等教育","中等教育","中等教育","未受教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","未受教育","高等教育","高等教育","未受教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","初等教育","初等教育","初等教育","高等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","未受教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","未受教育","中等教育","未受教育","初等教育","初等教育","初等教育","中等教育","中等教育","高等教育","中等教育","初等教育","初等教育","未受教育","初等教育","未受教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","初等教育","未受教育","高等教育","初等教育","未受教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","初等教育","未受教育","未受教育","中等教育","中等教育","初等教育","初等教育","初等教育","未受教育","中等教育","中等教育","初等教育","中等教育","初等教育","未受教育","初等教育","初等教育","未受教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","未受教育","未受教育","中等教育","初等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","中等教育","未受教育","初等教育","未受教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","未受教育","初等教育","初等教育","初等教育","中等教育","初等教育","未受教育","初等教育","未受教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","初等教育","初等教育","初等教育","高等教育","高等教育","中等教育","高等教育","未受教育","中等教育","高等教育","初等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","未受教育","未受教育","中等教育","高等教育","初等教育","高等教育","中等教育","初等教育","高等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","未受教育","未受教育","高等教育","中等教育","中等教育","初等教育","初等教育","未受教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","高等教育","中等教育","初等教育","初等教育","中等教育","中等教育","未受教育","中等教育","中等教育","高等教育","中等教育","高等教育","未受教育","初等教育","未受教育","高等教育","未受教育","高等教育","中等教育","中等教育","高等教育","初等教育","高等教育","高等教育","高等教育","高等教育","初等教育","初等教育","未受教育","中等教育","中等教育","中等教育","未受教育","中等教育","未受教育","中等教育","中等教育","高等教育","初等教育","高等教育","中等教育","高等教育","高等教育","初等教育","未受教育","未受教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","未受教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","初等教育","中等教育","高等教育","初等教育","未受教育","中等教育","初等教育","高等教育","中等教育","高等教育","初等教育","初等教育","中等教育","中等教育","中等教育","未受教育","初等教育","未受教育","初等教育","初等教育","初等教育","初等教育","中等教育","未受教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","高等教育","初等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","高等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","中等教育","中等教育","初等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","高等教育","高等教育","中等教育","高等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","高等教育","未受教育","初等教育","中等教育","中等教育","初等教育","高等教育","中等教育","初等教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","中等教育","高等教育","中等教育","中等教育","高等教育","中等教育","高等教育","初等教育","中等教育","未受教育","中等教育","高等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","未受教育","中等教育","未受教育","中等教育","未受教育","未受教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","初等教育","初等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","未受教育","初等教育","高等教育","初等教育","高等教育","高等教育","未受教育","中等教育","中等教育","未受教育","中等教育","高等教育","中等教育","高等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","初等教育","初等教育","高等教育","高等教育","中等教育","未受教育","未受教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","未受教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","初等教育","初等教育","初等教育","高等教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","未受教育","未受教育","中等教育","中等教育","初等教育","初等教育","高等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","未受教育","高等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","未受教育","中等教育","初等教育","中等教育","初等教育","高等教育","初等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","初等教育","未受教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","初等教育","高等教育","中等教育","初等教育","初等教育","中等教育","高等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","未受教育","高等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","未受教育","初等教育","高等教育","中等教育","高等教育","高等教育","中等教育","中等教育","未受教育","中等教育","初等教育","未受教育","中等教育","未受教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","未受教育","初等教育","中等教育","初等教育","初等教育","中等教育","中等教育","未受教育","初等教育","未受教育","高等教育","高等教育","中等教育","未受教育","未受教育","未受教育","中等教育","未受教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","初等教育","中等教育","未受教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","高等教育","高等教育","未受教育","初等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","未受教育","未受教育","未受教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","高等教育","中等教育","中等教育","初等教育","高等教育","中等教育","初等教育","中等教育","初等教育","初等教育","中等教育","中等教育","未受教育","高等教育","未受教育","初等教育","未受教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","未受教育","未受教育","未受教育","中等教育","高等教育","中等教育","未受教育","中等教育","初等教育","未受教育","中等教育","高等教育","中等教育","未受教育","高等教育","初等教育","高等教育","高等教育","未受教育","未受教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","初等教育","中等教育","高等教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","高等教育","高等教育","未受教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","未受教育","未受教育","高等教育","初等教育","高等教育","高等教育","初等教育","中等教育","未受教育","中等教育","高等教育","初等教育","高等教育","中等教育","高等教育","中等教育","中等教育","未受教育","未受教育","中等教育","未受教育","高等教育","高等教育","中等教育","高等教育","初等教育","中等教育","高等教育","初等教育","高等教育","中等教育","高等教育","中等教育","初等教育","初等教育","中等教育","未受教育","初等教育","初等教育","未受教育","中等教育","初等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","未受教育","中等教育","未受教育","初等教育","中等教育","中等教育","中等教育","未受教育","高等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","未受教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","初等教育","高等教育","高等教育","高等教育","初等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","高等教育","中等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","高等教育","初等教育","初等教育","初等教育","未受教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","高等教育","中等教育","初等教育","中等教育","未受教育","中等教育","未受教育","高等教育","未受教育","中等教育","中等教育","未受教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","初等教育","未受教育","中等教育","中等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","初等教育","未受教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","初等教育","中等教育","中等教育","未受教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","高等教育","未受教育","中等教育","初等教育","中等教育","高等教育","未受教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","未受教育","中等教育","中等教育","未受教育","中等教育","中等教育","未受教育","中等教育","未受教育","中等教育","高等教育","中等教育","初等教育","未受教育","未受教育","未受教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","高等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","初等教育","未受教育","中等教育","初等教育","初等教育","中等教育","未受教育","初等教育","初等教育","中等教育","中等教育","初等教育","高等教育","高等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","高等教育","未受教育","中等教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","未受教育","初等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","未受教育","初等教育","高等教育","未受教育","未受教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","未受教育","中等教育","高等教育","未受教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","高等教育","高等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","高等教育","初等教育","中等教育","高等教育","中等教育","初等教育","未受教育","高等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","高等教育","高等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","高等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","高等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","初等教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","初等教育","中等教育","高等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","高等教育","高等教育","中等教育","高等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","未受教育","中等教育","初等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","初等教育","高等教育","中等教育","初等教育","高等教育","未受教育","中等教育","高等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","未受教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","高等教育","未受教育","中等教育","中等教育","高等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","未受教育","中等教育","中等教育","未受教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","未受教育","初等教育","未受教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","初等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","高等教育","高等教育","中等教育","未受教育","初等教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","中等教育","中等教育","高等教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","中等教育","高等教育","初等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","未受教育","初等教育","中等教育","未受教育","初等教育","初等教育","高等教育","初等教育","未受教育","初等教育","未受教育","未受教育","中等教育","中等教育","未受教育","初等教育","初等教育","高等教育","未受教育","初等教育","中等教育","中等教育","初等教育","初等教育","中等教育","未受教育","初等教育","初等教育","中等教育","初等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","初等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","未受教育","中等教育","高等教育","未受教育","中等教育","初等教育","初等教育","初等教育","高等教育","初等教育","初等教育","未受教育","中等教育","高等教育","初等教育","中等教育","未受教育","初等教育","中等教育","初等教育","初等教育","初等教育","初等教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","初等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","初等教育","初等教育","未受教育","初等教育","初等教育","初等教育","初等教育","初等教育","初等教育","中等教育","未受教育","高等教育","中等教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","初等教育","初等教育","高等教育","未受教育","未受教育","初等教育","初等教育","中等教育","未受教育","初等教育","中等教育","中等教育","初等教育","高等教育","未受教育","初等教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","初等教育","初等教育","初等教育","初等教育","中等教育","初等教育","初等教育","初等教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","高等教育","高等教育","中等教育","中等教育","初等教育","初等教育","未受教育","高等教育","高等教育","未受教育","初等教育","未受教育","中等教育","高等教育","初等教育","中等教育","未受教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","高等教育","高等教育","初等教育","初等教育","中等教育","未受教育","未受教育","高等教育","中等教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","高等教育","初等教育","高等教育","高等教育","中等教育","未受教育","中等教育","中等教育","高等教育","未受教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","高等教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","高等教育","初等教育","初等教育","未受教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","未受教育","中等教育","初等教育","高等教育","初等教育","未受教育","中等教育","中等教育","高等教育","高等教育","未受教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","高等教育","初等教育","高等教育","中等教育","初等教育","高等教育","高等教育","高等教育","初等教育","中等教育","中等教育","未受教育","初等教育","初等教育","高等教育","中等教育","中等教育","未受教育","未受教育","中等教育","高等教育","初等教育","中等教育","中等教育","初等教育","未受教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","高等教育","初等教育","未受教育","高等教育","未受教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","中等教育","初等教育","高等教育","初等教育","初等教育","中等教育","高等教育","未受教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","未受教育","初等教育","初等教育","初等教育","初等教育","初等教育","中等教育","初等教育","初等教育","中等教育","初等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","未受教育","中等教育","未受教育","初等教育","初等教育","初等教育","未受教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","初等教育","初等教育","未受教育","初等教育","高等教育","高等教育","初等教育","初等教育","初等教育","未受教育","中等教育","未受教育","中等教育","高等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","初等教育","中等教育","初等教育","初等教育","中等教育","未受教育","初等教育","初等教育","中等教育","初等教育","中等教育","高等教育","初等教育","初等教育","未受教育","初等教育","初等教育","初等教育","初等教育","中等教育","中等教育","未受教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","初等教育","中等教育","未受教育","高等教育","未受教育","初等教育","初等教育","初等教育","初等教育","未受教育","高等教育","中等教育","中等教育","中等教育","初等教育","中等教育","高等教育","初等教育","初等教育","未受教育","中等教育","初等教育","中等教育","高等教育","未受教育","高等教育","中等教育","高等教育","未受教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","高等教育","初等教育","中等教育","未受教育","中等教育","未受教育","中等教育","高等教育","中等教育","未受教育","中等教育","中等教育","中等教育","高等教育","初等教育","初等教育","初等教育","中等教育","初等教育","中等教育","未受教育","高等教育","未受教育","初等教育","中等教育","中等教育","高等教育","高等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","初等教育","未受教育","初等教育","未受教育","中等教育","中等教育","初等教育","初等教育","未受教育","中等教育","中等教育","初等教育","初等教育","高等教育","初等教育","中等教育","初等教育","未受教育","初等教育","未受教育","初等教育","初等教育","高等教育","未受教育","中等教育","中等教育","初等教育","中等教育","中等教育","未受教育","中等教育","未受教育","初等教育","初等教育","中等教育","中等教育","中等教育","高等教育","中等教育","初等教育","初等教育","初等教育","中等教育","初等教育","未受教育","初等教育","未受教育","未受教育","未受教育","初等教育","中等教育","中等教育","中等教育","高等教育","未受教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","高等教育","中等教育","中等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","初等教育","中等教育","高等教育","中等教育","中等教育","未受教育","中等教育","中等教育","高等教育","未受教育","未受教育","初等教育","中等教育","中等教育","初等教育","高等教育","未受教育","中等教育","中等教育","中等教育","初等教育","高等教育","中等教育","初等教育","未受教育","初等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","高等教育","中等教育","未受教育","未受教育","初等教育","高等教育","未受教育","中等教育","中等教育","初等教育","初等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","初等教育","中等教育","初等教育","中等教育","未受教育","中等教育","中等教育","初等教育","中等教育","高等教育","初等教育","初等教育","中等教育","初等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","初等教育","初等教育","高等教育","中等教育","中等教育","未受教育","高等教育","高等教育","中等教育","初等教育","初等教育","初等教育","高等教育","中等教育","初等教育","初等教育","未受教育","初等教育","中等教育","初等教育","高等教育","初等教育","中等教育","高等教育","未受教育","初等教育","中等教育","初等教育","中等教育","中等教育","初等教育","中等教育","中等教育","高等教育","初等教育","高等教育","未受教育","中等教育","中等教育","初等教育","高等教育","中等教育","中等教育","中等教育","中等教育","初等教育","中等教育","初等教育","中等教育","中等教育","中等教育","未受教育","初等教育","中等教育","高等教育","中等教育","未受教育","中等教育","高等教育","中等教育","中等教育","初等教育","初等教育","未受教育","初等教育","未受教育","中等教育","高等教育","初等教育","中等教育","中等教育","初等教育","中等教育","高等教育","中等教育","初等教育","中等教育","中等教育","初等教育","高等教育","初等教育","初等教育","初等教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","初等教育","中等教育","中等教育","初等教育","初等教育","中等教育","未受教育","高等教育","中等教育","中等教育","高等教育","高等教育","中等教育","初等教育","中等教育","高等教育","高等教育","中等教育","高等教育","高等教育","未受教育","高等教育","中等教育","初等教育","中等教育","高等教育","中等教育","中等教育","中等教育","中等教育","中等教育","初等教育","未受教育","高等教育","中等教育","初等教育","初等教育","高等教育","高等教育","未受教育","中等教育","中等教育","中等教育","初等教育","高等教育","初等教育","未受教育","高等教育","未受教育","初等教育","未受教育","高等教育","高等教育","初等教育","初等教育","高等教育","中等教育","初等教育","中等教育","中等教育","高等教育","高等教育","高等教育","高等教育","初等教育","初等教育","高等教育","未受教育","高等教育","中等教育","初等教育","中等教育","中等教育","未受教育","未受教育","初等教育","初等教育","初等教育","高等教育","未受教育","未受教育","中等教育","高等教育","高等教育","中等教育","未受教育","中等教育","高等教育","高等教育","中等教育","高等教育","初等教育","高等教育","中等教育","初等教育","高等教育","初等教育","高等教育","初等教育","未受教育","初等教育","未受教育","中等教育","中等教育","未受教育","中等教育","初等教育","未受教育","未受教育","初等教育"],"type":"histogram","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="PI.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(core,<span class="at">x =</span> <span class="sc">~</span>height, <span class="at">y =</span> <span class="sc">~</span>weight)</span></code></pre></div>
+<pre><code>## No trace type specified:
+##   Based on info supplied, a &#39;scatter&#39; trace seems appropriate.
+##   Read more about this trace type -&gt; https://plotly.com/r/reference/#scatter</code></pre>
+<pre><code>## No scatter mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -&gt; https://plotly.com/r/reference/#scatter-mode</code></pre>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ff9874d9293ac3040815" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-ff9874d9293ac3040815">{"x":{"visdat":{"1f40234419":["function () ","plotlyVisDat"]},"cur_data":"1f40234419","attrs":{"1f40234419":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"height"},"yaxis":{"domain":[0,1],"automargin":true,"title":"weight"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[160,160,172,158,180,187,165,173,167,155,180,160,163,160,164,183,183,168,176,177,170,169,155,171,176,173,162,163,177,180,161,154,160,170,160,168,155,166,165,162,158,170,162,175,158,160,167,163,180,170,155,150,160,170,165,160,175,175,169,160,158,169,174,155,177,172,165,164,158,177,158,155,159,178,187,170,163,156,160,160,163,158,163,160,172,174,158,162,174,160,178,170,163,151,155,165,160,163,160,164,172,156,150,170,154,164,162,158,163,160,160,165,170,163,164,163,165,168,180,171,159,174,164,178,153,160,160,166,160,174,150,170,163,162,156,192,181,169,170,181,163,155,172,160,170,156,170,182,170,171,159,163,170,165,171,166,177,156,156,178,178,175,168,174,176,156,180,173,168,158,165,160,170,172,159,165,160,193,160,170,150,160,175,169,176,170,147,174,150,178,172,169,180,167,162,170,160,162,167,158,160,168,160,169,178,178,175,159,157,175,166,182,167,158,160,167,175,170,160,160,158,177,172,180,148,170,156,160,179,160,158,172,155,170,170,188,180,154,174,160,163,165,168,153,150,160,160,158,159,170,162,171,176,160,160,165,162,147,165,165,156,165,175,162,154,163,165,166,160,164,160,180,178,178,172,172,161,162,172,159,153,178,162,158,175,166,168,170,170,155,153,156,160,158,160,178,160,162,175,162,175,173,165,171,160,159,183,165,176,165,152,166,168,175,158,160,162,163,175,160,150,170,168,163,176,178,162,173,166,168,164,169,162,160,170,170,168,176,180,159,165,165,174,166,150,160,173,169,162,156,174,171,163,153,175,162,174,179,163,170,178,153,168,170,176,155,163,185,173,162,162,158,170,173,183,165,162,175,173,170,165,164,160,169,170,160,175,163,163,160,170,155,160,175,163,163,180,165,173,168,156,155,175,170,160,153,160,176,170,172,165,162,146,170,162,163,172,176,168,170,177,153,157,163,165,160,178,156,176,155,183,170,175,166,153,164,158,178,150,170,178,171,160,150,176,170,170,160,160,170,169,157,170,160,160,168,164,156,174,160,162,170,175,167,176,155,150,172,167,153,156,156,170,167,160,170,175,175,174,155,165,165,175,169,157,154,160,156,152,164,150,151,170,155,152,155,160,165,170,180,170,165,172,155,150,156,172,158,170,165,170,158,168,157,165,175,171,169,150,183,162,160,165,170,165,157,170,163,156,178,176,160,163,172,154,163,160,162,168,160,170,165,170,169,165,160,163,150,175,170,167,166,165,168,182,160,170,170,160,180,164,158,165,160,169,156,172,163,170,156,168,178,156,157,175,162,150,170,174,176,155,179,165,168,155,150,179,165,160,173,160,153,160,164,160,158,165,168,157,162,178,170,167,170,160,180,165,162,160,155,155,155,155,175,163,168,150,153,159,170,168,163,165,160,170,172,165,156,175,160,164,160,172,170,170,172,159,167,178,165,170,160,160,168,160,165,170,165,165,163,156,179,170,165,164,170,173,176,150,145,170,155,165,160,165,162,175,170,178,162,172,174,175,174,170,165,156,150,160,170,167,180,160,181,175,165,150,168,160,175,150,160,169,173,175,160,165,158,170,162,167,167,178,172,170,160,164,155,177,170,170,160,162,169,160,180,150,170,160,165,165,160,166,170,165,172,157,163,162,158,170,152,165,160,187,160,163,165,176,178,176,167,162,162,160,166,170,180,164,175,157,155,160,167,176,175,180,172,165,155,175,166,160,150,165,170,168,160,160,165,163,170,165,160,168,180,168,165,163,160,158,170,180,158,175,169,160,150,165,167,160,178,155,160,164,186,156,172,175,160,178,158,175,173,155,168,185,174,161,167,158,172,156,165,160,165,150,161,159,170,165,167,150,158,177,156,150,173,168,160,163,159,162,170,169,175,175,163,160,156,163,160,165,183,158,156,153,150,160,168,163,163,165,176,168,155,168,160,158,178,170,172,170,171,160,158,165,160,175,178,153,176,164,155,160,170,170,161,170,168,160,170,170,175,170,158,175,171,165,164,178,159,157,171,178,173,180,165,182,174,160,180,160,163,160,170,157,165,168,170,165,168,162,180,168,162,167,158,167,170,171,181,168,170,170,155,175,172,160,164,165,170,158,163,162,155,175,162,150,162,156,165,169,153,160,160,160,165,165,165,170,160,163,172,162,182,170,158,174,156,152,148,167,172,166,164,168,165,155,157,160,163,176,160,160,162,161,156,160,175,170,181,172,170,160,175,170,170,172,173,171,187,170,162,167,158,172,173,181,160,165,165,158,158,166,170,156,162,158,170,155,173,161,173,155,175,170,170,170,158,160,170,173,165,178,149,168,162,165,158,155,168,155,175,172,172,170,180,160,159,183,174,156,176,158,170,150,172,172,163,170,155,160,165,166,167,153,166,156,165,168,170,168,170,156,163,159,171,168,178,170,159,174,156,167,170,162,174,150,178,168,160,162,158,165,156,188,155,178,175,155,173,157,165,161,168,161,162,158,175,153,160,176,176,186,160,169,160,176,160,168,170,157,164,167,168,176,182,162,167,182,160,166,158,158,165,170,165,170,160,169,163,158,175,162,170,155,160,165,163,168,160,168,158,169,168,164,160,170,168,165,170,168,155,158,150,158,180,150,165,165,156,175,178,185,152,163,178,170,170,178,168,154,175,153,182,157,169,161,172,178,167,168,175,160,170,167,168,150,173,168,170,160,160,153,190,161,169,155,175,173,169,165,183,158,170,156,163,153,173,175,156,183,180,160,156,168,160,176,168,163,172,160,154,162,188,172,150,175,159,148,169,162,172,168,165,155,174,169,169,160,170,171,164,163,166,170,170,150,170,155,171,163,165,162,162,158,166,159,159,174,172,160,165,170,159,159,170,172,150,162,160,160,155,176,160,152,173,172,166,168,170,152,140,162,168,176,158,150,165,159,162,169,161,178,158,175,170,165,156,156,171,155,171,165,183,157,173,162,165,155,172,160,172,158,187,154,158,162,160,178,163,168,174,170,159,168,153,168,160,167,168,170,163,176,170,150,168,165,160,160,162,158,161,178,155,160,163,160,173,156,162,170,170,170,170,178,157,158,170,178,158,165,163,161,168,173,166,160,154,150,156,172,153,170,165,155,165,165,165,158,155,163,166,155,170,145,172,150,158,173,157,173,168,168,158,160,158,165,165,173,162,158,170,170,168,176,155,181,159,155,160,161,172,170,175,171,168,150,162,155,168,161,174,160,158,163,163,158,160,156,165,164,140,154,165,160,164,155,160,161,150,165,172,168,165,170,162,172,155,176,160,155,150,166,180,160,165,160,160,172,177,160,161,162,170,160,152,167,169,170,167,165,160,159,177,158,155,160,153,165,145,167,162,160,165,150,165,163,159,162,164,165,150,160,160,165,163,156,176,160,156,165,162,164,165,150,160,164,168,160,160,147,165,160,160,153,159,159,150,158,158,150,164,169,158,150,154,168,160,165,168,170,155,167,163,158,175,156,160,173,155,160,170,170,168,170,160,161,160,164,140,170,156,167,160,152,168,172,163,155,165,159,166,160,165,169,160,165,174,155,170,160,180,156,162,159,170,170,155,170,140,190,170,157,155,172,160,160,172,165,160,155,165,165,158,160,173,175,155,160,158,180,168,150,150,167,155,165,168,160,155,163,173,167,150,170,163,160,150,162,160,167,162,165,170,170,155,158,175,172,168,175,161,165,170,155,160,160,154,156,160,170,159,156,167,156,168,155,150,156,160,165,150,167,158,172,165,160,162,156,165,165,160,166,150,150,163,162,163,165,160,170,162,158,165,180,170,161,162,167,148,166,165,176,173,158,170,170,170,172,162,150,160,150,175,170,150,160,161,180,172,175,158,155,164,155,155,155,156,169,170,170,160,150,160,175,160,160,162,150,165,165,165,175,157,160,155,170,163,155,162,150,160,170,156,155,160,168,153,160,167,179,170,172,162,165,170,160,168,162,160,158,169,158,155,156,170,165,160,155,165,145,174,162,170,173,173,162,160,156,152,165,168,167,150,155,154,150,175,160,171,150,150,168,150,160,175,165,156,168,156,160,140,168,161,156,150,161,155,165,153,165,155,158,158,178,167,160,155,160,167,152,157,170,180,155,168,170,160,165,165,158,149,162,175,157,160,156,163,152,165,156,173,158,173,155,179,160,181,170,158,169,159,155,160,175,176,150,167,175,168,165,163,149,177,165,161,170,153,177,166,165,157,173,174,168,170,175,153,163,160,175,175,168,160,175,169,152,163,170,150,160,159,156,162,175,160,175,155,170,165,160,158,185,170,178,170,148,160,163,160,148,157,158,168,168,159,158,155,180,175,165,175,175,178,179,170,173,158,165,165,159,178,168,176,176,163,172,155,168,173,170,157,160,156,178,153,159,178,172,165,170,156,152,172,163,168,170,189,172,158,166,160,185,162,140,168,158,178,171,169,172,159,154,172,165,160,185,158,173,178,158,170,157,160,175,167,160,172,170,176,180,159,181,165,165,180,170,178,168,172,168,156,165,183,169,148,178,165,175,178,163,156,168,165,175,170,168,167,178,155,172,160,165,176,160,160,172,155,168,158,176,150,160,155,150,178,173,170,165,180,183,150,163,150,158,160,160,170,164,150,170,166,162,150,162,170,176,155,155,158,153,163,166,172,183,160,160,155,156,156,178,165,160,168,160,175,155,175,155,166,155,157,165,170,170,176,154,180,160,172,160,170,158,150,170,156,168,180,150,170,150,176,168,175,167,188,168,185,166,165,160,168,172,160,153,160,160,170,175,165,170,165,157,158,150,170,155,160,175,170,166,173,172,168,177,170,165,164,165,175,161,165,173,174,160,180,170,164,185,178,178,176,168,162,169,164,166,167,158,170,168,172,166,180,160,163,163,165,160,165,165,158,158,170,168,178,170,174,170,158,165,168,155,162,162,175,173,170,150,175,155,155,150,157,173,172,180,166,170,173,153,147,172,155,150,152,173,168,160,153,150,155,175,160,165,158,165,158,165,160,157,173,170,170,160,170,175,160,170,180,166,150,162,170,157,168,160,160,176,160,150,170,165,172,160,165,168,164,168,180,160,180,170,150,180,180,160,160,170,167,175,162,160,174,175,158,170,165,165,168,168,160,175,162,159,160,165,170,170,155,174,175,140,172,160,156,160,166,160,168,163,157,169,170,163,150,150,174,156,164,171,156,163,168,178,164,176,163,180,160,169,166,170,155,160,158,176,170,150,180,166,156,180,170,170,168,171,168,160,168,160,156,158,171,160,160,155,160,160,168,170,158,172,162,175,162,168,171,175,155,158,163,163,162,167,160,162,160,160,160,170,168,170,171,172,180,162,153,170,170,175,170,170,160,157,160,170,156,158,160,160,153,160,160,163,170,160,166,178,175,150,162,150,181,170,158,162,168,170,165,158,160,153,163,158,177,167,167,156,171,169,171,168,156,178,167,156,173,175,150,158,169,158,158,173,156,170,164,160,180,140,160,160,184,175,162,179,160,157,168,172,163,163,155,160,150,170,165,160,160,160,158,158,164,163,150,160,190,173,160,175,173,172,160,158,172,170,160,178,155,170,155,173,170,175,175,161,160,163,165,160,150,167,168,168,170,150,150,164,161,168,165,167,163,170,162,175,160,160,179,180,167,170,155,157,166,156,174,172,155,162,170,170,168,160,172,163,185,163,175,152,180,156,170,170,156,160,170,160,170,150,148,170,168,158,163,160,164,155,160,160,170,167,160,160,160,150,170,165,170,150,160,150,172,168,178,160,158,170,170,160,178,153,150,160,172,158,160,175,172,155,160,170,181,160,176,169,160,165,160,160,150,169,158,160,163,160,162,155,167,159,163,158,160,160,165,170,160,159,178,171,163,168,164,156,168,158,160,162,160,167,150,166,160,172,168,150,165,164,163,170,164,160,165,170,158,168,157,158,172,162,160,168,158,185,167,160,145,162,151,156,156,167,158,167,171,162,150,170,175,166,160,163,173,158,167,150,160,165,165,165,157,162,148,155,155,160,134,160,157,175,165,155,162,167,170,165,158,160,180,160,168,170,155,158,155,168,160,170,175,160,172,167,167,162,160,165,155,159,158,175,156,162,165,150,158,168,148,165,168,170,174,168,160,165,163,146,162,164,160,165,150,160,165,165,167,158,178,169,160,170,149,165,158,158,156,162,170,175,171,170,175,176,156,165,165,160,162,150,160,164,150,150,160,155,155,176,172,161,150,171,155,163,162,159,158,168,160,170,152,150,163,158,170,170,158,137,150,177,162,155,148,160,157,172,145,158,163,156,168,150,168,159,166,170,165,160,150,160,158,170,160,158,155,165,155,163,152,155,156,165,170,163,158,150,158,169,158,160,172,174,155,155,165,158,155,158,172,160,168,163,168,149,165,158,145,168,164,155,172,172,170,173,158,155,162,132,170,172,175,167,165,155,158,145,160,170,155,168,169,156,168,170,163,157,155,156,160,153,160,166,158,172,167,165,162,150,189,167,166,166,158,160,156,150,140,160,154,150,148,163,165,150,168,150,160,150,160,165,140,150,158,169,150,175,167,156,158,175,170,140,165,169,166,155,162,160,175,154,155,162,165,170,145,160,158,150,158,168,152,168,157,176,170,140,155,164,170,160,160,155,169,164,165,155,166,166,159,170,159,166,175,160,160,165,157,155,168,148,156,153,163,150,160,155,162,160,148,160,158,160,150,150,160,162,157,158,164,168,166,170,160,158,160,152,158,159,160,158,155,156,155,158,172,153,157,167,150,173,158,155,174,165,160,168,150,156,150,158,162,155,156,170,158,170,163,165,170,151,161,158,152,170,168,158,172,156,172,160,156,160,160,158,159,170,169,155,170,170,153,142,155,173,168,150,175,158,157,170,168,156,155,170,158,159,165,163,168,168,160,168,145,158,160,162,160,165,150,158,160,164,158,173,168,164,154,158,171,157,172,160,156,167,168,173,153,150,173,162,168,150,160,158,160,163,165,158,173,165,160,164,154,160,169,156,165,155,165,150,160,158,163,155,168,165,170,168,156,165,160,167,164,156,163,163,158,175,168,178,170,168,165,170,157,160,160,150,160,175,158,162,162,174,158,165,150,175,160,165,165,165,150,165,167,174,168,158,174,157,170,156,159,156,171,160,150,170,150,158,160,168,170,170,167,172,158,150,164,169,168,160,165,168,165,149,172,170,164,168,170,150,170,140,165,153,179,169,156,170,158,164,156,167,165,155,168,158,170,170,153,165,167,153,176,167,165,165,160,156,158,160,155,157,160,160,163,166,155,161,173,160,170,150,165,150,165,170,164,163,160,165,169,162,155,167,160,160,170,150,152,160,173,150,173,160,165,170,158,160,165,168,156,155,173,160,160,145,155,156,171,165,145,168,168,150,155,170,155,178,156,156,160,175,153,140,163,169,160,150,175,162,163,174,160,160,169,179,170,165,175,160,165,160,160,157,165,161,160,163,160,150,168,155,155,157,165,160,170,165,165,150,158,150,161,170,165,150,165,148,164,162,158,165,176,150,175,159,162,162,165,178,160,152,165,148,154,150,165,155,169,165,157,170,163,165,155,155,167,160,172,160,160,173,156,170,170,160,160,155,150,159,160,172,160,170,155,160,160,160,158,161,165,165,167,165,165,160,172,160,165,163,156,168,162,155,167,161,168,168,150,155,165,155,175,159,160,162,158,150,156,158,155,183,170,167,160,171,153,160,158,170,170,165,165,150,160,170,163,160,155,160,178,162,168,162,158,174,160,140,163,167,172,155,176,150,161,156,156,155,175,168,159,165,154,168,156,152,166,172,158,157,150,157,163,150,172,165,178,175,145,156,158,160,158,165,166,160,167,167,165,160,153,158,157,163,171,167,168,155,172,165,169,170,149,170,152,173,159,165,150,173,175,165,159,170,151,167,168,165,162,150,158,158,156,175,160,150,162,155,172,156,150,170,173,155,155,150,170,160,167,157,169,155,167,155,164,161,160,170,157,178,165,155,160,155,155,160,165,180,160,156,168,165,166,167,155,156,159,156,155,160,171,170,145,160,150,162,160,150,165,164,160,160,164,157,159,168,165,169,168,168,150,160,176,155,160,165,162,167,160,175,165,157,155,155,152,158,165,170,160,160,164,167,160,150,162,163,168,174,166,160,155,165,162,170,150,148,170,162,161,171,160,160,153,155,168,162,168,176,153,160,163,150,175,166,167,165,150,157,166,167,168,160,158,160,160,155,161,168,160,158,165,150,150,173,156,165,175,165,167,165,167,174,164,160,166,165,158,166,152,169,163,172,160,158,160,170,165,165,165,155,173,170,157,172,167,158,179,170,173,162,160,174,172,174,170,155,168,167,155,170,160,155,160,163,180,175,168,165,162,165,160,145,170,170,160,165,168,155,179,162,167,173,174,158,161,156,155,167,160,157,170,175,162,160,176,165,155,158,154,166,150,163,159,165,148,158,156,162,165,160,160,165,155,158,162,165,160,175,168,176,170,156,155,160,160,156,167,167,165,160,155,166,165,170,161,165,170,175,169,168,162,185,155,175,180,160,160,150,165,155,165,160,164,167,176,150,167,170,165,167,159,163,150,163,160,130,168,155,173,150,160,165,162,158,160,175,174,175,165,167,117,155,170,170,160,170,160,168,156,168,166,171,160,165,170,170,171,170,165,150,160,178,160,174,158,165,160,155,157,160,165,165,170,165,168,180,159,175,160,160,160,170,158,176,175,160,165,166,168,160,152,158,148,170,147,160,176,168,173,174,160,170,167,173,169,174,168,170,173,140,163,170,153,173,156,162,172,160,170,156,170,150,175,170,165,165,176,170,165,160,180,168,160,166,175,164,163,180,166,165,160,156,170,170,154,158,161,182,165,161,172,154,170,155,161,164,172,156,158,165,170,166,156,172,165,178,150,160,164,151,160,164,160,155,170,160,175,160,166,165,170,182,168,165,155,158,168,170,154,178,167,170,175,167,160,160,163,160,160,158,158,169,166,157,170,162,185,163,161,160,165,170,155,163,167,167,165,160,160,165,169,157,170,175,171,170,160,168],"y":[118,120,130,115,150,198,120,162,106,104,160,140,135,130,123,160,120,140,206,170,120,138,125,130,176,138,130,120,180,150,135,120,124,130,142,120,98,140,136,120,128,164,100,130,110,124,140,130,180,106,102,110,155,64,116,150,170,130,140,130,108,116,148,110,160,118,140,140,120,170,110,120,115,130,210,132,140,120,110,125,120,104,140,180,120,170,140,120,160,100,170,120,104,136,112,130,136,180,125,140,140,114,110,160,140,134,115,104,150,105,130,140,170,134,133,160,128,116,200,150,140,180,120,177,130,136,100,136,130,130,106,140,105,112,140,218,110,172,130,190,125,175,160,110,150,150,146,143,150,120,140,106,89,130,78,147,150,100,120,140,150,160,110,120,146,113,146,170,116,110,140,120,150,170,104,110,130,200,110,160,80,120,128,145,180,145,118,135,138,200,122,170,150,100,120,145,130,140,140,120,100,150,104,146,140,174,172,120,126,125,120,159,104,94,140,102,148,130,130,120,106,160,150,184,136,146,110,120,140,150,120,130,110,158,130,188,130,135,164,110,150,145,115,104,105,130,120,110,110,148,146,120,150,132,120,141,140,114,120,130,138,150,150,120,118,150,100,120,110,140,130,120,150,170,120,190,110,130,170,135,135,90,121,105,154,145,110,180,160,110,115,130,106,126,110,170,100,110,140,124,150,150,140,140,170,120,140,132,160,134,116,130,130,180,120,130,84,95,156,148,90,140,150,110,176,200,160,150,170,144,136,115,100,90,140,150,132,140,156,140,160,116,130,110,118,110,110,160,120,140,220,185,132,124,150,138,140,180,150,170,190,110,75,135,148,130,100,240,165,121,140,116,100,150,180,120,140,146,130,120,130,95,156,190,220,130,123,130,155,100,150,108,100,160,138,128,132,135,140,108,108,120,120,110,120,130,105,160,120,150,150,150,110,165,125,120,151,123,90,160,160,120,95,170,90,92,140,120,137,126,170,120,130,140,88,120,130,200,96,155,140,130,120,108,160,170,146,110,140,170,160,105,160,152,110,108,140,100,132,116,120,165,170,106,200,160,90,120,130,108,142,130,160,150,130,160,180,172,140,135,140,100,196,140,147,156,117,170,120,125,160,130,160,120,130,120,130,120,180,130,120,120,178,100,130,135,120,130,150,138,172,120,140,132,140,160,140,120,123,180,140,115,130,120,130,120,120,140,150,172,160,100,130,150,125,140,110,180,140,120,130,140,155,106,130,137,120,106,130,130,148,130,130,114,152,140,140,130,118,150,112,140,120,95,130,100,140,140,114,110,120,170,130,110,160,120,130,170,130,125,100,180,130,120,135,120,120,130,120,148,110,103,140,130,150,110,105,125,90,116,143,150,140,125,115,130,130,150,130,90,120,108,95,170,110,125,100,110,118,130,110,120,125,130,150,160,130,155,175,140,118,90,152,120,176,166,96,143,140,151,140,110,110,140,130,120,118,100,115,150,100,140,160,110,120,110,160,120,110,199,130,110,144,120,110,120,120,160,120,90,135,137,166,144,110,100,125,120,104,132,120,124,110,144,150,130,106,154,130,140,120,108,130,160,140,120,120,125,110,140,120,100,210,130,120,140,110,110,130,140,140,193,110,140,108,194,90,180,148,140,145,115,148,130,100,170,104,130,115,103,110,120,108,100,140,110,150,114,140,152,130,130,140,130,112,102,130,140,145,125,109,132,112,160,130,160,170,147,105,140,150,140,130,105,150,150,136,120,130,140,108,120,100,100,148,210,130,105,110,104,118,94,144,120,190,130,130,97,140,115,112,138,110,100,118,140,100,130,140,110,130,90,130,170,120,110,160,150,135,100,105,126,90,140,130,100,100,110,100,160,135,120,100,120,160,126,94,136,140,130,183,120,140,140,140,145,160,120,150,115,105,110,160,196,125,110,100,94,120,127,150,125,130,142,160,135,160,160,130,140,160,140,132,120,140,87,105,105,155,160,140,110,89,130,100,130,158,115,140,165,110,110,180,180,138,110,150,124,120,140,230,138,140,145,160,110,190,123,170,140,130,150,135,130,55,100,120,120,140,120,120,105,120,220,110,150,130,120,110,120,176,165,100,130,170,160,125,124,130,180,169,124,112,140,130,95,150,141,90,130,130,150,116,125,160,130,132,108,120,90,130,135,110,135,124,136,120,160,176,116,120,94,130,160,148,122,103,130,132,106,115,138,144,140,130,124,114,92,120,130,160,150,145,135,110,100,170,136,180,140,220,190,130,120,130,100,152,146,160,120,160,124,78,116,140,150,130,148,120,125,170,160,110,140,103,140,128,113,150,125,140,98,150,110,120,106,126,110,140,130,120,150,125,145,157,110,150,160,130,100,174,134,116,180,118,134,80,140,145,114,150,106,140,95,150,102,80,128,120,130,155,150,140,110,121,130,117,158,115,140,150,110,128,108,120,160,150,110,100,160,100,96,90,149,140,130,150,130,180,130,91,128,130,122,114,160,140,105,140,127,110,127,160,160,220,90,108,123,105,130,150,140,140,122,140,132,115,150,138,150,186,95,140,124,100,140,150,130,118,102,120,100,120,140,110,160,98,104,140,108,140,130,105,120,130,136,100,155,120,98,120,140,130,127,120,110,98,144,104,100,140,103,160,145,158,104,124,154,61,128,150,140,85,160,98,143,120,120,112,140,150,125,130,128,110,130,140,120,80,125,95,156,87,110,102,150,105,106,120,130,142,145,120,170,118,120,120,121,115,150,140,102,140,160,105,112,140,130,180,125,154,150,100,110,172,170,140,90,140,104,90,103,128,168,150,150,120,150,98,120,81,140,126,103,126,150,180,114,116,120,107,160,110,120,124,135,100,130,124,110,142,145,120,101,136,120,150,120,150,104,110,104,140,75,123,120,115,126,180,104,112,130,98,120,120,140,168,120,96,140,115,140,153,130,150,102,180,120,114,120,100,130,140,114,148,135,104,132,147,120,98,124,103,100,130,178,120,126,135,103,150,123,148,160,140,100,130,103,130,136,125,125,122,126,140,130,104,138,108,112,130,150,130,105,180,87,130,136,105,150,102,93,138,150,142,130,148,120,118,120,140,100,150,110,128,140,140,116,108,92,130,130,130,134,176,120,120,150,110,142,115,95,90,120,90,170,114,150,92,100,140,120,130,140,146,118,96,96,126,135,156,113,116,160,150,130,136,130,150,115,85,88,110,160,124,142,120,138,110,108,100,150,92,160,100,106,108,150,100,145,105,98,98,80,93,100,105,123,110,108,120,114,150,172,110,183,85,136,192,120,180,110,132,114,136,190,90,110,120,100,150,123,102,115,105,140,110,100,110,110,130,160,144,130,120,160,120,120,130,112,140,60,140,101,105,120,140,140,140,110,131,100,120,110,130,140,130,150,120,156,100,130,180,140,120,120,100,110,100,127,100,55,110,95,126,90,98,120,120,113,90,93,88,120,120,100,90,105,180,48,138,170,174,112,150,125,110,185,80,120,130,115,140,160,120,125,160,125,110,105,128,90,150,120,145,108,85,147,150,120,100,130,110,120,130,136,120,120,140,125,130,105,130,190,102,110,120,120,150,110,110,90,150,120,132,100,135,105,110,150,140,112,110,100,130,110,105,125,120,124,140,100,144,120,106,135,150,82,116,120,90,110,120,138,130,85,125,130,135,110,150,130,145,102,110,150,120,90,115,165,128,150,160,132,140,120,105,106,100,90,110,85,140,102,110,115,122,104,90,103,140,120,140,140,140,98,80,104,145,140,120,110,120,123,120,120,90,120,160,190,112,140,120,130,140,100,160,105,124,115,150,110,140,110,158,130,130,160,126,120,140,130,90,132,65,140,156,100,110,127,140,134,140,150,103,136,110,110,140,120,133,150,140,100,100,148,120,135,115,170,95,145,125,160,175,129,98,105,130,105,90,124,120,110,139,100,110,120,130,90,120,92,145,120,145,100,146,160,130,65,150,110,106,120,106,118,100,132,140,100,92,100,110,150,88,130,130,170,120,115,100,94,100,140,110,102,115,110,100,140,110,140,95,108,148,120,100,130,100,103,134,106,110,70,135,96,94,95,118,100,95,138,137,102,120,134,156,120,100,100,130,120,110,120,120,120,94,110,62,90,110,130,120,120,109,120,120,120,120,115,103,160,125,136,140,120,96,150,110,158,120,108,105,104,120,120,163,144,110,132,140,115,130,126,100,130,160,100,110,106,125,120,94,110,170,148,130,130,130,100,113,110,70,150,135,110,120,130,120,130,120,120,110,140,110,130,130,110,128,110,130,130,116,128,145,110,75,110,100,110,110,110,110,110,145,130,150,102,120,100,130,136,120,130,130,140,154,110,120,120,126,110,130,150,140,180,140,155,130,105,120,125,110,110,58,120,140,114,102,150,148,120,104,120,125,120,100,130,110,170,138,100,130,120,140,130,108,135,120,130,152,140,130,120,98,144,140,90,140,105,120,145,110,140,100,110,160,135,120,124,140,153,130,156,147,120,148,140,151,120,150,140,120,100,117,140,130,140,130,135,140,140,120,90,140,110,125,150,105,90,160,110,153,120,130,160,120,120,153,98,140,110,142,92,100,90,106,145,125,130,160,168,160,150,120,124,140,130,160,140,147,95,130,110,160,128,130,165,150,125,110,110,110,100,186,135,183,135,120,104,105,100,180,130,110,138,42,150,110,150,112,145,125,106,120,130,106,158,116,220,110,160,80,156,140,110,160,120,120,185,100,160,128,150,120,165,130,200,140,160,140,108,120,128,182,120,110,105,120,140,120,145,120,140,100,145,120,140,110,120,160,110,148,160,143,160,136,120,140,130,100,140,116,112,198,160,145,190,140,120,150,150,160,160,145,126,140,130,176,140,130,148,135,158,170,100,130,120,120,130,118,135,120,100,110,140,115,180,160,158,120,115,165,140,105,140,145,160,160,65,114,130,100,110,109,130,160,160,150,130,130,170,106,110,170,110,140,70,125,120,120,96,150,120,135,140,95,140,126,106,115,130,130,160,116,140,130,170,200,108,160,120,138,100,142,110,130,130,125,140,130,110,90,140,113,160,100,185,168,112,110,160,126,145,150,125,140,150,130,100,140,130,140,120,120,150,160,130,130,160,120,165,136,120,160,116,120,100,165,160,140,100,180,145,80,152,95,130,114,142,100,160,110,140,115,134,100,90,96,120,86,120,121,116,100,140,120,148,160,140,150,140,144,142,130,132,170,120,140,145,90,150,99,116,140,126,155,100,115,150,140,130,136,140,142,130,100,130,90,150,120,140,120,126,180,124,148,155,135,110,145,115,130,135,120,125,136,150,105,130,106,130,100,150,139,156,150,148,92,120,110,140,150,140,150,125,103,155,140,120,120,120,120,84,140,120,140,120,120,125,140,120,130,105,130,128,130,103,130,120,148,120,118,120,125,120,132,160,140,110,130,160,120,130,150,90,148,120,130,130,150,120,98,160,130,105,164,120,150,95,140,124,100,110,120,138,140,110,142,90,90,100,120,115,115,140,130,120,160,120,110,90,100,100,110,115,120,110,150,156,170,130,136,140,140,120,103,180,140,110,196,125,160,100,100,130,140,180,100,130,96,110,100,124,160,140,138,146,80,98,118,125,120,120,162,110,165,140,160,90,106,180,180,130,110,105,110,108,120,110,160,103,95,140,150,142,120,130,128,150,165,170,110,150,130,120,120,110,120,120,88,156,80,110,170,150,110,110,130,124,100,140,115,130,110,140,100,110,90,140,130,120,91,110,100,140,152,170,120,92,110,100,150,200,100,130,152,170,130,105,140,172,98,67,150,120,90,154,130,105,130,130,100,140,130,80,110,108,116,140,88,120,97,110,108,130,90,130,130,108,104,120,127,126,135,142,115,140,130,70,116,180,130,80,120,145,170,120,118,98,117,128,120,132,90,144,90,140,104,88,140,156,96,121,130,130,150,130,110,85,126,115,110,106,148,112,134,132,105,120,130,150,115,100,154,130,112,123,140,138,118,97,150,118,100,72,95,90,160,90,100,120,160,98,110,128,105,140,95,106,120,164,120,110,110,100,120,112,94,100,108,140,110,167,130,170,130,130,130,85,125,110,130,120,140,138,160,110,135,123,50,140,175,150,118,80,120,135,53,142,120,118,100,85,123,120,125,100,100,150,120,95,136,99,130,110,120,110,140,170,140,165,160,150,160,100,110,120,110,140,103,140,110,120,105,140,120,110,123,160,108,135,150,116,125,110,120,100,154,115,128,120,92,152,102,100,135,100,88,103,182,104,110,97,90,110,138,50,120,116,92,132,86,60,104,110,135,150,80,100,110,110,130,140,113,90,120,100,140,100,91,120,120,110,173,92,126,100,127,130,68,156,172,108,110,120,100,110,110,152,130,110,110,120,100,150,90,130,116,120,126,156,130,120,170,106,100,126,100,140,100,150,145,140,97,125,94,95,150,115,108,116,120,138,120,110,102,122,112,110,102,100,135,119,130,148,120,102,138,140,130,138,130,100,130,100,115,80,100,104,120,105,150,140,148,130,126,140,82,110,100,80,90,110,132,100,120,130,102,112,146,128,84,100,150,115,130,95,130,110,120,120,120,130,120,110,160,110,110,100,170,90,160,164,150,150,100,86,93,140,130,120,135,110,95,120,110,100,145,92,134,116,145,105,120,110,120,90,130,125,90,130,116,139,95,130,102,150,100,92,130,106,120,105,80,110,110,112,110,102,120,135,130,110,90,105,120,126,95,150,94,120,89,123,112,140,150,113,180,110,120,115,112,130,113,100,130,90,130,96,120,120,85,118,130,120,150,92,95,162,100,100,80,94,140,140,145,135,108,145,84,120,103,110,98,122,160,120,104,120,130,140,123,100,135,110,136,140,105,107,160,172,110,120,120,50,126,135,150,130,110,130,121,88,100,120,110,130,140,94,130,100,126,102,140,168,126,98,140,120,117,150,150,114,122,116,140,90,120,160,104,135,75,100,118,90,125,92,95,130,150,122,100,100,100,132,90,140,110,125,85,130,100,53,95,170,120,110,125,125,130,100,122,120,120,126,106,130,110,100,120,150,130,103,106,105,120,120,110,135,130,106,83,104,210,130,126,120,160,100,98,105,140,80,120,120,130,100,168,160,130,150,120,148,90,135,140,86,102,65,80,110,130,134,110,140,125,148,108,132,110,214,130,140,105,160,83,126,125,125,155,160,80,110,98,130,86,108,98,104,120,105,140,88,90,152,90,140,98,128,140,78,115,125,110,170,130,142,116,124,90,118,150,124,132,120,108,124,132,105,105,180,136,120,118,118,92,110,152,120,130,115,113,140,90,96,120,140,120,105,105,85,100,128,120,120,90,120,160,108,118,148,120,95,110,130,100,115,90,90,100,110,120,81,130,140,97,125,110,110,126,110,93,120,120,98,90,126,145,114,120,140,130,130,136,130,95,120,120,135,120,180,120,90,100,100,100,140,95,104,120,100,100,140,96,108,100,100,110,120,75,130,120,115,95,120,130,110,95,120,80,94,120,118,150,105,80,130,110,120,83,150,130,120,98,120,80,120,100,95,100,125,110,122,130,110,130,98,90,140,104,127,100,95,75,109,140,110,110,170,117,165,100,100,120,165,122,130,110,120,110,100,115,100,137,121,130,120,120,170,80,110,110,87,120,90,102,106,110,100,118,85,120,110,120,150,102,110,100,110,112,120,86,140,140,110,130,100,130,84,110,130,130,150,150,110,100,120,130,130,120,95,130,120,90,96,108,130,133,90,108,120,138,120,120,110,94,150,120,120,100,134,132,120,100,90,140,125,100,130,132,120,120,130,103,65,80,130,114,120,140,112,130,120,152,108,140,118,108,110,100,100,110,81,120,120,100,130,100,104,85,150,122,120,120,136,110,120,130,110,98,76,125,120,105,100,124,105,140,140,115,98,142,110,92,120,140,120,100,115,120,120,185,75,145,170,90,128,90,155,144,150,102,142,110,120,90,100,130,130,105,95,130,118,100,120,110,95,107,125,118,105,112,100,120,110,110,110,100,110,108,110,100,123,120,88,130,95,126,100,90,110,102,170,114,134,100,150,100,100,100,126,130,90,130,170,99,85,120,140,128,100,110,120,130,95,150,130,120,130,100,90,100,120,120,126,136,112,134,130,160,140,102,130,130,143,120,150,140,140,63,120,135,120,110,103,108,160,150,120,130,105,105,120,110,140,110,130,140,90,114,102,100,140,108,95,103,90,140,110,110,120,103,117,130,140,180,90,125,123,110,104,117,102,151,138,132,130,130,120,110,78,60,136,110,108,130,130,130,130,108,120,100,126,140,102,140,140,112,158,140,174,108,115,126,160,120,142,110,106,120,125,140,126,104,102,96,150,110,152,108,140,106,110,104,130,120,100,145,120,90,170,109,130,130,120,110,140,120,140,125,140,108,120,110,100,100,112,140,130,114,110,152,90,115,130,130,114,100,130,124,100,130,160,148,102,120,120,140,110,140,130,154,140,110,122,85,102,86,120,142,130,110,110,110,130,140,92,105,156,170,136,118,114,140,112,130,100,95,110,100,130,116,140,120,120,130,118,100,140,110,96,105,108,160,121,150,105,120,140,104,130,94,100,137,100,90,104,120,160,155,108,110,110,98,130,130,130,100,140,140,110,51,105,120,100,106,120,120,145,170,135,120,100,151,140,165,101,96,100,106,120,100,114,106,150,130,125,147,140,135,140,120,103,144,105,200,130,130,130,150,140,120,120,130,110,130,100,130,201,140,105,142,160,160,134,130,112,150,100,100,162,110,122,150,98,126,128,109,150,95,120,115,140,145,130,120,180,120,156,130,110,90,140,110,135,120,160,120,128,160,150,120,150,115,140,110,112,120,115,92,120,150,158,100,120,110,140,118,115,118,105,140,128,108,115,180,138,178,126,146,130,112,97,160,140,90,110,128,130,130,140,114,130,180,150,100,98,120,140,90,120,180,110,142,142,154,144,125,130,127,117,110,110,126,105,123,120,125,140,123,116,140,120,130,120,128,117,130,135,130,130,110,150,115,135,150,120,128,130,160],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="TB.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
